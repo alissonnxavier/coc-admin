@@ -8,6 +8,7 @@ import { getClanInfo } from "@/actions/get-clan-info";
 import { clanData } from "@/utils/clan-data";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { ExclamationTriangleIcon } from "@radix-ui/react-icons";
+import UserButton from "./features/auth/components/user-button";
 
 interface PlayerProps {
   playerData: any;
@@ -32,6 +33,7 @@ export default function Home() {
   return (
     <div>
       <div className="flex justify-center items-center">
+        <UserButton/>
         <div className="mr-5">
           <Image
             alt="clan badge"
