@@ -5,6 +5,10 @@ import { v } from "convex/values";
 
 const schema = defineSchema({
     ...authTables,
+    clanDada: defineTable({
+        userId: v.id("users"),
+        data: v.record(v.string(), v.any())
+    })
 });
 
 export default schema
