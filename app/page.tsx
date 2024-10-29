@@ -52,43 +52,40 @@ export default function Home() {
         </div>
         <div className="flex flex-col m-5 ml-10">
           <div className="text-3xl font-bold">
-            {staticClanData.name}
+            {clanData![0].data.clanData.name}
           </div>
           <div className="text-muted-foreground text-xs">
-            {staticClanData.tag}
+            {clanData![0].data.clanData.tag}
           </div>
           <div className="text-muted-foreground text-xs">
-            {staticClanData.type}
+            {clanData![0].data.clanData.type}
           </div>
           <div className="text-muted-foreground text-xs">
-            {staticClanData.description}
+            {clanData![0].data.clanData.description}
           </div>
           <div className="text-muted-foreground text-xs">
-            Pais {staticClanData.location.name}
+            Pais {clanData![0].data.clanData.location.name}
           </div>
           <div className="text-muted-foreground text-xs">
-            Clan lever {staticClanData.clanLevel}
+            Clan lever {clanData![0].data.clanData.clanLevel}
           </div>
           <div className="text-muted-foreground text-xs">
-            Pontos do clan {staticClanData.clanPoints}
+            Pontos do clan {clanData![0].data.clanData.clanPoints}
           </div>
           <div className="text-muted-foreground text-xs">
-            Frequencia de guerra {staticClanData.warFrequency}
+            Frequencia de guerra {clanData![0].data.clanData.warFrequency}
           </div>
           <div className="text-muted-foreground text-xs">
-            Guerras ganhas {staticClanData.warWins}
+            Guerras ganhas {clanData![0].data.clanData.warWins}
           </div>
           <div className="text-muted-foreground text-xs">
-            Guerras empatadas {staticClanData.warTies}
+            Guerras empatadas {clanData![0].data.clanData.warTies}
           </div>
           <div className="text-muted-foreground text-xs">
-            Guerras perdidas {staticClanData.warLosses}
+            Liga {clanData![0].data.clanData.warLeague.name}
           </div>
           <div className="text-muted-foreground text-xs">
-            Liga {staticClanData.warLeague.name}
-          </div>
-          <div className="text-muted-foreground text-xs">
-            Membros {staticClanData.members}
+            Membros {clanData![0].data.clanData.members}
           </div>
         </div>
       </div>

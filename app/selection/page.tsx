@@ -10,6 +10,8 @@ import { record } from '@/utils/clan-data';
 import { useGetClanData } from '../features/clanData/api/use-get-clan-data';
 import { PacmanLoader } from 'react-spinners';
 import { useUpadateClanData } from '../features/clanData/api/use-update-clan-data';
+import { getClanInfo } from '@/actions/get-clan-info';
+import { Button } from '@/components/ui/button';
 
 
 const Page = () => {
@@ -18,12 +20,32 @@ const Page = () => {
     const { data: clanData, isLoading: isLoadingClanData } = useGetClanData();
     const { mutate: updateClanData, isPending: isUpdatingClanData } = useUpadateClanData();
     const [count, setCount] = useState<number>(0);
+    const [updatedData, setUpdatedData] = useState<any>({});
 
     let allData;
     allData = clanData;
     let a = clanData
     let b = 0
 
+
+
+    const updateDataAndResetHolders = async () => {
+        let data;
+        const newData = await getClanInfo().then((res) => {
+
+            data = {
+                "clanData": res
+            }
+            setUpdatedData(data);
+        });
+
+        updateClanData({
+            id: allData![0]._id,
+            data: data
+        });
+
+        setCount(0);
+    }
 
     const onDragEnd = (event: any) => {
         console.log(allData![0].data)
@@ -54,6 +76,13 @@ const Page = () => {
 
     return (
         <div className='w-full'>
+            {/* <div className='flex justify-center p-5'>
+                <Button
+                    onClick={updateDataAndResetHolders}
+                    variant='destructive'>
+                    Resetar escala e atualizar membros
+                </Button>
+            </div> */}
             <DragDropContext onDragEnd={onDragEnd}>
                 <div className='flex justify-center'>
                     <div>
