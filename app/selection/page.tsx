@@ -87,7 +87,7 @@ const Page = () => {
                 <div className='flex justify-center'>
                     <div>
                         <div className='flex justify-center m-5 font-bold'>
-                            Escalado {count / 2}
+                            Escalado {count}
                         </div>
                         <Droppable droppableId='holder'>
                             {(provided, snapshot) => (
