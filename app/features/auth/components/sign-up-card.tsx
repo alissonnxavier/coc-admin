@@ -1,5 +1,4 @@
 import { FcGoogle } from "react-icons/fc";
-import { FaGithub } from "react-icons/fa";
 import { Button } from "@/components/ui/button";
 import { TriangleAlert } from "lucide-react";
 import { useAuthActions } from "@convex-dev/auth/react";
@@ -110,17 +109,17 @@ export const SignUpCard = ({ setState }: SignUpCardProps) => {
             required
             className="focus:border-indigo-400 bg-indigo-400 border-[#000401]"
           />
-          <Button 
-          type="submit" 
-          className="w-full" 
-          size='lg' 
-          disabled={pending}
-          variant='quality'
+          <Button
+            type="submit"
+            className="w-full"
+            size='lg'
+            disabled={pending}
+            variant='quality'
           >
             Continue
           </Button>
         </form>
-        <Separator className="bg-indigo-300"/>
+        <Separator className="bg-indigo-300" />
         <div className="flex flex-col gap-y-2.5">
           <Button
             disabled={pending}
@@ -130,15 +129,6 @@ export const SignUpCard = ({ setState }: SignUpCardProps) => {
             className="w-full relative"          >
             <FcGoogle className="size-5 absolute left-2.5 top-auto" />
             Continue with Google
-          </Button>
-          <Button
-            disabled={pending}
-            onClick={() => onProviderSignUp("github")}
-            variant='qualityLight'
-            size="lg"
-            className="w-full relative"          >
-            <FaGithub className="size-5 absolute left-2.5 top-auto" />
-            Continue with Github
           </Button>
         </div>
         <p className="text-indigo-300 text-xs text-muted-foreground">

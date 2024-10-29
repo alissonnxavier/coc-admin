@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
-import { FaGithub } from "react-icons/fa";
 import { useAuthActions } from "@convex-dev/auth/react";
 import { TriangleAlert } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -108,15 +107,7 @@ export const SignInCard = ({ setState }: SignInCardProps) => {
             <FcGoogle className="size-8 absolute left-2.5 top-auto" />
             Continue with Google
           </Button>
-          <Button
-            disabled={pending}
-            onClick={() => onProviderSignIn("github")}
-            variant='qualityLight'
-            size="lg"
-            className="w-full relative"          >
-            <FaGithub className="size-8 absolute left-2.5 top-auto" />
-            Continue with Github
-          </Button>
+  
         </div>
         <p className="text-indigo-300 text-xs text-muted-foreground">
           Don&apos;t hane a account? <span onClick={() => setState("signUp")} className="text-sky-700 hover:underline cursor-pointer">Sign up</span>

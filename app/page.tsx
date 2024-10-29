@@ -23,16 +23,25 @@ export default function Home() {
 
   if (!clanData) {
     return (
-      <div>
-        loading
+      <div className="flex justify-center items-center h-screen animate-bounce">
+        <Image
+          alt="barbaro photo"
+          width={400}
+          height={400}
+          src={'/barbaro.jpg'}
+          className="rounded-full"
+        />
       </div>
     )
   }
 
   return (
     <div>
-      <div className="flex justify-center items-center">
+      <div className="flex justify-end p-5 h-20">
         <UserButton />
+      </div>
+
+      <div className="flex justify-center items-center flex-wrap md:flex-nowrap xl:flex-nowrap">
         <div className="mr-5">
           <Image
             alt="clan badge"
@@ -41,7 +50,7 @@ export default function Home() {
             height={350}
           />
         </div>
-        <div className="flex flex-col">
+        <div className="flex flex-col m-5 ml-10">
           <div className="text-3xl font-bold">
             {staticClanData.name}
           </div>
@@ -84,7 +93,7 @@ export default function Home() {
         </div>
       </div>
       <div className="flex justify-center items-center">
-        <div className="flex flex-row flex-wrap justify-center items-center gap-1">
+        <div className="flex flex-row flex-wrap justify-center items-center gap-1 xl:w-4/6 ">
           {clanData![0].data.clanData.memberList.map((memeber: any, index: any) => {
             if (memeber.previousClanRank === 100) {
               return (
