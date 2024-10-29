@@ -20,9 +20,9 @@ const buttonVariants = cva(
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
         quality:
-          "bg-destructive text-destructive-foreground shadow-sm hover:bg-[#24020e]/90 border border-red-300 text-red-300 bg-[#24020e]",
+          "bg-destructive text-destructive-foreground shadow-sm hover:bg-indigo-900/90 border border-indigo-200 text-indigo-200 bg-indigo-900",
         qualityLight:
-          "bg-destructive text-destructive-foreground shadow-sm hover:bg-red-300/90 border border-red-300 text-[#24020e] bg-red-300",
+          "bg-destructive text-destructive-foreground shadow-sm hover:bg-indigo-300/90 border border-indigo-200 text-[#24020e] bg-indigo-300",
         deleteButton:
           "bg-destructive text-destructive-foreground shadow-sm hover:bg-red-300/90 border border-red-300 text-[#24020e] bg-red-300 hover:text-white"
       },

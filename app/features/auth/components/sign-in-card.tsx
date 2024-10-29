@@ -52,13 +52,12 @@ export const SignInCard = ({ setState }: SignInCardProps) => {
 
   return (
     <Card
-
-      className="w-full h-full p-8 border-red-300 bg-[#000401]">
+      className="w-full h-full p-8 border-indigo-600 bg-[#000401]">
       <CardHeader className="px-0 pt-0">
-        <CardTitle className="text-red-300">
+        <CardTitle className="text-indigo-600">
           Login to continue
         </CardTitle>
-        <CardDescription className="text-red-400">
+        <CardDescription className="text-indigo-800">
           use your email or another service to continue
         </CardDescription>
       </CardHeader>
@@ -77,7 +76,7 @@ export const SignInCard = ({ setState }: SignInCardProps) => {
             placeholder="Email"
             type="email"
             required
-            className="focus:border-red-300 bg-red-300 border-[#24020e]"
+            className="focus:border-indigo-400 bg-indigo-400 border-[#000401]"
           />
           <Input
             disabled={false}
@@ -86,7 +85,7 @@ export const SignInCard = ({ setState }: SignInCardProps) => {
             placeholder="Password"
             type="password"
             required
-            className="focus:border-red-300 bg-red-300 border-[#24020e]"
+            className="focus:border-indigo-400 bg-indigo-400 border-[#000401]"
           />
           <Button
             type="submit"
@@ -98,7 +97,7 @@ export const SignInCard = ({ setState }: SignInCardProps) => {
             Continue
           </Button>
         </form>
-        <Separator className="bg-red-300"/>
+        <Separator className="bg-indigo-300"/>
         <div className="flex flex-col gap-y-2.5">
           <Button
             disabled={pending}
@@ -119,7 +118,7 @@ export const SignInCard = ({ setState }: SignInCardProps) => {
             Continue with Github
           </Button>
         </div>
-        <p className="text-red-300 text-xs text-muted-foreground">
+        <p className="text-indigo-300 text-xs text-muted-foreground">
           Don&apos;t hane a account? <span onClick={() => setState("signUp")} className="text-sky-700 hover:underline cursor-pointer">Sign up</span>
         </p>
       </CardContent>
