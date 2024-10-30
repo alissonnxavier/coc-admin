@@ -16,6 +16,7 @@ import { Menu } from '@/components/menu';
 import { useGetMemberRole } from '../features/memberRole/api/use-get-member-role';
 import { useCurrentUser } from '../features/auth/api/use-current-user';
 import { useCreateMemberRole } from '../features/memberRole/api/use-create-member-role';
+import { toast } from 'sonner';
 
 
 const Page = () => {
@@ -43,12 +44,11 @@ const Page = () => {
             setUpdatedData(data);
         });
 
-        updateClanData({
+       /*  updateClanData({
             id: allData![0]._id,
             data: data
-        });
-
-        setCount(0);
+        }
+        ); */
     }
 
     const onDragEnd = (event: any) => {
@@ -66,7 +66,13 @@ const Page = () => {
         updateClanData({
             id: allData![0]._id,
             data: allData![0].data
-        });
+        },
+            {
+                onSuccess: () => {
+                    toast.success("Membro alterado!")
+                }
+            }
+        );
 
 
 
@@ -90,14 +96,14 @@ const Page = () => {
                 </Button>
             </div> */}
 
-          
-                <div className='h-20'>
-                    <Menu
-                        clanName={clanData![0].data.clanData.name}
-                        clanDescription={clanData![0].data.clanData.description}
-                    />
-                </div>
-            
+
+            <div className='h-20'>
+                <Menu
+                    clanName={clanData![0].data.clanData.name}
+                    clanDescription={clanData![0].data.clanData.description}
+                />
+            </div>
+
 
 
             <DragDropContext onDragEnd={onDragEnd}>
