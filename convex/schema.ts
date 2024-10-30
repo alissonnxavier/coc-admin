@@ -8,6 +8,11 @@ const schema = defineSchema({
     clanDada: defineTable({
         userId: v.id("users"),
         data: v.record(v.string(), v.any())
+    }),
+    memberRole: defineTable({
+        userId: v.id("users"),
+        email: v.string(),
+        role: v.string()
     })
 });
 

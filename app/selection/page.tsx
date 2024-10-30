@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 /* eslint-disable prefer-const */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -11,23 +12,26 @@ import { useGetClanData } from '../features/clanData/api/use-get-clan-data';
 import { PacmanLoader } from 'react-spinners';
 import { useUpadateClanData } from '../features/clanData/api/use-update-clan-data';
 import { getClanInfo } from '@/actions/get-clan-info';
-import { Button } from '@/components/ui/button';
+import { Menu } from '@/components/menu';
+import { useGetMemberRole } from '../features/memberRole/api/use-get-member-role';
+import { useCurrentUser } from '../features/auth/api/use-current-user';
+import { useCreateMemberRole } from '../features/memberRole/api/use-create-member-role';
 
 
 const Page = () => {
+
 
     const { mutate } = useCreateClanData();
     const { data: clanData, isLoading: isLoadingClanData } = useGetClanData();
     const { mutate: updateClanData, isPending: isUpdatingClanData } = useUpadateClanData();
     const [count, setCount] = useState<number>(0);
+    const [isAdmin, setIsAdmin] = useState<boolean>(false)
     const [updatedData, setUpdatedData] = useState<any>({});
 
     let allData;
     allData = clanData;
     let a = clanData
     let b = 0
-
-
 
     const updateDataAndResetHolders = async () => {
         let data;
@@ -62,9 +66,11 @@ const Page = () => {
         updateClanData({
             id: allData![0]._id,
             data: allData![0].data
-        })
+        });
 
-    }
+
+
+    };
 
     if (!clanData) {
         return (
@@ -83,6 +89,17 @@ const Page = () => {
                     Resetar escala e atualizar membros
                 </Button>
             </div> */}
+
+          
+                <div className='h-20'>
+                    <Menu
+                        clanName={clanData![0].data.clanData.name}
+                        clanDescription={clanData![0].data.clanData.description}
+                    />
+                </div>
+            
+
+
             <DragDropContext onDragEnd={onDragEnd}>
                 <div className='flex justify-center'>
                     <div>

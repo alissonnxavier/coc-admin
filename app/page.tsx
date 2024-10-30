@@ -2,23 +2,16 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import Image from "next/image";
-import axios from 'axios';
-import { useEffect, useState } from "react";
-import { getClanInfo } from "@/actions/get-clan-info";
+import { useState } from "react";
 import { staticClanData } from "@/utils/clan-data";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { ExclamationTriangleIcon } from "@radix-ui/react-icons";
-import UserButton from "./features/auth/components/user-button";
 import { useGetClanData } from "./features/clanData/api/use-get-clan-data";
+import { Menu } from "@/components/menu";
 
-interface PlayerProps {
-  playerData: any;
-}
 
 export default function Home() {
 
   const [data, setData] = useState<any>();
-
   const { data: clanData, isLoading: isLoadingClanData } = useGetClanData();
 
   if (!clanData) {
@@ -30,6 +23,7 @@ export default function Home() {
           height={400}
           src={'/barbaro.jpg'}
           className="rounded-full"
+          priority
         />
       </div>
     )
@@ -37,11 +31,14 @@ export default function Home() {
 
   return (
     <div>
-      <div className="flex justify-end p-5 h-20">
-        <UserButton />
+      <div className="h-20">
+        <Menu
+          clanName={clanData![0].data.clanData.name}
+          clanDescription={clanData![0].data.clanData.description}
+        />
       </div>
 
-      <div className="flex justify-center items-center flex-wrap md:flex-nowrap xl:flex-nowrap">
+      <div className="flex justify-center items-center flex-wrap md:flex-nowrap xl:flex-nowrap xl:w-4/6 xl:m-auto">
         <div className="mr-5">
           <Image
             alt="clan badge"
@@ -90,7 +87,7 @@ export default function Home() {
         </div>
       </div>
       <div className="flex justify-center items-center">
-        <div className="flex flex-row flex-wrap justify-center items-center gap-1 xl:w-4/6 ">
+        <div className="flex flex-row flex-wrap justify-center items-center gap-1 xl:w-4/6 mb-5">
           {clanData![0].data.clanData.memberList.map((memeber: any, index: any) => {
             if (memeber.previousClanRank === 100) {
               return (
