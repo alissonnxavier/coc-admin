@@ -20,10 +20,9 @@ import { useGetMemberRole } from "@/app/features/memberRole/api/use-get-member-r
 
 interface NavigationMenuMainProps {
     clanName: string;
-    clanDescription: string;
 }
 
-const NavigationMenuMain = ({ clanName, clanDescription }: NavigationMenuMainProps) => {
+const NavigationMenuMain = ({ clanName }: NavigationMenuMainProps) => {
 
     const { data: currentUser, isLoading: isLoadingCurrentUser } = useCurrentUser();
     const { data: memberRole, isLoading: isLoadingMemberRole } = useGetMemberRole({ email: currentUser?.email as any });
@@ -53,9 +52,6 @@ const NavigationMenuMain = ({ clanName, clanDescription }: NavigationMenuMainPro
                                             <div className="mb-2 mt-4 text-lg font-medium m-x-auto">
                                                 {clanName}
                                             </div>
-                                            <p className="text-xs leading-tight text-muted-foreground">
-                                                {clanDescription}
-                                            </p>
                                         </div>
                                     </a>
                                 </NavigationMenuLink>
@@ -66,7 +62,7 @@ const NavigationMenuMain = ({ clanName, clanDescription }: NavigationMenuMainPro
                                 memberRole?.role === "admin" && (
                                     <ListItem href="/selection" title="Escalar / Remover">
                                         <div className="flex justify-between">
-                                            <div className="flex justify-center items-center m-x-2 w-28">
+                                            <div className="flex justify-center items-center m-x-2 w-28 text-xs">
                                                 Escale ou remova membros
                                             </div>
                                             <div className="flex justify-center items-center">

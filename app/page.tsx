@@ -7,6 +7,7 @@ import { staticClanData } from "@/utils/clan-data";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { useGetClanData } from "./features/clanData/api/use-get-clan-data";
 import { Menu } from "@/components/menu";
+import { Header } from "@/components/header";
 
 
 export default function Home() {
@@ -34,10 +35,8 @@ export default function Home() {
       <div className="h-20">
         <Menu
           clanName={clanData![0].data.clanData.name}
-          clanDescription={clanData![0].data.clanData.description}
         />
       </div>
-
       <div className="flex justify-center items-center flex-wrap md:flex-nowrap xl:flex-nowrap xl:w-4/6 xl:m-auto">
         <div className="mr-5">
           <Image
@@ -47,44 +46,9 @@ export default function Home() {
             height={350}
           />
         </div>
-        <div className="flex flex-col m-5 ml-10">
-          <div className="text-3xl font-bold">
-            {clanData![0].data.clanData.name}
-          </div>
-          <div className="text-muted-foreground text-xs">
-            {clanData![0].data.clanData.tag}
-          </div>
-          <div className="text-muted-foreground text-xs">
-            {clanData![0].data.clanData.type}
-          </div>
-          <div className="text-muted-foreground text-xs">
-            {clanData![0].data.clanData.description}
-          </div>
-          <div className="text-muted-foreground text-xs">
-            Pais {clanData![0].data.clanData.location.name}
-          </div>
-          <div className="text-muted-foreground text-xs">
-            Clan lever {clanData![0].data.clanData.clanLevel}
-          </div>
-          <div className="text-muted-foreground text-xs">
-            Pontos do clan {clanData![0].data.clanData.clanPoints}
-          </div>
-          <div className="text-muted-foreground text-xs">
-            Frequencia de guerra {clanData![0].data.clanData.warFrequency}
-          </div>
-          <div className="text-muted-foreground text-xs">
-            Guerras ganhas {clanData![0].data.clanData.warWins}
-          </div>
-          <div className="text-muted-foreground text-xs">
-            Guerras empatadas {clanData![0].data.clanData.warTies}
-          </div>
-          <div className="text-muted-foreground text-xs">
-            Liga {clanData![0].data.clanData.warLeague.name}
-          </div>
-          <div className="text-muted-foreground text-xs">
-            Membros {clanData![0].data.clanData.members}
-          </div>
-        </div>
+        <Header
+          clanData={clanData![0]}
+        />
       </div>
       <div className="flex justify-center items-center">
         <div className="flex flex-row flex-wrap justify-center items-center gap-1 xl:w-4/6 mb-5">

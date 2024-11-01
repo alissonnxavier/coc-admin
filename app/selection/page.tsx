@@ -17,6 +17,7 @@ import { useGetMemberRole } from '../features/memberRole/api/use-get-member-role
 import { useCurrentUser } from '../features/auth/api/use-current-user';
 import { useCreateMemberRole } from '../features/memberRole/api/use-create-member-role';
 import { toast } from 'sonner';
+import Image from 'next/image';
 
 
 const Page = () => {
@@ -31,8 +32,7 @@ const Page = () => {
 
     let allData;
     allData = clanData;
-    let a = clanData
-    let b = 0
+    let lenght = 0;
 
     const updateDataAndResetHolders = async () => {
         let data;
@@ -44,15 +44,14 @@ const Page = () => {
             setUpdatedData(data);
         });
 
-       /*  updateClanData({
-            id: allData![0]._id,
-            data: data
-        }
-        ); */
+        /*  updateClanData({
+             id: allData![0]._id,
+             data: data
+         }
+         ); */
     }
 
     const onDragEnd = (event: any) => {
-        console.log(allData![0].data)
         //console.log(event)
 
         if (event.destination.droppableId === "holder" && event.source.droppableId === "reserve") {
@@ -73,15 +72,19 @@ const Page = () => {
                 }
             }
         );
-
-
-
     };
 
     if (!clanData) {
         return (
-            <div className='flex justify-center items-center h-screen animate-bounce '>
-                <PacmanLoader size={100} color='#220452' className='' />
+            <div className="flex justify-center items-center h-screen animate-bounce">
+                <Image
+                    alt="barbaro photo"
+                    width={400}
+                    height={400}
+                    src={'/barbaro.jpg'}
+                    className="rounded-full"
+                    priority
+                />
             </div>
         )
     }
@@ -95,16 +98,12 @@ const Page = () => {
                     Resetar escala e atualizar membros
                 </Button>
             </div> */}
-
-
             <div className='h-20'>
                 <Menu
                     clanName={clanData![0].data.clanData.name}
                     clanDescription={clanData![0].data.clanData.description}
                 />
             </div>
-
-
 
             <DragDropContext onDragEnd={onDragEnd}>
                 <div className='flex justify-center'>
@@ -122,9 +121,7 @@ const Page = () => {
                                 >
                                     {clanData![0].data.clanData.memberList.map((member: any, index: any) => {
                                         if (member.previousClanRank === 100) {
-
-
-                                            setCount(b += 1);
+                                            setCount(lenght += 1);
 
                                             return (
                                                 <Draggable key={index} draggableId={`draggable-0-${index}`} index={index}>
@@ -215,7 +212,6 @@ const Page = () => {
                                     {provided.placeholder}
                                 </div>
                             )}
-
                         </Droppable>
                     </div>
                 </div>
