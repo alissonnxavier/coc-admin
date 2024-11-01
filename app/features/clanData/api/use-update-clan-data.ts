@@ -6,11 +6,11 @@ import { Id } from "../../../../convex/_generated/dataModel";
 
 
 type RequestType = {
-    id: Id<"secondaryClanData">;
+    id: Id<"clanDada">;
     data: any
 };
 
-type ResponseType = Id<"secondaryClanData"> | null;
+type ResponseType = Id<"clanDada"> | null;
 
 type Options = {
     onSuccess?: (data: ResponseType) => void;
