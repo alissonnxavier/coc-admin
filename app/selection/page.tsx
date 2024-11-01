@@ -101,7 +101,6 @@ const Page = () => {
             <div className='h-20'>
                 <Menu
                     clanName={clanData![0].data.clanData.name}
-                    clanDescription={clanData![0].data.clanData.description}
                 />
             </div>
 

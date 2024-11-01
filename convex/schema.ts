@@ -9,6 +9,10 @@ const schema = defineSchema({
         userId: v.id("users"),
         data: v.record(v.string(), v.any())
     }),
+    secondaryClanData: defineTable({
+        userId: v.id("users"),
+        data: v.record(v.string(), v.any())
+    }),
     memberRole: defineTable({
         userId: v.id("users"),
         email: v.string(),
