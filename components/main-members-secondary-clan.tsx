@@ -14,9 +14,9 @@ export const MainMemberSecondaryClan = ({data}: MainMemberPrimaryClanProps) => {
             {data.data.clanData.memberList.map((memeber: any, index: any) => {
                 if (memeber.previousClanRank === 100) {
                     return (
-                        <div key={index} className="w-40 shine-border p-1 rounded-md">
+                        <div key={index} className="w-40 shine-border-gold p-1 rounded-md">
                             <div className="">
-                                <Alert variant="purple" className="bg-black">
+                                <Alert variant="gold" className="bg-yellow-900">
                                     <AlertTitle className="flex justify-between">
                                         <div className="text-white font-bold">
                                             {memeber.name}
