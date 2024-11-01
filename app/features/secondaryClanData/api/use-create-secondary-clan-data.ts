@@ -18,7 +18,7 @@ type Options = {
     throwError?: boolean;
 };
 
-export const useCreateClanData = () => {
+export const useCreateSecondaryClanData = () => {
 
     const [data, setData] = useState<ResponseType>(null);
     const [error, setError] = useState<Error | null>(null);
@@ -29,7 +29,7 @@ export const useCreateClanData = () => {
     const isError = useMemo(() => status === "error", [status]);
     const isSettled = useMemo(() => status === "settled", [status]);
 
-    const mutation = useMutation(api.clandata.create);
+    const mutation = useMutation(api.secondaryClanData.create);
 
     const mutate = useCallback(async (values: RequestType, options?: Options) => {
         try {

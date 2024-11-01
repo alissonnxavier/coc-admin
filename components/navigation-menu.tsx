@@ -60,21 +60,38 @@ const NavigationMenuMain = ({ clanName }: NavigationMenuMainProps) => {
                             {
                                 //@ts-ignore
                                 memberRole?.role === "admin" && (
-                                    <ListItem href="/selection" title="Escalar / Remover">
-                                        <div className="flex justify-between">
-                                            <div className="flex justify-center items-center m-x-2 w-28 text-xs">
-                                                Escale ou remova membros
+                                    <>
+                                        <ListItem href="/selection" title="ShAdOw'$ WAR">
+                                            <div className="flex justify-between">
+                                                <div className="flex justify-center items-center m-x-2 w-28 text-xs">
+                                                    Escale ou remova membros
+                                                </div>
+                                                <div className="flex justify-center items-center">
+                                                    <Image
+                                                        alt="human-rigths"
+                                                        src='/human-rights.png'
+                                                        width={50}
+                                                        height={50}
+                                                    />
+                                                </div>
                                             </div>
-                                            <div className="flex justify-center items-center">
-                                                <Image
-                                                    alt="human-rigths"
-                                                    src='/human-rights.png'
-                                                    width={50}
-                                                    height={50}
-                                                />
+                                        </ListItem>
+                                        <ListItem href="/7knights" title="7KniGht$ WAR">
+                                            <div className="flex justify-between">
+                                                <div className="flex justify-center items-center m-x-2 w-28 text-xs">
+                                                    Escale ou remova membros
+                                                </div>
+                                                <div className="flex justify-center items-center">
+                                                    <Image
+                                                        alt="human-rigths"
+                                                        src='/human-rights.png'
+                                                        width={50}
+                                                        height={50}
+                                                    />
+                                                </div>
                                             </div>
-                                        </div>
-                                    </ListItem>
+                                        </ListItem>
+                                    </>
                                 )}
                         </ul>
                     </NavigationMenuContent>

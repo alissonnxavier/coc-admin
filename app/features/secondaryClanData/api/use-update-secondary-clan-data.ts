@@ -6,11 +6,11 @@ import { Id } from "../../../../convex/_generated/dataModel";
 
 
 type RequestType = {
-    id: Id<"clanDada">;
+    id: Id<"secondaryClanData">;
     data: any
 };
 
-type ResponseType = Id<"clanDada"> | null;
+type ResponseType = Id<"secondaryClanData"> | null;
 
 type Options = {
     onSuccess?: (data: ResponseType) => void;
@@ -19,7 +19,7 @@ type Options = {
     throwError?: boolean;
 };
 
-export const useUpadateClanData = () => {
+export const useUpadateSecondaryClanData = () => {
 
     const [data, setData] = useState<ResponseType>(null);
     const [error, setError] = useState<Error | null>(null);
@@ -30,7 +30,7 @@ export const useUpadateClanData = () => {
     const isError = useMemo(() => status === "error", [status]);
     const isSettled = useMemo(() => status === "settled", [status]);
 
-    const mutation = useMutation(api.clandata.update);
+    const mutation = useMutation(api.secondaryClanData.update);
 
     const mutate = useCallback(async (values: RequestType, options?: Options) => {
         try {
