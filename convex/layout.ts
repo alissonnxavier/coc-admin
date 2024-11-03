@@ -10,6 +10,7 @@ export const create = mutation({
     args: {
         layoutLink: v.string(),
         layoutCv: v.string(),
+        layoutType: v.string(),
         image: v.id("_storage"),
     },
     handler: async (ctx, args) => {
@@ -23,6 +24,7 @@ export const create = mutation({
             userId,
             layoutLink: args.layoutLink,
             layoutCv: args.layoutCv,
+            layoutType: args.layoutType,
             image: args.image,
         });
 

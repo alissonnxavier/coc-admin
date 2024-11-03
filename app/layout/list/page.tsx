@@ -4,6 +4,8 @@
 
 
 import { useGetLayout } from '@/app/features/layout/api/use-get-layout';
+import LayoutLevel from '@/components/layout-level';
+import LayoutType from '@/components/layout-type';
 import { Menu } from '@/components/menu';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader } from '@/components/ui/card';
@@ -15,10 +17,6 @@ const LayoutList = () => {
 
     const { data: layoutData, isLoading: isLoadingLayout } = useGetLayout();
 
-    const array = [1, 1, 1, 1, 1, 1, 1, 1, 1,];
-
-    console.log(layoutData);
-
     if (!layoutData) {
         return (
             <div className="flex justify-center items-center h-screen animate-bounce">
@@ -27,13 +25,12 @@ const LayoutList = () => {
                     width={400}
                     height={400}
                     src={'/barbaro.jpg'}
-                    className="rounded-full"
+                    className="rounded-full "
                     priority
                 />
             </div>
         )
     }
-
 
     return (
         <div>
@@ -62,8 +59,17 @@ const LayoutList = () => {
                                 </CardContent>
                                 <CardFooter className='p-0 pb-5'>
                                     <div className='flex w-full justify-between mt-2 pb-2'>
-                                        <div className='flex flex-row items-center text-muted-foreground text-xs m-auto'>
-                                            CV 16
+                                        <div className='flex justify-center items-center flex-col m-auto mt-2'>
+                                            <div className='flex flex-row items-center text-muted-foreground text-xs m-auto'>
+                                                <LayoutLevel
+                                                    cv={layout.layoutCv}
+                                                />
+                                            </div>
+                                            <div className='flex flex-row items-center text-muted-foreground text-xs m-auto'>
+                                                <LayoutType
+                                                    type={layout.layoutType}
+                                                />
+                                            </div>
                                         </div>
                                         <div>
                                             <Button className='game-button mr-2' variant='quality' size='sm'>

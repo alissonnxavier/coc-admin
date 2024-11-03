@@ -26,15 +26,20 @@ import { useGenerateUploadUrl } from "@/app/features/upload/api/use-generate-upl
 import { useCreateLayout } from "@/app/features/layout/api/use-create-layout";
 import { toast } from "sonner";
 import { Menu } from "@/components/menu";
+import { FormControl, FormField, FormItem, FormLabel } from "@/components/ui/form";
+import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 
 const CreateLayout = () => {
 
     const [images, setImages] = useState<any | []>([]);
     const [layoutCv, setLayoutCv] = useState<string>("");
+    const [layoutType, setLayoutType] = useState<string>("");
     const [layoutLink, setLayoutLink] = useState<string>("");
     const { mutate: generateUploadUrl, isPending: isUploading } = useGenerateUploadUrl();
     const { mutate: createLayout, isPending: isPendingCreatingLayout } = useCreateLayout();
+
+    console.log(layoutCv, layoutType)
 
     const handleDrop = useCallback(async (files: any) => {
         setImages(files);
@@ -73,6 +78,7 @@ const CreateLayout = () => {
             createLayout({
                 layoutLink: layoutLink,
                 layoutCv: layoutCv,
+                layoutType: layoutType,
                 image: storageId,
             },
                 {
@@ -81,6 +87,7 @@ const CreateLayout = () => {
                         setImages([]);
                         setLayoutLink("");
                         setLayoutCv("")
+                        setLayoutType("")
                     },
                     onError: () => {
                         toast.error("Error, verifique todos os campos")
@@ -107,14 +114,49 @@ const CreateLayout = () => {
 
                                 <div className="grid w-full items-center gap-4">
                                     <div className="flex flex-col space-y-1.5">
-                                        <Label htmlFor="name">Centro de vila</Label>
-                                        <Input
+                                        <Label>
+                                            Centro de vila
+                                        </Label>
+                                        <Select
                                             required
-                                            id="name"
-                                            placeholder="Insira o nivel do CV que o layout pertence"
+                                            onValueChange={(e) => { setLayoutCv(e) }}
                                             value={layoutCv}
-                                            onChange={(e) => { setLayoutCv(e.target.value) }}
-                                        />
+                                        >
+                                            <SelectTrigger className="w-[150px]" >
+                                                <SelectValue placeholder="Selecione o centro de vila" />
+                                            </SelectTrigger>
+                                            <SelectContent >
+                                                <SelectGroup>
+                                                    <SelectItem value="16">16</SelectItem>
+                                                    <SelectItem value="15">15</SelectItem>
+                                                    <SelectItem value="14">14</SelectItem>
+                                                    <SelectItem value="13">13</SelectItem>
+                                                    <SelectItem value="12">12</SelectItem>
+                                                    <SelectItem value="11">11</SelectItem>
+                                                </SelectGroup>
+                                            </SelectContent>
+                                        </Select>
+                                    </div>
+                                    <div className="flex flex-col space-y-1.5">
+                                        <Label>
+                                            Tipo do layout
+                                        </Label>
+                                        <Select
+                                            required
+                                            onValueChange={(e) => { setLayoutType(e) }}
+                                            value={layoutType}
+                                        >
+                                            <SelectTrigger className="w-[150px]" >
+                                                <SelectValue placeholder="Selecione o tipo do layout" />
+                                            </SelectTrigger>
+                                            <SelectContent >
+                                                <SelectGroup>
+                                                    <SelectItem value="farm">Farm</SelectItem>
+                                                    <SelectItem value="push">Push</SelectItem>
+                                                    <SelectItem value="guerra">Guerra</SelectItem>
+                                                </SelectGroup>
+                                            </SelectContent>
+                                        </Select>
                                     </div>
                                     <div className="flex flex-col space-y-1.5">
                                         <Label htmlFor="name">Link</Label>

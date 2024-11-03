@@ -9,6 +9,7 @@ import { Id, Doc } from "../../../../convex/_generated/dataModel";
 type RequestType = {
     layoutLink: string,
     layoutCv: string,
+    layoutType: string,
     image: Id<"_storage">,
 };
 type ResponseType = Id<"layout"> | null;
