@@ -40,7 +40,7 @@ const LayoutList = () => {
             <div className='flex justify-center items-center flex-wrap gap-2'>
                 {layoutData && Array.from(layoutData).map((layout: any, index: any) => (
                     <div key={index}>
-                        <div className='shine-border-green p-1 rounded-lg'>
+                        <div className='shine-border-green p-0.5 rounded-lg'>
                             <Card className='w-44 p-0  '>
                                 <CardContent className='p-0'>
                                     <div className='hover:scale-110 transition'>

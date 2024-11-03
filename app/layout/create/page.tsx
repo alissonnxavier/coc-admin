@@ -102,7 +102,7 @@ const CreateLayout = () => {
             <Menu
                 clanName=""
             />
-            <div className="flex justify-center items-center h-screen ">
+            <div className="flex justify-center items-center mt-20 ">
                 <div className="shine-border-green p-0.5 rounded-2xl">
                     <form onSubmit={onSubmit}>
                         <Card className="w-[350px]">
@@ -111,7 +111,6 @@ const CreateLayout = () => {
                                 <CardDescription>Insira todas as informaçoẽs.</CardDescription>
                             </CardHeader>
                             <CardContent>
-
                                 <div className="grid w-full items-center gap-4">
                                     <div className="flex flex-col space-y-1.5">
                                         <Label>
