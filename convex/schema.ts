@@ -22,7 +22,7 @@ const schema = defineSchema({
         userId: v.id("users"),
         layoutLink: v.string(),
         layoutCv: v.string(),
-        layoutType: v.string(),
+        layoutType: v.optional(v.string()),
         image: v.id("_storage"),
     })
 });
