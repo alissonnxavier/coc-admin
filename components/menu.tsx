@@ -7,7 +7,7 @@ interface MenuProps {
     clanName: string;
 }
 
-export const Menu = ({ clanName }: MenuProps) => {
+export const Menu = ({ clanName = "" }: MenuProps) => {
   return (
     <div>
          <div className="flex justify-between p-5 h-20 w-4/6 m-auto">

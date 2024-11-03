@@ -17,6 +17,12 @@ const schema = defineSchema({
         userId: v.id("users"),
         email: v.string(),
         role: v.string()
+    }),
+    layout: defineTable({
+        userId: v.id("users"),
+        layoutLink: v.string(),
+        layoutCv: v.string(),
+        image: v.id("_storage"),
     })
 });
 

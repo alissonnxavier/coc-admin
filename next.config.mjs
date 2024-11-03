@@ -2,7 +2,8 @@
 const nextConfig = {
     images: {
         domains: [
-            "api-assets.clashofclans.com"
+            "api-assets.clashofclans.com",
+            "first-oyster-223.convex.cloud"
         ]
     }
 };

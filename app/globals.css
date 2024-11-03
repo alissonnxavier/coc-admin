@@ -158,3 +158,37 @@ body {
   left: 0;
   top: 0;
 }
+
+.shine-border-green {
+  animation: gradient 3s linear infinite;
+  background: linear-gradient(3333330deg, #89cc89, #67c96c, #59d36a, #58ca62, #1ba53e, #462e9b, #2d2953);
+  background-size: 50%;
+  left: 0;
+  top: 0;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 100%;
+  }
+
+  /* 50% {
+      background-position: 100% 50%;
+  }
+
+  100% {
+      background-position: 0% 50%;
+  } */
+}
+
+.game-button {
+  background: repeating-linear-gradient( 45deg, #2ac037, #54d440 5px, #2ddb3b 5px, #36eb1b 10px);
+   box-shadow: 0 6px 0 #348628, 0 8px 1px 1px rgba(0,0,0,.3), 0 10px 0 5px #2a6d20, 0 12px 0 5px #39822e, 0 15px 0 5px #1d4c16, 0 15px 1px 6px rgba(0,0,0,.3);
+   border-bottom: 3px solid rgba(40, 117, 29, 0.5);
+   text-shadow: 2px 2px 1px #348628, -2px 2px 1px #348628, 2px -2px 1px #348628, -2px -2px 1px #348628, 0px 2px 1px #348628, 0px -2px 1px #348628, 0px 4px 1px #1d4c16, 2px 4px 1px #1d4c16, -2px 4px 1px #1d4c16;
+}
+
+.game-button:hover {
+  top:2px;
+  box-shadow: 0 1px 0 #348628, 0 6px 1px 1px rgba(0,0,0,.3), 0 8px 0 5px #2a6d20, 0 10px 0 5px #39822e, 0 13px 0 5px #1d4c16, 0 13px 1px 6px rgba(0,0,0,.3);
+}

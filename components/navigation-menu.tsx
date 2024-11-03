@@ -40,7 +40,7 @@ const NavigationMenuMain = ({ clanName }: NavigationMenuMainProps) => {
                                         className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
                                         href="/"
                                     >
-                                        <div className="flex justify-center items-center">
+                                        <div className="flex justify-center items-center h-full">
                                             <Image
                                                 alt="clanLogo"
                                                 src='/logo.png'
@@ -56,11 +56,40 @@ const NavigationMenuMain = ({ clanName }: NavigationMenuMainProps) => {
                                     </a>
                                 </NavigationMenuLink>
                             </li>
-
+                            <ListItem href="/layout/list" title="Layouts">
+                                <div className="flex justify-between">
+                                    <div className="flex justify-center items-center m-x-2 w-28 text-xs">
+                                        Escolha entre layouts de farm, guerra e push
+                                    </div>
+                                    <div className="flex justify-center items-center">
+                                        <Image
+                                            alt="human-rigths"
+                                            src='/layout.png'
+                                            width={50}
+                                            height={50}
+                                        />
+                                    </div>
+                                </div>
+                            </ListItem>
                             {
                                 //@ts-ignore
                                 memberRole?.role === "admin" && (
                                     <>
+                                        <ListItem href="/layout/create" title="Criar layout">
+                                            <div className="flex justify-between">
+                                                <div className="flex justify-center items-center m-x-2 w-28 text-xs">
+                                                    Crie novos layouts para o clan
+                                                </div>
+                                                <div className="flex justify-center items-center">
+                                                    <Image
+                                                        alt="human-rigths"
+                                                        src='/create-layout.png'
+                                                        width={50}
+                                                        height={50}
+                                                    />
+                                                </div>
+                                            </div>
+                                        </ListItem>
                                         <ListItem href="/selection" title="ShAdOw'$ WAR">
                                             <div className="flex justify-between">
                                                 <div className="flex justify-center items-center m-x-2 w-28 text-xs">
