@@ -8,16 +8,16 @@ import LayoutLevel from '@/components/layout-level';
 import LayoutType from '@/components/layout-type';
 import { Menu } from '@/components/menu';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader } from '@/components/ui/card';
+import { Card, CardContent, CardFooter } from '@/components/ui/card';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react'
 
 const LayoutList = () => {
 
-    const { data: layoutData, isLoading: isLoadingLayout } = useGetLayout();
+    const { results, status, loadMore } = useGetLayout();
 
-    if (!layoutData) {
+    if (!results) {
         return (
             <div className="flex justify-center items-center h-screen animate-bounce">
                 <Image
@@ -38,7 +38,7 @@ const LayoutList = () => {
                 clanName=''
             />
             <div className='flex justify-center items-center flex-wrap gap-2'>
-                {layoutData && Array.from(layoutData).map((layout: any, index: any) => (
+                {results && Array.from(results).map((layout: any, index: any) => (
                     <div key={index}>
                         <div className='shine-border-green p-0.5 rounded-lg'>
                             <Card className='w-44 p-0  '>
@@ -46,7 +46,7 @@ const LayoutList = () => {
                                     <div className='hover:scale-110 transition'>
                                         <Image
                                             alt='lay'
-                                            src={layout.imageLink}
+                                            src={layout.image}
                                             width={300}
                                             height={200}
                                             className='rounded-md'
@@ -85,6 +85,24 @@ const LayoutList = () => {
                     </div>
                 ))}
             </div>
+            <div
+                className='h-1'
+                ref={(el) => {
+                    if (el) {
+                        const observer = new IntersectionObserver(
+                            ([entry]) => {
+                                if (entry.isIntersecting && status === "CanLoadMore") {
+                                    loadMore();
+                                }
+                            },
+                            { threshold: 1.0 }
+                        );
+
+                        observer.observe(el);
+                        return () => observer.disconnect();
+                    }
+                }}
+            />
         </div>
     )
 }

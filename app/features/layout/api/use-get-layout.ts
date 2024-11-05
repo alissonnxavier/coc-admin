@@ -1,10 +1,22 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { api } from "@/convex/_generated/api"
-import { useQuery } from "convex/react"
+import { usePaginatedQuery, useQuery } from "convex/react"
 
+const BATCH_SIZE = 1;
+
+/* export type GetMessagesTeturnType = typeof api.layout.get._returnType["toString"]; */
 
 export const useGetLayout = () => {
-    const data = useQuery(api.layout.get);
-    const isLoading = data === undefined;
+    const { results, status, loadMore } = usePaginatedQuery(
+        api.layout.get as any,
+        {  },
+        { initialNumItems: BATCH_SIZE }
+    );
 
-    return { data, isLoading };
+    return {
+        results,
+        status,
+        loadMore: () => loadMore(BATCH_SIZE),
+    }
 };

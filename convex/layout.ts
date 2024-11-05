@@ -5,6 +5,7 @@ import { v } from "convex/values";
 import { mutation, query } from "./_generated/server";
 import { auth } from "./auth";
 import { Id } from "./_generated/dataModel";
+import { paginationOptsValidator } from "convex/server";
 
 export const create = mutation({
     args: {
@@ -33,7 +34,9 @@ export const create = mutation({
 });
 
 export const get = query({
-    args: {},
+    args: {
+        paginationOpts: paginationOptsValidator,
+    },
     handler: async (ctx, args) => {
         const userId = await auth.getUserId(ctx);
 
@@ -43,20 +46,38 @@ export const get = query({
 
         const layouts = await ctx.db
             .query("layout")
-            .collect();
+            .paginate(args.paginationOpts)
 
         if (!layouts) {
             return [];
         };
 
-        let data = [] as any;
-        for (let i = 0; layouts.length > i; i++) {
-            let imageLink = await ctx.storage.getUrl(layouts[i].image as Id<"_storage">);
+        /*  let data = [] as any;
+         for (let i = 0; layouts.length > i; i++) {
+             let imageLink = await ctx.storage.getUrl(layouts[i].image as Id<"_storage">);
+ 
+             data.push({ ...layouts[i], imageLink })
+         } */
 
-            data.push({ ...layouts[i], imageLink })
-        }
+        return {
+            ...layouts,
+            page: (
+                await Promise.all(
+                    layouts.page.map(async (layout) => {
 
-        return data;
+                        const image = await ctx.storage.getUrl(layout.image);
+
+                        return {
+                            ...layout,
+                            image,
+                            layoutCv: layout.layoutCv,
+                            layoutLink: layout.layoutLink,
+                            layoutType: layout.layoutType
+                        }
+                    })
+                )
+            )
+        };
     }
 });
 
