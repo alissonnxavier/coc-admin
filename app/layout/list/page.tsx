@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 'use client';
@@ -9,6 +10,8 @@ import LayoutType from '@/components/layout-type';
 import { Menu } from '@/components/menu';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter } from '@/components/ui/card';
+import { useModalExpandImage } from '@/hooks/use-expand-image-modal';
+import { LoaderIcon } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react'
@@ -16,6 +19,9 @@ import React from 'react'
 const LayoutList = () => {
 
     const { results, status, loadMore } = useGetLayout();
+    const handleModalExpandImage = useModalExpandImage();
+
+    console.log(status)
 
     if (!results) {
         return (
@@ -43,7 +49,9 @@ const LayoutList = () => {
                         <div className='shine-border-green p-0.5 rounded-lg'>
                             <Card className='w-44 p-0  '>
                                 <CardContent className='p-0'>
-                                    <div className='hover:scale-110 transition'>
+                                    <div
+                                        onClick={() => { handleModalExpandImage.onOpen(layout.image) }}
+                                        className='hover:scale-110 transition'>
                                         <Image
                                             alt='lay'
                                             src={layout.image}
@@ -55,7 +63,7 @@ const LayoutList = () => {
                                                 height: '180px',
                                             }}
                                         />
-                                    </div>
+                                    </div> *
                                 </CardContent>
                                 <CardFooter className='p-0 pb-5'>
                                     <div className='flex w-full justify-between mt-2 pb-2'>
@@ -85,6 +93,15 @@ const LayoutList = () => {
                     </div>
                 ))}
             </div>
+            {status === "LoadingMore" && (
+                <div className="text-center my-2 relative">
+                    <hr className="absolute top-3 left-0 right-0 border-t border-green-300" />
+                    <span className="relative inline-block bg-green-900 px-4 py-1 rounded-full text-xs border border-green-300 shadow-sm">
+                        <LoaderIcon className="size-4 animate-spin text-green-100" />
+                    </span>
+                </div>
+            )}
+
             <div
                 className='h-1'
                 ref={(el) => {

@@ -3,7 +3,7 @@
 import { api } from "@/convex/_generated/api"
 import { usePaginatedQuery, useQuery } from "convex/react"
 
-const BATCH_SIZE = 1;
+const BATCH_SIZE = 10;
 
 /* export type GetMessagesTeturnType = typeof api.layout.get._returnType["toString"]; */
 

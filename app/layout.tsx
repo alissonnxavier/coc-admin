@@ -7,6 +7,7 @@ import { ConvexClientProvider } from "@/components/ui/convex-client-provider";
 import { siteConfig } from "@/config/site";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
+import ModalExpandImage from "@/components/modal/modal-expand-image";
 
 
 const geistSans = localFont({
@@ -53,6 +54,7 @@ export default function RootLayout({
               enableSystem
               disableTransitionOnChange
             >
+              <ModalExpandImage />
               {children}
               <Toaster />
             </ThemeProvider>
