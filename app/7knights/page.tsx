@@ -78,7 +78,7 @@ const Page = () => {
 
     if (!clanData) {
         return (
-            <div className="flex justify-center items-center h-screen animate-bounce">
+            <div className="w-full flex justify-center items-center h-screen animate-bounce">
                 <Image
                     alt="barbaro photo"
                     width={400}

@@ -12,9 +12,9 @@ export const Menu = ({ clanName = "" }: MenuProps) => {
     <div>
          <div className="flex justify-between p-5 h-20 w-4/6 m-auto">
         <div>
-          <NavigationMenuMain
+          {/*  <NavigationMenuMain
             clanName={clanName}
-          />
+          />  */}
         </div>
         <div>
           <UserButton />

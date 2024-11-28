@@ -23,7 +23,7 @@ export default function Home() {
 
   if (!clanData || !secondaryClanData) {
     return (
-      <div className="flex justify-center items-center h-screen animate-bounce">
+      <div className="w-full flex justify-center items-center h-screen animate-bounce">
         <Image
           alt="barbaro photo"
           width={400}

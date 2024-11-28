@@ -8,6 +8,8 @@ import { siteConfig } from "@/config/site";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
 import ModalExpandImage from "@/components/modal/modal-expand-image";
+import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar"
+import { AppSidebar } from "@/components/app-sidebar";
 
 
 const geistSans = localFont({
@@ -55,7 +57,11 @@ export default function RootLayout({
               disableTransitionOnChange
             >
               <ModalExpandImage />
-              {children}
+              <SidebarProvider>
+                <AppSidebar />
+                <SidebarTrigger />
+                {children}
+              </SidebarProvider>
               <Toaster />
             </ThemeProvider>
           </ConvexClientProvider>

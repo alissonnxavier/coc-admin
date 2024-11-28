@@ -97,7 +97,7 @@ const CreateLayout = () => {
     }
 
     return (
-        <div>
+        <div className="w-full">
             <Menu
                 clanName=""
             />
