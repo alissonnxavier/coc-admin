@@ -8,7 +8,7 @@ import { siteConfig } from "@/config/site";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
 import ModalExpandImage from "@/components/modal/modal-expand-image";
-import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar"
+import { SidebarProvider } from "@/components/ui/sidebar"
 import { AppSidebar } from "@/components/app-sidebar";
 
 
@@ -59,7 +59,6 @@ export default function RootLayout({
               <ModalExpandImage />
               <SidebarProvider>
                 <AppSidebar />
-                <SidebarTrigger />
                 {children}
               </SidebarProvider>
               <Toaster />

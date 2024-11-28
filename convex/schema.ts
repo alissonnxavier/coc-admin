@@ -15,7 +15,7 @@ const schema = defineSchema({
     }),
     memberRole: defineTable({
         userId: v.id("users"),
-        email: v.string(),
+        email: v.optional(v.string()),
         role: v.string()
     }),
     layout: defineTable({

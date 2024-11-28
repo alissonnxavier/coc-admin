@@ -21,6 +21,11 @@ export const SidebarNavigationMenuItem = () => {
     const { data: currentUser, isLoading: isLoadingCurrentUser } = useCurrentUser();
     const { data: memberRole, isLoading: isLoadingMemberRole } = useGetMemberRole({ email: currentUser?.email as any });
 
+
+    if (!currentUser) {
+        return null;
+    }
+
     return (
         <Accordion type="single" collapsible className="w-full">
             <AccordionItem value="item-1">

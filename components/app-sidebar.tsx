@@ -63,9 +63,9 @@ export function AppSidebar() {
                                     />
                                 </div>
                             </Link>
-                            <div className="h-36 ml-20 flex justify-start items-start">
+                            {/* <div className="h-36 ml-20 flex justify-start items-start">
                                 <SidebarTrigger />
-                            </div>
+                            </div> */}
                         </SidebarGroupLabel>
                         <Separator />
                         <SidebarGroupContent>

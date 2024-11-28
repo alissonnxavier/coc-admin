@@ -28,7 +28,7 @@ export const create = mutation({
 
 export const get = query({
     args: {
-        email: v.string(),
+        email: v.optional(v.string()),
     },
     handler: async (ctx, args) => {
         const userId = await auth.getUserId(ctx);
