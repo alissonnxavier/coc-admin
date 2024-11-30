@@ -14,13 +14,18 @@ import { Alert, AlertDescription, AlertTitle } from "./ui/alert"
 import { Terminal } from "lucide-react"
 import Link from "next/link";
 import { useCurrentUser } from "@/app/features/auth/api/use-current-user"
-import { useGetMemberRole } from "@/app/features/memberRole/api/use-get-member-role"
+import { useGetMemberRole } from "@/app/features/memberRole/api/use-get-member-role";
+import { useSidebar } from "./ui/sidebar";
+
 
 export const SidebarNavigationMenuItem = () => {
 
     const { data: currentUser, isLoading: isLoadingCurrentUser } = useCurrentUser();
     const { data: memberRole, isLoading: isLoadingMemberRole } = useGetMemberRole({ email: currentUser?.email as any });
 
+    const {
+        toggleSidebar,
+    } = useSidebar()
 
     if (!currentUser) {
         return null;
@@ -39,7 +44,10 @@ export const SidebarNavigationMenuItem = () => {
                     ShAdOw&apos;$ WAR
                 </AccordionTrigger>
                 <AccordionContent>
-                    <Link href='/layout/list'>
+                    <Link
+                        href='/layout/list'
+                        onClick={() => { toggleSidebar() }}
+                    >
                         <Alert className="mb-2">
                             <Terminal className="h-4 w-4" />
                             <AlertTitle>Layouts</AlertTitle>
@@ -96,7 +104,10 @@ export const SidebarNavigationMenuItem = () => {
                         </AccordionTrigger>
 
                         <AccordionContent >
-                            <Link href='/selection'>
+                            <Link
+                                href='/selection'
+                                onClick={() => { toggleSidebar() }}
+                            >
                                 <Alert className="hover:bg-muted-foreground/10 mb-2">
                                     <Terminal className="h-4 w-4" />
                                     <AlertTitle>ShAdOw&apos;$ WAR</AlertTitle>
@@ -116,7 +127,10 @@ export const SidebarNavigationMenuItem = () => {
                                     </AlertDescription>
                                 </Alert>
                             </Link>
-                            <Link href='/7knights'>
+                            <Link
+                                href='/7knights'
+                                onClick={() => { toggleSidebar() }}
+                            >
                                 <Alert className="hover:bg-muted-foreground/10 mb-2">
                                     <Terminal className="h-4 w-4" />
                                     <AlertTitle>7KniGht$ WAR</AlertTitle>
@@ -136,13 +150,16 @@ export const SidebarNavigationMenuItem = () => {
                                     </AlertDescription>
                                 </Alert>
                             </Link>
-                            <Link href='/layout/create'>
+                            <Link
+                                href='/layout/create'
+                                onClick={() => { toggleSidebar() }}
+                            >
                                 <Alert className="hover:bg-muted-foreground/10">
                                     <Terminal className="h-4 w-4" />
-                                    <AlertTitle>7KniGht$ WAR</AlertTitle>
+                                    <AlertTitle>Criar layout</AlertTitle>
                                     <AlertDescription className="flex justify-between">
                                         <span className=" flex justify-center items-center w-32">
-                                            Escale ou remova membros
+                                            Adicione novos layout
                                         </span>
                                         <div className="flex h-full items-center justify-center">
                                             <Image
