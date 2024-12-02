@@ -124,5 +124,3 @@ export const ClanData = () => {
         </div>
     )
 };
-
-export default ClanData;
