@@ -72,7 +72,7 @@ export const SidebarNavigationMenuItem = () => {
                             <Terminal className="h-4 w-4" />
                             <AlertTitle>Loja clash of clan</AlertTitle>
                             <AlertDescription className="flex justify-between">
-                                <span className=" flex justify-between w-32">
+                                <span className=" flex justify-center items-center w-32">
                                     Compre itens e regate recompensas
                                 </span>
                                 <div className="flex h-full items-center justify-center">
@@ -105,7 +105,7 @@ export const SidebarNavigationMenuItem = () => {
 
                         <AccordionContent >
                             <Link
-                                href='/selection'
+                                href='/shadowwar'
                                 onClick={() => { toggleSidebar() }}
                             >
                                 <Alert className="hover:bg-muted-foreground/10 mb-2">

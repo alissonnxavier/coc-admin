@@ -24,13 +24,16 @@ import { useUpadateSecondaryClanData } from '../features/secondaryClanData/api/u
 
 const Page = () => {
 
-
     const { mutate } = useCreateClanData();
     const { data: clanData, isLoading: isLoadingClanData } = useGetSecondaryClanData();
     const { mutate: updateClanData, isPending: isUpdatingClanData } = useUpadateSecondaryClanData();
     const [count, setCount] = useState<number>(0);
     const [isAdmin, setIsAdmin] = useState<boolean>(false)
     const [updatedData, setUpdatedData] = useState<any>({});
+
+    const { data: currentUser, isLoading: isLoadingCurrentUser } = useCurrentUser();
+    const { data: memberRole, isLoading: isLoadingMemberRole } = useGetMemberRole({ email: currentUser?.email as any });
+
 
     let allData;
     allData = clanData;
@@ -76,7 +79,8 @@ const Page = () => {
         );
     };
 
-    if (!clanData) {
+    //@ts-ignore
+    if (!clanData || memberRole?.role !== "admin") {
         return (
             <div className="w-full flex justify-center items-center h-screen animate-bounce">
                 <Image

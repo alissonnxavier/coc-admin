@@ -3,6 +3,8 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
+
+
 import React, { useState } from 'react';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { DragDropContext, Draggable, Droppable } from '@hello-pangea/dnd';
@@ -13,8 +15,8 @@ import { PacmanLoader } from 'react-spinners';
 import { useUpadateClanData } from '../features/clanData/api/use-update-clan-data';
 import { getClanInfo } from '@/actions/get-clan-info';
 import { Menu } from '@/components/menu';
-import { useGetMemberRole } from '../features/memberRole/api/use-get-member-role';
-import { useCurrentUser } from '../features/auth/api/use-current-user';
+import { useCurrentUser } from "@/app/features/auth/api/use-current-user"
+import { useGetMemberRole } from "@/app/features/memberRole/api/use-get-member-role";
 import { useCreateMemberRole } from '../features/memberRole/api/use-create-member-role';
 import { toast } from 'sonner';
 import Image from 'next/image';
@@ -22,13 +24,16 @@ import Image from 'next/image';
 
 const Page = () => {
 
-
     const { mutate } = useCreateClanData();
     const { data: clanData, isLoading: isLoadingClanData } = useGetClanData();
     const { mutate: updateClanData, isPending: isUpdatingClanData } = useUpadateClanData();
     const [count, setCount] = useState<number>(0);
     const [isAdmin, setIsAdmin] = useState<boolean>(false)
     const [updatedData, setUpdatedData] = useState<any>({});
+
+    const { data: currentUser, isLoading: isLoadingCurrentUser } = useCurrentUser();
+    const { data: memberRole, isLoading: isLoadingMemberRole } = useGetMemberRole({ email: currentUser?.email as any });
+
 
     let allData;
     allData = clanData;
@@ -74,7 +79,8 @@ const Page = () => {
         );
     };
 
-    if (!clanData) {
+    //@ts-ignore
+    if (!clanData || memberRole?.role !== "admin") {
         return (
             <div className="w-full flex justify-center items-center h-screen animate-bounce">
                 <Image

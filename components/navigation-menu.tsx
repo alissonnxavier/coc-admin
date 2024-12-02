@@ -90,7 +90,7 @@ const NavigationMenuMain = ({ clanName }: NavigationMenuMainProps) => {
                                                 </div>
                                             </div>
                                         </ListItem>
-                                        <ListItem href="/selection" title="ShAdOw'$ WAR">
+                                        <ListItem href="/shadowwar" title="ShAdOw'$ WAR">
                                             <div className="flex justify-between">
                                                 <div className="flex justify-center items-center m-x-2 w-28 text-xs">
                                                     Escale ou remova membros

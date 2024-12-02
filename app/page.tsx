@@ -44,7 +44,7 @@ export default function Home() {
         />
       </div>
       <div className="flex justify-center items-center flex-wrap md:flex-nowrap xl:flex-nowrap xl:w-4/6 xl:m-auto">
-        <div className="flex xl:w-1/5 md:w-1/5 sm:w-4/5  justify-between">
+        <div className="flex xl:w-1/5 md:w-1/5 sm:w-4/5 justify-between">
           <div
             onClick={() => { setStreamClan("shadow") }}
             className="">
