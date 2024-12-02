@@ -16,7 +16,7 @@ import { useGetClanData } from "../features/clanData/api/use-get-clan-data";
 import { Menu } from "@/components/menu";
 
 
-export const ClanData = () => {
+const ClanData = () => {
 
     const [mainData, setMainClanData] = useState<any>(undefined);
     const [secondaryData, setSecondaryData] = useState<any>(undefined);
@@ -124,3 +124,5 @@ export const ClanData = () => {
         </div>
     )
 };
+
+export default ClanData;
