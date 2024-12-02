@@ -154,7 +154,7 @@ export const SidebarNavigationMenuItem = () => {
                                 href='/layout/create'
                                 onClick={() => { toggleSidebar() }}
                             >
-                                <Alert className="hover:bg-muted-foreground/10">
+                                <Alert className="hover:bg-muted-foreground/10 mb-2">
                                     <Terminal className="h-4 w-4" />
                                     <AlertTitle>Criar layout</AlertTitle>
                                     <AlertDescription className="flex justify-between">
@@ -173,6 +173,33 @@ export const SidebarNavigationMenuItem = () => {
                                     </AlertDescription>
                                 </Alert>
                             </Link>
+                            {
+                                //@ts-ignore
+                                memberRole._id === "k57awxemhpkd2446k8hz579px573mtvg" && memberRole?.role === "admin" && (
+                                    <Link
+                                        href='/clandata'
+                                        onClick={() => { toggleSidebar() }}
+                                    >
+                                        <Alert className="hover:bg-muted-foreground/10 ">
+                                            <Terminal className="h-4 w-4" />
+                                            <AlertTitle>Dados</AlertTitle>
+                                            <AlertDescription className="flex justify-between">
+                                                <span className=" flex justify-center items-center w-32">
+                                                    Adicione ou altere os dados dos clans
+                                                </span>
+                                                <div className="flex h-full items-center justify-center">
+                                                    <Image
+                                                        className=""
+                                                        alt="logo"
+                                                        src='/data.png'
+                                                        width={55}
+                                                        height={55}
+                                                    />
+                                                </div>
+                                            </AlertDescription>
+                                        </Alert>
+                                    </Link>
+                                )}
                         </AccordionContent>
                     </AccordionItem>
                 )}

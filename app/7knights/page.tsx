@@ -73,8 +73,9 @@ const Page = () => {
         },
             {
                 onSuccess: () => {
-                    toast.success("Membro alterado!")
-                }
+                    toast.success("Membro alterado!");
+
+                },
             }
         );
     };
