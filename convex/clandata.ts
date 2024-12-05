@@ -28,11 +28,11 @@ export const create = mutation({
 export const get = query({
     args: {},
     handler: async (ctx, args) => {
-        const userId = await auth.getUserId(ctx);
+        /* const userId = await auth.getUserId(ctx);
 
         if (!userId) {
             return [];
-        };
+        }; */
 
         const clanData = await ctx.db
             .query("clanDada")

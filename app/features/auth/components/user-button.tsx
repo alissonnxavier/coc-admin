@@ -20,6 +20,8 @@ import { useRouter } from "next/navigation";
 
 import React from 'react'
 import { useCurrentUser } from "../api/use-current-user";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 const UserButton = () => {
 
@@ -33,7 +35,16 @@ const UserButton = () => {
     };
 
     if (!data) {
-        return null;
+        return (
+            <div>
+                <Link href='/auth'>
+                    <Button
+                        variant='quality'>
+                        Login
+                    </Button>
+                </Link>
+            </div>
+        );
     };
 
     const { name, image, email } = data;

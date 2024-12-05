@@ -38,11 +38,11 @@ export const get = query({
         paginationOpts: paginationOptsValidator,
     },
     handler: async (ctx, args) => {
-        const userId = await auth.getUserId(ctx);
-
-        if (!userId) {
-            return [];
-        };
+        /*    const userId = await auth.getUserId(ctx);
+   
+           if (!userId) {
+               return [];
+           }; */
 
         const layouts = await ctx.db
             .query("layout")

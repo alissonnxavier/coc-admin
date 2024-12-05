@@ -27,9 +27,9 @@ export const SidebarNavigationMenuItem = () => {
         toggleSidebar,
     } = useSidebar()
 
-    if (!currentUser) {
+ /*    if (!currentUser) {
         return null;
-    }
+    } */
 
     return (
         <Accordion type="single" collapsible className="w-full">
