@@ -26,7 +26,7 @@ export const create = mutation({
     }
 });
 
-export const get = query({
+export const get = query({ 
     args: {
         email: v.optional(v.string()),
     },

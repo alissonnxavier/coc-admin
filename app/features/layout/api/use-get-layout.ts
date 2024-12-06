@@ -7,10 +7,15 @@ const BATCH_SIZE = 10;
 
 /* export type GetMessagesTeturnType = typeof api.layout.get._returnType["toString"]; */
 
+interface useGetLayoutProps {
+    layoutCv: string;
+    layoutType: string;
+}
+
 export const useGetLayout = () => {
     const { results, status, loadMore } = usePaginatedQuery(
         api.layout.get as any,
-        {  },
+        { layoutCv: "16", layoutType: "push" },
         { initialNumItems: BATCH_SIZE }
     );
 

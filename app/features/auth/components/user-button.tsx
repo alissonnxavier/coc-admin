@@ -22,8 +22,15 @@ import React from 'react'
 import { useCurrentUser } from "../api/use-current-user";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { useSidebar } from "@/components/ui/sidebar";
 
 const UserButton = () => {
+
+    const {
+        setOpen,
+    } = useSidebar();
+
+    console.log(open);
 
     const router = useRouter();
 
@@ -62,7 +69,14 @@ const UserButton = () => {
                 </Avatar>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="center" side="right" className="w-60">
-                <DropdownMenuItem onClick={() => signOut()} className="h-10">
+                <DropdownMenuItem
+                    onClick={
+                        () => {
+                            signOut()
+                            setOpen(false);
+                        }
+                    }
+                    className="h-10">
                     <LogOut className="size-4 mr-2" />
                     Log out
                 </DropdownMenuItem>

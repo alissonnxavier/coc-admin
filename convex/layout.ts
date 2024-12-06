@@ -36,6 +36,8 @@ export const create = mutation({
 export const get = query({
     args: {
         paginationOpts: paginationOptsValidator,
+        layoutCv: v.optional(v.string()),
+        layoutType: v.optional(v.string())
     },
     handler: async (ctx, args) => {
         /*    const userId = await auth.getUserId(ctx);
@@ -46,6 +48,8 @@ export const get = query({
 
         const layouts = await ctx.db
             .query("layout")
+            .filter((q) => q.eq(q.field("layoutCv"), args.layoutCv))
+            .filter((q) => q.eq(q.field("layoutType"), args.layoutType))
             .paginate(args.paginationOpts)
 
         if (!layouts) {
