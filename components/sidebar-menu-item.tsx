@@ -73,7 +73,7 @@ export const SidebarNavigationMenuItem = () => {
                             <AlertTitle>Loja clash of clans</AlertTitle>
                             <AlertDescription className="flex justify-between">
                                 <span className=" flex justify-center items-center w-32">
-                                    Compre itens e regate recompensas
+                                    Compre itens e resgate recompensas
                                 </span>
                                 <div className="flex h-full items-center justify-center">
                                     <Image
