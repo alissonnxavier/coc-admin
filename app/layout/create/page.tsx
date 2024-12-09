@@ -125,6 +125,7 @@ const CreateLayout = () => {
                                             </SelectTrigger>
                                             <SelectContent >
                                                 <SelectGroup>
+                                                    <SelectItem value="17">17</SelectItem>
                                                     <SelectItem value="16">16</SelectItem>
                                                     <SelectItem value="15">15</SelectItem>
                                                     <SelectItem value="14">14</SelectItem>
@@ -151,7 +152,8 @@ const CreateLayout = () => {
                                                 <SelectGroup>
                                                     <SelectItem value="farm">Farm</SelectItem>
                                                     <SelectItem value="push">Push</SelectItem>
-                                                    <SelectItem value="guerra">Guerra</SelectItem>
+                                                    <SelectItem value="war">War</SelectItem>
+                                                    <SelectItem value="troll">Troll</SelectItem>
                                                 </SelectGroup>
                                             </SelectContent>
                                         </Select>

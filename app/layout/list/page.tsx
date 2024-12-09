@@ -68,7 +68,9 @@ const LayoutList = () => {
                 <div className=' flex items-center justify-center mb-3 gap-2'>
                     <Button onClick={() => { setLayoutType("farm") }} size='sm' className={cn("border text-lime-200 bg-lime-700 border-lime-200 mt-1 opacity-25 hover:opacity-70", layoutType === "farm" && 'opacity-100')}>Farm</Button>
                     <Button onClick={() => { setLayoutType("push") }} size='sm' className={cn("border text-violet-300 bg-violet-700 border-violet-300  mt-1 opacity-25 hover:opacity-70", layoutType === "push" && 'opacity-100')}>Push</Button>
-                    <Button onClick={() => { setLayoutType("guerra") }} size='sm' className={cn("border text-orange-600 bg-orange-900 border-orange-600 mt-1 opacity-25 hover:opacity-70", layoutType === "guerra" && 'opacity-100')}>Guerra</Button>
+                    <Button onClick={() => { setLayoutType("war") }} size='sm' className={cn("border text-orange-600 bg-orange-900 border-orange-600 mt-1 opacity-25 hover:opacity-70", layoutType === "war" && 'opacity-100')}>War</Button>
+                    <Button onClick={() => { setLayoutType("troll") }} size='sm' className={cn("border text-pink-600 bg-pink-900 border-pink-600 mt-1 opacity-25 hover:opacity-70", layoutType === "troll" && 'opacity-100')}>Troll</Button>
+
                 </div>
             </div>
             <Separator className='mb-5 w-5/6 mx-auto' />

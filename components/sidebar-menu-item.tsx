@@ -70,7 +70,7 @@ export const SidebarNavigationMenuItem = () => {
                     <Link href='https://store.supercell.com/clashofclans'>
                         <Alert>
                             <Terminal className="h-4 w-4" />
-                            <AlertTitle>Loja clash of clan</AlertTitle>
+                            <AlertTitle>Loja clash of clans</AlertTitle>
                             <AlertDescription className="flex justify-between">
                                 <span className=" flex justify-center items-center w-32">
                                     Compre itens e regate recompensas
