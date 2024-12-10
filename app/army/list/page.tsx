@@ -14,8 +14,19 @@ const ArmyList = () => {
     const { data, isLoading } = useGetArmyData();
 
     if (!data) {
-        return null;
-    }
+        return (
+            <div className="w-full flex justify-center items-center h-screen animate-bounce">
+                <Image
+                    alt="barbaro photo"
+                    width={400}
+                    height={400}
+                    src={'/barbaro.jpg'}
+                    className="rounded-full"
+                    priority
+                />
+            </div>
+        )
+    };
 
     return (
         <div className='w-full'>

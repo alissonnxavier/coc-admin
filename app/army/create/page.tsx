@@ -1,8 +1,11 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 "use client"
 
 import { useCreateArmy } from "@/app/features/army/api/use-create-army";
+import { useCurrentUser } from "@/app/features/auth/api/use-current-user";
+import { useGetMemberRole } from "@/app/features/memberRole/api/use-get-member-role";
 import { Menu } from "@/components/menu";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -18,6 +21,29 @@ const CreateArmy = () => {
     const { mutate: createArmy, isPending: isCreatingArmy } = useCreateArmy();
     const [armyTitle, setArmyTitle] = useState<undefined | string>(undefined);
     const [armyLink, setArmyLink] = useState<undefined | string>(undefined);
+
+    const { data: currentUser, isLoading: isLoadingCurrentUser } = useCurrentUser();
+    const { data: memberRole, isLoading: isLoadingMemberRole } = useGetMemberRole({ email: currentUser?.email as any });
+
+    if (!currentUser) {
+        return null;
+    };
+
+    //@ts-ignore
+    if (memberRole?.role !== "admin") {
+        return (
+            <div className="w-full flex justify-center items-center h-screen animate-bounce">
+                <Image
+                    alt="barbaro photo"
+                    width={400}
+                    height={400}
+                    src={'/barbaro.jpg'}
+                    className="rounded-full"
+                    priority
+                />
+            </div>
+        );
+    };
 
     const newArmy = army;
 
@@ -36,7 +62,7 @@ const CreateArmy = () => {
                 }
             }
         );
-    }
+    };
 
     return (
         <div className="w-full">

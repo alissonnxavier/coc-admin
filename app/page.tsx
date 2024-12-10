@@ -4,7 +4,6 @@
 import Image from "next/image";
 import { useState } from "react";
 import { staticClanData } from "@/utils/clan-data";
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { useGetClanData } from "./features/clanData/api/use-get-clan-data";
 import { Menu } from "@/components/menu";
 import { Header } from "@/components/header";

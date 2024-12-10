@@ -13,7 +13,9 @@ import {
     CardFooter,
     CardHeader,
     CardTitle,
-} from "@/components/ui/card"
+} from "@/components/ui/card";
+import { useCurrentUser } from "@/app/features/auth/api/use-current-user";
+import { useGetMemberRole } from "@/app/features/memberRole/api/use-get-member-role";
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import Link from "next/link"
@@ -38,7 +40,8 @@ const CreateLayout = () => {
     const { mutate: generateUploadUrl, isPending: isUploading } = useGenerateUploadUrl();
     const { mutate: createLayout, isPending: isPendingCreatingLayout } = useCreateLayout();
 
-    console.log(layoutCv, layoutType)
+    const { data: currentUser, isLoading: isLoadingCurrentUser } = useCurrentUser();
+    const { data: memberRole, isLoading: isLoadingMemberRole } = useGetMemberRole({ email: currentUser?.email as any });
 
     const handleDrop = useCallback(async (files: any) => {
         setImages(files);
@@ -94,7 +97,23 @@ const CreateLayout = () => {
                 },
             )
         }
-    }
+    };
+
+      //@ts-ignore
+      if (memberRole?.role !== "admin") {
+        return (
+            <div className="w-full flex justify-center items-center h-screen animate-bounce">
+                <Image
+                    alt="barbaro photo"
+                    width={400}
+                    height={400}
+                    src={'/barbaro.jpg'}
+                    className="rounded-full"
+                    priority
+                />
+            </div>
+        );
+    };
 
     return (
         <div className="w-full">
