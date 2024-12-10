@@ -54,10 +54,10 @@ export const SignInCard = ({ setState }: SignInCardProps) => {
       className="w-full h-full p-8 border-indigo-600 bg-[#000401]">
       <CardHeader className="px-0 pt-0">
         <CardTitle className="text-indigo-600">
-          Login to continue
+          Fazer login
         </CardTitle>
         <CardDescription className="text-indigo-800">
-          use your email or another service to continue
+          use o seu email ou outro provedor para continuar
         </CardDescription>
       </CardHeader>
       {!!error && (
@@ -105,12 +105,12 @@ export const SignInCard = ({ setState }: SignInCardProps) => {
             size="lg"
             className="w-full relative"          >
             <FcGoogle className="size-8 absolute left-2.5 top-auto" />
-            Continue with Google
+            Continue com o Google
           </Button>
   
         </div>
         <p className="text-indigo-300 text-xs text-muted-foreground">
-          Don&apos;t hane a account? <span onClick={() => setState("signUp")} className="text-sky-700 hover:underline cursor-pointer">Sign up</span>
+          Não tem uma conta? <span onClick={() => setState("signUp")} className="text-sky-700 hover:underline cursor-pointer">Registrar</span>
         </p>
       </CardContent>
     </Card>

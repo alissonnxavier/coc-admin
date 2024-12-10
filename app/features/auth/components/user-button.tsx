@@ -78,7 +78,7 @@ const UserButton = () => {
                     }
                     className="h-10">
                     <LogOut className="size-4 mr-2" />
-                    Log out
+                    Sair
                 </DropdownMenuItem>
             </DropdownMenuContent>
         </DropdownMenu>

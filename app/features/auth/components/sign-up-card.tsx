@@ -59,10 +59,10 @@ export const SignUpCard = ({ setState }: SignUpCardProps) => {
     <Card className="w-full h-full p-8  border-indigo-600 bg-[#000401]">
       <CardHeader className="px-0 pt-0">
         <CardTitle className="text-indigo-600">
-          Sign up to continue
+          Registre-se para continuar
         </CardTitle>
         <CardDescription className="text-indigo-800">
-          use your email or another service to continue
+          use o seu email ou algum provedor para continuar
         </CardDescription>
       </CardHeader>
       {!!error && (
@@ -128,11 +128,11 @@ export const SignUpCard = ({ setState }: SignUpCardProps) => {
             size="lg"
             className="w-full relative"          >
             <FcGoogle className="size-5 absolute left-2.5 top-auto" />
-            Continue with Google
+            Continue com o Google
           </Button>
         </div>
         <p className="text-indigo-300 text-xs text-muted-foreground">
-          Already have a account? <span onClick={() => setState("signIn")} className="text-sky-700 hover:underline cursor-pointer">Sign in</span>
+          Ja possui uma conta? <span onClick={() => setState("signIn")} className="text-sky-700 hover:underline cursor-pointer">Entrar</span>
         </p>
       </CardContent>
     </Card>
