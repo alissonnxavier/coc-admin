@@ -13,7 +13,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { toast } from "sonner";
 
-export const CreateArmy = () => {
+const CreateArmy = () => {
 
     const { mutate: createArmy, isPending: isCreatingArmy } = useCreateArmy();
     const [armyTitle, setArmyTitle] = useState<undefined | string>(undefined);
