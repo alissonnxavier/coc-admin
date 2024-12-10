@@ -24,7 +24,11 @@ const schema = defineSchema({
         layoutCv: v.string(),
         layoutType: v.optional(v.string()),
         image: v.id("_storage"),
-    })
+    }),
+    army: defineTable({
+        userId: v.id("users"),
+        data: v.record(v.string(), v.any())
+    }),
 });
 
 export default schema

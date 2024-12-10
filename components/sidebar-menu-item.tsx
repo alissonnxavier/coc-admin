@@ -27,9 +27,9 @@ export const SidebarNavigationMenuItem = () => {
         toggleSidebar,
     } = useSidebar()
 
- /*    if (!currentUser) {
-        return null;
-    } */
+    /*    if (!currentUser) {
+           return null;
+       } */
 
     return (
         <Accordion type="single" collapsible className="w-full">
@@ -60,6 +60,29 @@ export const SidebarNavigationMenuItem = () => {
                                         className=""
                                         alt="logo"
                                         src='/layout.png'
+                                        width={55}
+                                        height={55}
+                                    />
+                                </div>
+                            </AlertDescription>
+                        </Alert>
+                    </Link>
+                    <Link
+                        href='/army/list'
+                        onClick={() => { toggleSidebar() }}
+                    >
+                        <Alert className="mb-2">
+                            <Terminal className="h-4 w-4" />
+                            <AlertTitle>Variaçoẽs</AlertTitle>
+                            <AlertDescription className="flex justify-between">
+                                <span className=" flex justify-between w-32">
+                                    Decks das melhores variaçoẽs de ataque
+                                </span>
+                                <div className="flex h-full items-center justify-center">
+                                    <Image
+                                        className=""
+                                        alt="logo"
+                                        src='/cards.png'
                                         width={55}
                                         height={55}
                                     />
@@ -192,6 +215,33 @@ export const SidebarNavigationMenuItem = () => {
                                                         className=""
                                                         alt="logo"
                                                         src='/data.png'
+                                                        width={55}
+                                                        height={55}
+                                                    />
+                                                </div>
+                                            </AlertDescription>
+                                        </Alert>
+                                    </Link>
+                                )}
+                            {
+                                //@ts-ignore
+                                memberRole._id === "k57awxemhpkd2446k8hz579px573mtvg" && memberRole?.role === "admin" && (
+                                    <Link
+                                        href='/army/create'
+                                        onClick={() => { toggleSidebar() }}
+                                    >
+                                        <Alert className="hover:bg-muted-foreground/10 ">
+                                            <Terminal className="h-4 w-4" />
+                                            <AlertTitle>Variaçoes</AlertTitle>
+                                            <AlertDescription className="flex justify-between">
+                                                <span className=" flex justify-center items-center w-32">
+                                                    Adicione decks de ataque
+                                                </span>
+                                                <div className="flex h-full items-center justify-center">
+                                                    <Image
+                                                        className=""
+                                                        alt="logo"
+                                                        src='/army.png'
                                                         width={55}
                                                         height={55}
                                                     />

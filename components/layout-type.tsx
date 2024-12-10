@@ -20,7 +20,7 @@ const LayoutType = ({ type }: LayoutTypeProps) => {
         )
     }
 
-    if (type === "guerra") {
+    if (type === "war") {
         return (
             <div className="text-orange-600 animate-pulse mt-1">
                 {type}

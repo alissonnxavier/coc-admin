@@ -6,6 +6,14 @@ interface LayoutLevelProps {
 
 const LayoutLevel = ({ cv }: LayoutLevelProps) => {
 
+    if (cv === "17") {
+        return (
+            <div className='border bg-slate-900 p-0.5 rounded-lg text-slate-300 border-slate-300'>
+                CV {cv}
+            </div>
+        )
+    };
+
     if (cv === "16") {
         return (
             <div className='border bg-orange-900 p-0.5 rounded-lg text-orange-300 border-orange-300'>
