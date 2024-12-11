@@ -36,8 +36,9 @@ export const SidebarNavigationMenuItem = () => {
             <AccordionItem value="item-1">
                 <AccordionTrigger>
                     <Image
+                        className="rounded-lg"
                         alt="logo"
-                        src='/logo.png'
+                        src='/barbaro.jpg'
                         width={30}
                         height={30}
                     />

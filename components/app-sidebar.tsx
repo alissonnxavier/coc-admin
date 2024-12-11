@@ -32,17 +32,18 @@ export function AppSidebar() {
             <Sidebar >
                 <SidebarContent>
                     <SidebarGroup>
-                        <SidebarGroupLabel className="h-36">
+                        <SidebarGroupLabel className="h-28 m-auto mt-4">
                             <Link
                                 href='/'
                                 onClick={() => { toggleSidebar() }}
                             >
                                 <div className="h-36">
                                     <Image
-                                        alt='logo'
+                                    className="rounded-full"
+                                        alt='log'
                                         width={100}
                                         height={100}
-                                        src='/logo.png'
+                                        src='/barbaro.jpg'
                                     />
                                 </div>
                             </Link>
