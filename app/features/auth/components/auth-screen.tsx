@@ -17,7 +17,7 @@ const AuthScreen = () => {
         <div className="flex justify-center mt-10 mb-8 ">
           <div className="shine-border p-1 rounded-lg ">
             <Image
-              className="rounded-lg animate-pulse"
+              className="rounded-lg"
               width={200}
               height={200}
               alt="team-logo"
