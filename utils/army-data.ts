@@ -149,6 +149,86 @@ export const army = {
                     "amount": 0,
                     "color": "orange"
                 },
+                {
+                    "name": "super-bowler",
+                    "amount": 0,
+                    "color": "blue"
+                },
+                {
+                    "name": "super-dragon",
+                    "amount": 0,
+                    "color": "orange"
+                },
+                {
+                    "name": "super-hog-rider",
+                    "amount": 0,
+                    "color": "amber"
+                },
+                {
+                    "name": "super-miner",
+                    "amount": 0,
+                    "color": "blue"
+                },
+                {
+                    "name": "super-minion",
+                    "amount": 0,
+                    "color": "blue"
+                },
+                {
+                    "name": "super-wizard",
+                    "amount": 0,
+                    "color": "blue"
+                },
+                {
+                    "name": "head-witch",
+                    "amount": 0,
+                    "color": "violet"
+                },
+                {
+                    "name": "elitearcher",
+                    "amount": 0,
+                    "color": "pink"
+                },
+                {
+                    "name": "elitebarbarian",
+                    "amount": 0,
+                    "color": "blue"
+                },
+                {
+                    "name": "elitegiant",
+                    "amount": 0,
+                    "color": "blue"
+                },
+                {
+                    "name": "elitegoblin",
+                    "amount": 0,
+                    "color": "blue"
+                },
+                {
+                    "name": "elitevalkyrie",
+                    "amount": 0,
+                    "color": "blue"
+                },
+                {
+                    "name": "elitewallbreaker",
+                    "amount": 0,
+                    "color": "blue"
+                },
+                {
+                    "name": "hastyballoon",
+                    "amount": 0,
+                    "color": "blue"
+                },
+                {
+                    "name": "ice-hound",
+                    "amount": 0,
+                    "color": "blue"
+                },
+                {
+                    "name": "infernodragon",
+                    "amount": 0,
+                    "color": "blue"
+                },
             ],
         "spells": [
             {
