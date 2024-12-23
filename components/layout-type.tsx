@@ -28,6 +28,14 @@ const LayoutType = ({ type }: LayoutTypeProps) => {
         )
     }
 
+    if (type === "troll") {
+        return (
+            <div className="text-pink-600 animate-pulse mt-1">
+                {type}
+            </div>
+        )
+    }
+
     return (
         <div>
             {type}
