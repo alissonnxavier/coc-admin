@@ -50,6 +50,7 @@ export const get = query({
             .query("layout")
             .filter((q) => q.eq(q.field("layoutCv"), args.layoutCv))
             .filter((q) => q.eq(q.field("layoutType"), args.layoutType))
+            .order("desc")
             .paginate(args.paginationOpts)
 
         if (!layouts) {
