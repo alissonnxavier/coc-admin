@@ -204,7 +204,7 @@ export const SidebarNavigationMenuItem = () => {
                                         href='/clandata'
                                         onClick={() => { toggleSidebar() }}
                                     >
-                                        <Alert className="hover:bg-muted-foreground/10 ">
+                                        <Alert className="hover:bg-muted-foreground/10 mb-2">
                                             <Terminal className="h-4 w-4" />
                                             <AlertTitle>Dados</AlertTitle>
                                             <AlertDescription className="flex justify-between">
@@ -231,7 +231,7 @@ export const SidebarNavigationMenuItem = () => {
                                         href='/army/create'
                                         onClick={() => { toggleSidebar() }}
                                     >
-                                        <Alert className="hover:bg-muted-foreground/10 ">
+                                        <Alert className="hover:bg-muted-foreground/10 mb-2">
                                             <Terminal className="h-4 w-4" />
                                             <AlertTitle>Variaçoes</AlertTitle>
                                             <AlertDescription className="flex justify-between">
