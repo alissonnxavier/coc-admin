@@ -16,11 +16,13 @@ import { cn } from "@/lib/utils";
 export default function Home() {
 
   const [streamClan, setStreamClan] = useState<"shadow" | "7knights">("shadow");
-  const { data: clanData, isLoading: isLoadingClanData } = useGetClanData();
+  const { data: mainClanData, isLoading: isLoadingClanData } = useGetClanData();
   const { data: secondaryClanData, isLoading: isLoadingSecondaryClanData } = useGetSecondaryClanData();
 
 
-  if (!clanData || !secondaryClanData) {
+
+
+  if (!mainClanData || !secondaryClanData) {
     return (
       <div className="w-full flex justify-center items-center h-screen animate-bounce">
         <Image
@@ -35,23 +37,25 @@ export default function Home() {
     )
   }
 
+  console.log(secondaryClanData![0].data.clanData.badgeUrls.medium)
+
   return (
     <div>
       <div className="h-20">
         <Menu
-          clanName={clanData![0].data.clanData.name}
+          clanName={mainClanData![0].data.clanData.name}
         />
       </div>
-      <div className="flex justify-center items-center flex-wrap md:flex-nowrap xl:flex-nowrap xl:w-4/6 xl:m-auto">
-        <div className="flex xl:w-1/5 md:w-1/5 sm:w-4/5 justify-between">
+      <div className="flex justify-around items-center flex-wrap md:flex-nowrap xl:flex-nowrap xl:w-4/6 xl:m-auto">
+        <div className="flex xl:w-2/5 md:w-1/5 sm:w-4/5 justify-around">
           <div
             onClick={() => { setStreamClan("shadow") }}
             className="">
             <Image
               alt="clan badge"
-              src={staticClanData.badgeUrls.medium}
-              width={310}
-              height={310}
+              src={mainClanData![0].data.clanData.badgeUrls.medium}
+              width={500}
+              height={500}
               className={cn("scale-50 transition w-36",
                 streamClan === "shadow" && "scale-100"
               )}
@@ -62,23 +66,25 @@ export default function Home() {
             className="">
             <Image
               alt="clan badge"
-              src='/secondaryClanShield.png'
-              width={310}
-              height={310}
+              src={secondaryClanData![0].data.clanData.badgeUrls.medium}
+              width={500}
+              height={500}
               className={cn("scale-50 transition w-36 ",
                 streamClan === "7knights" && "scale-100 "
               )}
             />
           </div>
         </div>
-        <Header
-          clanData={streamClan === "shadow" ? clanData![0] : secondaryClanData[0]}
-        />
+        <div className="w-[25rem]">
+          <Header
+            clanData={streamClan === "shadow" ? mainClanData![0] : secondaryClanData[0]}
+          />
+        </div>
       </div>
       <div className="flex justify-center items-center">
         {streamClan === "shadow" ? (
           <MainMemberPrimaryClan
-            data={clanData[0]}
+            data={mainClanData[0]}
           />
         ) : (
           <MainMemberSecondaryClan
