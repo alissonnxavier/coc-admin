@@ -14,13 +14,9 @@ import { cn } from "@/lib/utils";
 
 
 export default function Home() {
-
   const [streamClan, setStreamClan] = useState<"shadow" | "7knights">("shadow");
   const { data: mainClanData, isLoading: isLoadingClanData } = useGetClanData();
   const { data: secondaryClanData, isLoading: isLoadingSecondaryClanData } = useGetSecondaryClanData();
-
-
-
 
   if (!mainClanData || !secondaryClanData) {
     return (
@@ -36,8 +32,6 @@ export default function Home() {
       </div>
     )
   }
-
-  console.log(secondaryClanData![0].data.clanData.badgeUrls.medium)
 
   return (
     <div>
@@ -91,7 +85,6 @@ export default function Home() {
             data={secondaryClanData[0]}
           />
         )}
-
       </div>
     </div>
   )
