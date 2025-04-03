@@ -47,14 +47,16 @@ const ArmyList = () => {
                                         <div className='flex flex-wrap'>
                                             {Array.from(army.data.army.troops).map((trop: any, index: any) => (
                                                 <div
-                                                    className='flex justify-start'
+                                                    className='flex justify-start rounded'
                                                     key={index}
                                                 >
                                                     {trop.amount > 0 && (
                                                         <div >
-                                                            <span className='drop-shadow-2xl text-xs font-bold'>x{trop.amount}</span>
+                                                            <p className='flex justify-center text-xs font-bold bg-sky-400 rounded-t-lg'>
+                                                                x{trop.amount}
+                                                            </p>
                                                             <Image
-                                                                className={`h-16 w-16 rounded-lg shadow-xl`}
+                                                                className={`h-16 w-16 rounded-b-lg shadow-xl`}
                                                                 width={60}
                                                                 height={60}
                                                                 alt={trop.name}
@@ -71,9 +73,11 @@ const ArmyList = () => {
                                                 >
                                                     {spel.amount > 0 && (
                                                         <div>
-                                                            <span className='drop-shadow-2xl text-xs font-bold'>x{spel.amount}</span>
+                                                            <p className='flex justify-center rounded-t-lg text-xs font-bold bg-yellow-700'>
+                                                                x{spel.amount}
+                                                            </p>
                                                             <Image
-                                                                className={`h-16 w-16 rounded-lg shadow-xl`}
+                                                                className={`h-16 w-16 rounded-b-lg shadow-xl`}
                                                                 width={60}
                                                                 height={60}
                                                                 alt={spel.name}

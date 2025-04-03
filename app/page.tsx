@@ -11,6 +11,7 @@ import { MainMemberPrimaryClan } from "@/components/main-members-primary-clan";
 import { useGetSecondaryClanData } from "./features/secondaryClanData/api/use-get-secondary-clan-data";
 import { MainMemberSecondaryClan } from "@/components/main-members-secondary-clan";
 import { cn } from "@/lib/utils";
+import { DotLoader } from "react-spinners";
 
 
 export default function Home() {
@@ -20,15 +21,22 @@ export default function Home() {
 
   if (!mainClanData || !secondaryClanData) {
     return (
-      <div className="w-full flex justify-center items-center h-screen animate-bounce">
-        <Image
-          alt="barbaro photo"
-          width={400}
-          height={400}
-          src={'/barbaro.jpg'}
-          className="rounded-full"
-          priority
-        />
+      <div className="flex justify-center items-center w-full" >
+        <div className="animate-pulse">
+          <Image
+            alt="barbaro photo"
+            width={300}
+            height={300}
+            src={'/barbaro.jpg'}
+            className="rounded-full"
+            priority
+          />
+          <div className="flex justify-center items-center ">
+            <DotLoader
+              color="#732e06"
+            />
+          </div>
+        </div>
       </div>
     )
   }
