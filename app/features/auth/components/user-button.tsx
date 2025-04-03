@@ -15,9 +15,6 @@ import {
     DropdownMenuItem,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { useRouter } from "next/navigation";
-
-
 import React from 'react'
 import { useCurrentUser } from "../api/use-current-user";
 import { Button } from "@/components/ui/button";
@@ -29,10 +26,6 @@ const UserButton = () => {
     const {
         setOpen,
     } = useSidebar();
-
-    console.log(open);
-
-    const router = useRouter();
 
     const { signOut } = useAuthActions();
     const { data, isLoading } = useCurrentUser();

@@ -9,6 +9,8 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { PanelLeftOpen, PanelRightOpen } from "lucide-react";
 import { useSidebar } from "@/components/ui/sidebar";
+import { useCurrentUser } from "../api/use-current-user";
+import { DotLoader } from "react-spinners";
 
 
 
@@ -18,6 +20,8 @@ const AuthScreen = () => {
     toggleSidebar,
     open,
   } = useSidebar();
+
+  const { isLoading } = useCurrentUser();
 
   return (
     <div className="w-full h-screen bg-[#0a021c]">
@@ -31,25 +35,35 @@ const AuthScreen = () => {
           {!open ? <PanelLeftOpen /> : <PanelRightOpen />}
         </Button>
         <div className="w-[9.5rem]">
-          
+
         </div>
       </div>
       <div className="w-full flex justify-center">
 
         <div className="md:h-auto md:w-[420px]">
           <div className="flex justify-center mt-10 mb-8 ">
-            <Link href='/'>
-              <div className="shine-border p-1 rounded-lg ">
-                <Image
-                  className="rounded-lg"
-                  width={200}
-                  height={200}
-                  alt="team-logo"
-                  src="/barbaro.svg"
-                  priority
+
+            {isLoading
+              ? <div className="flex h-52 justify-center items-center ">
+                <DotLoader
+                  color="#732e06"
                 />
               </div>
-            </Link>
+              : <Link href='/'>
+                <div className="shine-border p-1 rounded-lg ">
+                  <Image
+                    className="rounded-lg"
+                    width={200}
+                    height={200}
+                    alt="team-logo"
+                    src="/barbaro.jpg"
+                    priority
+                  />
+                </div>
+              </Link>
+            }
+
+
           </div>
           <div>
             {state === "signIn" ? <SignInCard setState={setState} /> : <SignUpCard setState={setState} />}
