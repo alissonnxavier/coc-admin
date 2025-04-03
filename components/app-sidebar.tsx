@@ -1,8 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 
-import { Calendar, Home, House, Inbox, Search, Settings } from "lucide-react"
-
 import {
     Sidebar,
     SidebarContent,
@@ -10,9 +8,6 @@ import {
     SidebarGroupContent,
     SidebarGroupLabel,
     SidebarMenu,
-    SidebarMenuButton,
-    SidebarMenuItem,
-    SidebarTrigger
 } from "@/components/ui/sidebar"
 import { SidebarNavigationMenuItem } from "./sidebar-menu-item";
 import Image from "next/image"
@@ -25,21 +20,24 @@ export function AppSidebar() {
 
     const {
         toggleSidebar,
+        open,
     } = useSidebar();
 
     return (
-        <div className="">
-            <Sidebar >
+        <div className="absolute">
+            <Sidebar variant="floating">
                 <SidebarContent>
                     <SidebarGroup>
                         <SidebarGroupLabel className="h-28 m-auto mt-4">
                             <Link
                                 href='/'
-                                onClick={() => { toggleSidebar() }}
+                                onClick={() => {
+                                    toggleSidebar()
+                                }}
                             >
                                 <div className="h-36">
                                     <Image
-                                    className="rounded-full"
+                                        className="rounded-full"
                                         alt='log'
                                         width={100}
                                         height={100}

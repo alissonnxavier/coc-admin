@@ -280,7 +280,6 @@ const SidebarTrigger = React.forwardRef<
       {...props}
     >
       <AlignJustify /> 
-     
     </Button>
   )
 })

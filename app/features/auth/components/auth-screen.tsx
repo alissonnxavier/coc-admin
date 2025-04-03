@@ -6,31 +6,54 @@ import SignInCard from "./sign-in-card";
 import SignUpCard from "./sign-up-card";
 import Image from "next/image";
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { PanelLeftOpen, PanelRightOpen } from "lucide-react";
+import { useSidebar } from "@/components/ui/sidebar";
+
 
 
 const AuthScreen = () => {
-
   const [state, setState] = useState<SignInFlow>("signIn");
+  const {
+    toggleSidebar,
+    open,
+  } = useSidebar();
 
   return (
-    <div className="w-full flex  justify-center bg-[#0a021c]">
-      <div className="md:h-auto md:w-[420px]">
-        <div className="flex justify-center mt-10 mb-8 ">
-          <Link href='/'>
-            <div className="shine-border p-1 rounded-lg ">
-              <Image
-                className="rounded-lg"
-                width={200}
-                height={200}
-                alt="team-logo"
-                src="/barbaro.jpg"
-                priority
-              />
-            </div>
-          </Link>
+    <div className="w-full h-screen bg-[#0a021c]">
+      <div className="flex justify-around py-5">
+        <Button
+          variant='ghost'
+          size='icon'
+          onClick={() => { toggleSidebar() }}
+          className='transition-all'
+        >
+          {!open ? <PanelLeftOpen /> : <PanelRightOpen />}
+        </Button>
+        <div className="w-[9.5rem]">
+          
         </div>
-        <div>
-          {state === "signIn" ? <SignInCard setState={setState} /> : <SignUpCard setState={setState} />}
+      </div>
+      <div className="w-full flex justify-center">
+
+        <div className="md:h-auto md:w-[420px]">
+          <div className="flex justify-center mt-10 mb-8 ">
+            <Link href='/'>
+              <div className="shine-border p-1 rounded-lg ">
+                <Image
+                  className="rounded-lg"
+                  width={200}
+                  height={200}
+                  alt="team-logo"
+                  src="/barbaro.svg"
+                  priority
+                />
+              </div>
+            </Link>
+          </div>
+          <div>
+            {state === "signIn" ? <SignInCard setState={setState} /> : <SignUpCard setState={setState} />}
+          </div>
         </div>
       </div>
     </div>
