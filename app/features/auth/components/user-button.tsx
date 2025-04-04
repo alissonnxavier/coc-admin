@@ -31,14 +31,19 @@ const UserButton = () => {
     const { data, isLoading } = useCurrentUser();
 
     if (isLoading) {
-        return <Loader className="size-4 animate-spin text-muted-foreground" />
+        return (
+            <div className="px-[1.6rem]">
+                <Loader className="size-4 animate-spin text-muted-foreground" />
+            </div>
+        )
     };
 
     if (!data) {
         return (
-            <div>
+            <div className="flex justify-center items-center ">
                 <Link href='/auth'>
                     <Button
+                        size='default'
                         variant='quality'>
                         Login
                     </Button>

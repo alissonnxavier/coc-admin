@@ -1,15 +1,12 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
+
 import React from 'react'
 import UserButton from '@/app/features/auth/components/user-button'
 import { useSidebar } from "@/components/ui/sidebar";
 import { Button } from './ui/button';
 import { PanelLeftOpen, PanelRightOpen } from 'lucide-react';
 
-interface MenuProps {
-  clanName: string;
-}
 
-export const Menu = ({ clanName = "" }: MenuProps) => {
+export const Menu = () => {
   const {
     toggleSidebar,
     open,

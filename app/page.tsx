@@ -12,6 +12,7 @@ import { useGetSecondaryClanData } from "./features/secondaryClanData/api/use-ge
 import { MainMemberSecondaryClan } from "@/components/main-members-secondary-clan";
 import { cn } from "@/lib/utils";
 import { DotLoader } from "react-spinners";
+import { HeaderBar } from "@/components/header-bar";
 
 
 export default function Home() {
@@ -44,9 +45,7 @@ export default function Home() {
   return (
     <div>
       <div className="h-20">
-        <Menu
-          clanName={mainClanData![0].data.clanData.name}
-        />
+        <HeaderBar />
       </div>
       <div className="flex justify-around items-center flex-wrap md:flex-nowrap xl:flex-nowrap xl:w-4/6 xl:m-auto">
         <div className="flex xl:w-2/5 md:w-1/5 sm:w-4/5 justify-around">
