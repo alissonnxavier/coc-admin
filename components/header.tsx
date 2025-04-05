@@ -8,7 +8,7 @@ interface HeaderProps {
 
 export const Header = ({ clanData }: HeaderProps) => {
     return (
-        <div className="flex flex-col m-5 ml-10">
+        <div className="flex flex-col m-5 ml-10 h-72">
             <div className="text-3xl font-bold">
                 {clanData.data.clanData.name}
             </div>

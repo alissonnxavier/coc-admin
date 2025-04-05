@@ -3,15 +3,12 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import Image from "next/image";
 import { useState } from "react";
-import { staticClanData } from "@/utils/clan-data";
 import { useGetClanData } from "./features/clanData/api/use-get-clan-data";
-import { Menu } from "@/components/menu";
 import { Header } from "@/components/header";
 import { MainMemberPrimaryClan } from "@/components/main-members-primary-clan";
 import { useGetSecondaryClanData } from "./features/secondaryClanData/api/use-get-secondary-clan-data";
 import { MainMemberSecondaryClan } from "@/components/main-members-secondary-clan";
 import { cn } from "@/lib/utils";
-import { DotLoader } from "react-spinners";
 import { HeaderBar } from "@/components/header-bar";
 import { LogoLoader } from "@/components/logo-loader";
 
@@ -29,11 +26,11 @@ export default function Home() {
 
   return (
     <div>
-      <div className="h-20">
+      <div className="">
         <HeaderBar />
       </div>
       <div className="flex justify-around items-center flex-wrap md:flex-nowrap xl:flex-nowrap xl:w-4/6 xl:m-auto">
-        <div className="flex xl:w-2/5 md:w-1/5 sm:w-4/5 justify-around">
+        <div className="flex xl:w-full md:w-1/5 sm:w-4/5 justify-around">
           <div
             onClick={() => { setStreamClan("shadow") }}
             className="">
@@ -61,7 +58,7 @@ export default function Home() {
             />
           </div>
         </div>
-        <div className="w-[25rem]">
+        <div className="w-[40rem]">
           <Header
             clanData={streamClan === "shadow" ? mainClanData![0] : secondaryClanData[0]}
           />

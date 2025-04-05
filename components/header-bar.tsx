@@ -14,8 +14,8 @@ export const HeaderBar = () => {
 
     return (
         <>
-            <div>
-                <div className="flex items-center justify-around py-5">
+            <div className='p-4'>
+                <div className="flex items-center justify-around">
                     <Button
                         variant='ghost'
                         size='icon'
