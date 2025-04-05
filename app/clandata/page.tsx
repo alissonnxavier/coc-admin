@@ -14,6 +14,7 @@ import { Separator } from "@/components/ui/separator";
 import { useUpadateClanData } from "../features/clanData/api/use-update-clan-data";
 import { useGetClanData } from "../features/clanData/api/use-get-clan-data";
 import { Menu } from "@/components/menu";
+import { HeaderBar } from "@/components/header-bar";
 
 
 const ClanData = () => {
@@ -72,9 +73,7 @@ const ClanData = () => {
     return (
         <div className="w-full">
             <div className='h-20'>
-                <Menu
-                    clanName="Shadow"
-                />
+                <HeaderBar />
             </div>
             <div className="flex flex-col justify-center  m-auto w-5/6 h-screen">
                 <div className="">
