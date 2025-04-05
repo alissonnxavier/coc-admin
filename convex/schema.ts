@@ -16,7 +16,7 @@ const schema = defineSchema({
     memberRole: defineTable({
         userId: v.id("users"),
         email: v.optional(v.string()),
-        role: v.string()
+        role: v.union(v.literal("admin"), v.literal("member"))
     }),
     layout: defineTable({
         userId: v.id("users"),

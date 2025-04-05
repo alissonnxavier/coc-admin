@@ -9,19 +9,13 @@ const isPublicPage = createRouteMatcher(["/auth", "/", "/layout/list", "/army/li
 
 export default convexAuthNextjsMiddleware((request) => {
     if (!isPublicPage(request) && !isAuthenticatedNextjs()) {
-        return nextjsMiddlewareRedirect(request, "/marketing");
+        return nextjsMiddlewareRedirect(request, "/auth");
     }
-
-    if (!isAuthenticatedNextjs) {
-        return nextjsMiddlewareRedirect(request, "/marketing");
-    }
-
-    console.log("console in middleware", request.nextUrl.pathname)
 
     if (isPublicPage(request) && isAuthenticatedNextjs() && request.nextUrl.pathname === "/auth") {
         return nextjsMiddlewareRedirect(request, "/");
     }
-});
+}, { cookieConfig: { maxAge: 60 * 60 * 24 * 30 } });
 
 export const config = {
     // The following matcher runs middleware on all routes

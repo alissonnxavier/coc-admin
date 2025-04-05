@@ -1,13 +1,9 @@
 import { api } from "@/convex/_generated/api";
 import { useQuery } from "convex/react";
 
-interface useGetWorkspaceProps {
-    email: string;
-}
+export const useGetMemberRole = () => {
 
-export const useGetMemberRole = ({ email }: useGetWorkspaceProps) => {
-
-    const data = useQuery(api.memberRole.get, { email });
+    const data = useQuery(api.memberRole.get);
     const isLoading = data === undefined;
 
     return { data, isLoading };

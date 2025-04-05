@@ -7,7 +7,7 @@ import { auth } from "./auth";
 export const create = mutation({
     args: {
         email: v.string(),
-        role: v.string(),
+        role: v.union(v.literal("admin"), v.literal("member")),
     },
     handler: async (ctx, args) => {
         const userId = await auth.getUserId(ctx);
@@ -26,10 +26,8 @@ export const create = mutation({
     }
 });
 
-export const get = query({ 
-    args: {
-        email: v.optional(v.string()),
-    },
+export const get = query({
+    args: {},
     handler: async (ctx, args) => {
         const userId = await auth.getUserId(ctx);
 
@@ -39,11 +37,11 @@ export const get = query({
 
         const memberRole = await ctx.db
             .query("memberRole")
-            .filter((q) => q.eq(q.field("email"), args.email))
+            .filter((q) => q.eq(q.field("userId"), userId))
             .unique();
 
         if (!memberRole) {
-            return [];
+            return null;
         }
 
         return memberRole;

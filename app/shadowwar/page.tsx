@@ -1,6 +1,4 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-/* eslint-disable prefer-const */
-/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
 
@@ -8,68 +6,35 @@
 import React, { useState } from 'react';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { DragDropContext, Draggable, Droppable } from '@hello-pangea/dnd';
-import { useCreateClanData } from '../features/clanData/api/use-create-clan-data';
-import { record } from '@/utils/clan-data';
 import { useGetClanData } from '../features/clanData/api/use-get-clan-data';
-import { PacmanLoader } from 'react-spinners';
 import { useUpadateClanData } from '../features/clanData/api/use-update-clan-data';
-import { getClanInfo } from '@/actions/get-clan-info';
-import { Menu } from '@/components/menu';
-import { useCurrentUser } from "@/app/features/auth/api/use-current-user"
 import { useGetMemberRole } from "@/app/features/memberRole/api/use-get-member-role";
-import { useCreateMemberRole } from '../features/memberRole/api/use-create-member-role';
 import { toast } from 'sonner';
-import Image from 'next/image';
+import { HeaderBar } from '@/components/header-bar';
+import { LogoLoader } from '@/components/logo-loader';
 
 
 const Page = () => {
 
-    const { mutate } = useCreateClanData();
     const { data: clanData, isLoading: isLoadingClanData } = useGetClanData();
-    const { mutate: updateClanData, isPending: isUpdatingClanData } = useUpadateClanData();
+    const { mutate: updateClanData  } = useUpadateClanData();
     const [count, setCount] = useState<number>(0);
-    const [isAdmin, setIsAdmin] = useState<boolean>(false)
-    const [updatedData, setUpdatedData] = useState<any>({});
 
-    const { data: currentUser, isLoading: isLoadingCurrentUser } = useCurrentUser();
-    const { data: memberRole, isLoading: isLoadingMemberRole } = useGetMemberRole({ email: currentUser?.email as any });
-
-
-    let allData;
-    allData = clanData;
+    const { data: memberRole, isLoading: isLoadingMemberRole } = useGetMemberRole();
     let lenght = 0;
 
-    const updateDataAndResetHolders = async () => {
-        let data;
-        const newData = await getClanInfo().then((res) => {
-
-            data = {
-                "clanData": res
-            }
-            setUpdatedData(data);
-        });
-
-        /*  updateClanData({
-             id: allData![0]._id,
-             data: data
-         }
-         ); */
-    }
-
     const onDragEnd = (event: any) => {
-        //console.log(event)
-
         if (event.destination.droppableId === "holder" && event.source.droppableId === "reserve") {
-            allData![0].data.clanData.memberList[event.source.index].previousClanRank = 100
+            clanData![0].data.clanData.memberList[event.source.index].previousClanRank = 100
         };
 
         if (event.destination.droppableId === "reserve" && event.source.droppableId === "holder") {
-            allData![0].data.clanData.memberList[event.source.index].previousClanRank = 200
+            clanData![0].data.clanData.memberList[event.source.index].previousClanRank = 200
         };
 
         updateClanData({
-            id: allData![0]._id,
-            data: allData![0].data
+            id: clanData![0]._id,
+            data: clanData![0].data
         },
             {
                 onSuccess: () => {
@@ -80,36 +45,24 @@ const Page = () => {
     };
 
     //@ts-ignore
-    if (!clanData || memberRole?.role !== "admin") {
+    if (!clanData || memberRole?.role !== "admin" || isLoadingClanData || isLoadingMemberRole) {
         return (
-            <div className="w-full flex justify-center items-center h-screen animate-bounce">
-                <Image
-                    alt="barbaro photo"
-                    width={400}
-                    height={400}
-                    src={'/barbaro.jpg'}
-                    className="rounded-full"
-                    priority
-                />
+            <div className='w-full '>
+                <div className='mt-[0.4rem] ml-[0.6rem]'>
+                    <HeaderBar />
+                </div>
+                <div className='flex justify-center items-center mt-44'>
+                    <LogoLoader />
+                </div>
             </div>
         )
-    }
+    };
 
     return (
         <div className='w-full'>
-            {/* <div className='flex justify-center p-5'>
-                <Button
-                    onClick={updateDataAndResetHolders}
-                    variant='destructive'>
-                    Resetar escala e atualizar membros
-                </Button>
-            </div> */}
-            <div className='h-20'>
-                <Menu
-                    clanName={clanData![0].data.clanData.name}
-                />
+            <div className=''>
+                <HeaderBar />
             </div>
-
             <DragDropContext onDragEnd={onDragEnd}>
                 <div className='flex justify-center'>
                     <div>
@@ -130,7 +83,7 @@ const Page = () => {
 
                                             return (
                                                 <Draggable key={index} draggableId={`draggable-0-${index}`} index={index}>
-                                                    {(provided, snapshot) => (
+                                                    {(provided) => (
                                                         <div
                                                             ref={provided.innerRef}
                                                             {...provided.draggableProps}
@@ -183,7 +136,7 @@ const Page = () => {
 
                                             return (
                                                 <Draggable key={index} draggableId={`draggable-1-${index}`} index={index}>
-                                                    {(provided, snapshot) => (
+                                                    {(provided) => (
                                                         <div
                                                             ref={provided.innerRef}
                                                             {...provided.draggableProps}
