@@ -4,10 +4,8 @@
 'use client';
 
 
-import { useGetLayout } from '@/app/features/layout/api/use-get-layout';
 import LayoutLevel from '@/components/layout-level';
 import LayoutType from '@/components/layout-type';
-import { Menu } from '@/components/menu';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
@@ -17,8 +15,10 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React, { useState } from 'react';
 import { api } from "@/convex/_generated/api"
-import { usePaginatedQuery, useQuery } from "convex/react"
+import { usePaginatedQuery } from "convex/react"
 import { cn } from '@/lib/utils';
+import { HeaderBar } from '@/components/header-bar';
+import { LogoLoader } from '@/components/logo-loader';
 
 const LayoutList = () => {
 
@@ -37,24 +37,22 @@ const LayoutList = () => {
 
     if (!results) {
         return (
-            <div className="flex justify-center items-center h-screen animate-bounce">
-                <Image
-                    alt="barbaro photo"
-                    width={400}
-                    height={400}
-                    src={'/barbaro.jpg'}
-                    className="rounded-full "
-                    priority
-                />
+            <div className='w-full mb-5 '>
+                <div className='mt-[0.4rem] ml-[0.6rem]'>
+                    <HeaderBar />
+                </div>
+                <div className='flex justify-center items-center mt-44'>
+                    <LogoLoader />
+                </div>
             </div>
         )
-    }
+    };
 
     return (
         <div className='w-full '>
-            <Menu
-                clanName=''
-            />
+            <div>
+                <HeaderBar />
+            </div>
             <div>
                 <div className=' flex items-center justify-center mb-3 gap-2'>
                     <Button onClick={() => { setLayoutLevel("17") }} size='sm' className={cn('border bg-slate-900 rounded-lg text-slate-300 border-slate-300 opacity-25 hover:opacity-70', layoutLevel === "17" && 'opacity-100')}>17</Button>
