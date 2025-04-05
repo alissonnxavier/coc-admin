@@ -234,8 +234,9 @@ export const SidebarNavigationMenuItem = () => {
                                     </Link>
                                 )}
                             {
+                                //dev k973teb2g9zj9qv8vvd02r3zk175w247
                                 //@ts-ignore
-                                memberRole._id === "k973teb2g9zj9qv8vvd02r3zk175w247" && memberRole?.role === "admin" && (
+                                memberRole._id === "jx7f6xfn2y72xvv5pas8cfdq5h73kyq5" && memberRole?.role === "admin" && (
                                     <Link
                                         href='/army/create'
                                         onClick={() => { toggleSidebar() }}

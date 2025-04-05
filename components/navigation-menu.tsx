@@ -15,7 +15,6 @@ import {
     NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu"
 import Image from "next/image"
-import { useCurrentUser } from "@/app/features/auth/api/use-current-user"
 import { useGetMemberRole } from "@/app/features/memberRole/api/use-get-member-role"
 
 interface NavigationMenuMainProps {
