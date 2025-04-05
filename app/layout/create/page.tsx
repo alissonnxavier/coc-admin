@@ -29,6 +29,8 @@ import { useCreateLayout } from "@/app/features/layout/api/use-create-layout";
 import { toast } from "sonner";
 import { Menu } from "@/components/menu";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { HeaderBar } from "@/components/header-bar";
+import { LogoLoader } from "@/components/logo-loader";
 
 
 const CreateLayout = () => {
@@ -40,8 +42,7 @@ const CreateLayout = () => {
     const { mutate: generateUploadUrl, isPending: isUploading } = useGenerateUploadUrl();
     const { mutate: createLayout, isPending: isPendingCreatingLayout } = useCreateLayout();
 
-    const { data: currentUser, isLoading: isLoadingCurrentUser } = useCurrentUser();
-    const { data: memberRole, isLoading: isLoadingMemberRole } = useGetMemberRole({ email: currentUser?.email as any });
+    const { data: memberRole, isLoading: isLoadingMemberRole } = useGetMemberRole();
 
     const handleDrop = useCallback(async (files: any) => {
         setImages(files);
@@ -99,27 +100,25 @@ const CreateLayout = () => {
         }
     };
 
-      //@ts-ignore
-      if (memberRole?.role !== "admin") {
-        return (
-            <div className="w-full flex justify-center items-center h-screen animate-bounce">
-                <Image
-                    alt="barbaro photo"
-                    width={400}
-                    height={400}
-                    src={'/barbaro.jpg'}
-                    className="rounded-full"
-                    priority
-                />
-            </div>
-        );
-    };
+    //@ts-ignore
+    if (isLoadingMemberRole || memberRole?.role !== "admin") {
+         return (
+             <div className='w-full mb-5 '>
+                 <div className='mt-[0.4rem] ml-[0.6rem]'>
+                     <HeaderBar />
+                 </div>
+                 <div className='flex justify-center items-center mt-44'>
+                     <LogoLoader />
+                 </div>
+             </div>
+         )
+     }
 
     return (
         <div className="w-full">
-            <Menu
-                clanName=""
-            />
+            <div>
+                <HeaderBar />
+            </div>
             <div className="flex justify-center items-center mt-20 ">
                 <div className="shine-border-green p-0.5 rounded-2xl">
                     <form onSubmit={onSubmit}>

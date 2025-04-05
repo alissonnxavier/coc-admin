@@ -13,23 +13,32 @@ import Image from "next/image"
 import { Alert, AlertDescription, AlertTitle } from "./ui/alert"
 import { Terminal } from "lucide-react"
 import Link from "next/link";
-import { useCurrentUser } from "@/app/features/auth/api/use-current-user"
 import { useGetMemberRole } from "@/app/features/memberRole/api/use-get-member-role";
 import { useSidebar } from "./ui/sidebar";
+import { HeaderBar } from "./header-bar";
+import { LogoLoader } from "./logo-loader";
 
 
 export const SidebarNavigationMenuItem = () => {
 
-    const { data: currentUser, isLoading: isLoadingCurrentUser } = useCurrentUser();
-    const { data: memberRole, isLoading: isLoadingMemberRole } = useGetMemberRole({ email: currentUser?.email as any });
+    const { data: memberRole, isLoading: isLoadingMemberRole } = useGetMemberRole();
 
     const {
         toggleSidebar,
-    } = useSidebar()
+    } = useSidebar();
 
-    /*    if (!currentUser) {
-           return null;
-       } */
+    if (isLoadingMemberRole) {
+        return (
+            <div className='w-full '>
+                <div className='mt-[0.4rem] ml-[0.6rem]'>
+                    <HeaderBar />
+                </div>
+                <div className='flex justify-center items-center mt-44'>
+                    <LogoLoader />
+                </div>
+            </div>
+        )
+    }
 
     return (
         <Accordion type="single" collapsible className="w-full">
@@ -199,7 +208,7 @@ export const SidebarNavigationMenuItem = () => {
                             </Link>
                             {
                                 //@ts-ignore
-                                memberRole._id === "k57awxemhpkd2446k8hz579px573mtvg" && memberRole?.role === "admin" && (
+                                memberRole._id === "jx7f6xfn2y72xvv5pas8cfdq5h73kyq5" && memberRole?.role === "admin" && (
                                     <Link
                                         href='/clandata'
                                         onClick={() => { toggleSidebar() }}
@@ -226,7 +235,7 @@ export const SidebarNavigationMenuItem = () => {
                                 )}
                             {
                                 //@ts-ignore
-                                memberRole._id === "k57awxemhpkd2446k8hz579px573mtvg" && memberRole?.role === "admin" && (
+                                memberRole._id === "k973teb2g9zj9qv8vvd02r3zk175w247" && memberRole?.role === "admin" && (
                                     <Link
                                         href='/army/create'
                                         onClick={() => { toggleSidebar() }}

@@ -6,7 +6,8 @@
 import { useCreateArmy } from "@/app/features/army/api/use-create-army";
 import { useCurrentUser } from "@/app/features/auth/api/use-current-user";
 import { useGetMemberRole } from "@/app/features/memberRole/api/use-get-member-role";
-import { Menu } from "@/components/menu";
+import { HeaderBar } from "@/components/header-bar";
+import { LogoLoader } from "@/components/logo-loader";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -22,27 +23,21 @@ const CreateArmy = () => {
     const [armyTitle, setArmyTitle] = useState<undefined | string>(undefined);
     const [armyLink, setArmyLink] = useState<undefined | string>(undefined);
 
-    const { data: currentUser, isLoading: isLoadingCurrentUser } = useCurrentUser();
-    const { data: memberRole, isLoading: isLoadingMemberRole } = useGetMemberRole({ email: currentUser?.email as any });
-
-    if (!currentUser) {
-        return null;
-    };
+    const { isLoading: isLoadingCurrentUser } = useCurrentUser();
+    const { data: memberRole, isLoading: isLoadingMemberRole } = useGetMemberRole();
 
     //@ts-ignore
-    if (memberRole?.role !== "admin") {
+    if (isLoadingMemberRole || memberRole?.role !== "admin" || isLoadingCurrentUser) {
         return (
-            <div className="w-full flex justify-center items-center h-screen animate-bounce">
-                <Image
-                    alt="barbaro photo"
-                    width={400}
-                    height={400}
-                    src={'/barbaro.jpg'}
-                    className="rounded-full"
-                    priority
-                />
+            <div className='w-full mb-5 '>
+                <div className='mt-[0.4rem] ml-[0.6rem]'>
+                    <HeaderBar />
+                </div>
+                <div className='flex justify-center items-center mt-44'>
+                    <LogoLoader />
+                </div>
             </div>
-        );
+        )
     };
 
     const newArmy = army;
@@ -66,8 +61,10 @@ const CreateArmy = () => {
 
     return (
         <div className="w-full">
-            <div><Menu clanName="" /></div>
-            <div className="flex justify-center items-center flex-wrap gap-2 w-5/6 m-auto mt-10">
+            <div className="">
+                <HeaderBar />
+            </div>
+            <div className="flex justify-center items-center flex-wrap gap-2 w-5/6 m-auto mt-5">
                 {army.army.troops.map((trop, index) => (
                     <div key={index}>
                         <Image
