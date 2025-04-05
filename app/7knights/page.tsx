@@ -19,6 +19,7 @@ const Page = () => {
     const { mutate: updateClanData } = useUpadateSecondaryClanData();
     const [count, setCount] = useState<number>(0);
 
+    
     const { data: memberRole, isLoading: isLoadingMemberRole } = useGetMemberRole();
     let lenght = 0;
 
