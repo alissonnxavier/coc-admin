@@ -32,7 +32,7 @@ const UserButton = () => {
 
     if (isLoading) {
         return (
-            <div className="px-[1.6rem]">
+            <div className="p-[16px]">
                 <Loader className="size-4 animate-spin text-muted-foreground" />
             </div>
         )

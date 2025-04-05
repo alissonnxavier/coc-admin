@@ -14,8 +14,8 @@ export const HeaderBar = () => {
 
     return (
         <>
-            <div className='p-4'>
-                <div className="flex items-center justify-around">
+            <div className=' p-4 h-[7rem]'>
+                <div className="flex items-center justify-around my-auto">
                     <Button
                         variant='ghost'
                         size='icon'
