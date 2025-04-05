@@ -1,5 +1,5 @@
-
 'use client'
+
 import React from 'react'
 import { Button } from './ui/button'
 import { PanelLeftOpen, PanelRightOpen, SkipBack } from 'lucide-react'
@@ -10,10 +10,7 @@ import Link from 'next/link';
 
 export const HeaderBar = () => {
     const { toggleSidebar, open, } = useSidebar();
-
     const path = usePathname();
-
-    console.log(path)
 
     return (
         <>
@@ -41,7 +38,6 @@ export const HeaderBar = () => {
                                     <SkipBack />
                                 </Button>
                             </Link>
-
                         </div>
                     }
                 </div>
