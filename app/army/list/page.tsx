@@ -3,35 +3,37 @@
 "use client";
 
 import { useGetArmyData } from '@/app/features/army/api/use-get-army-data';
-import { Menu } from '@/components/menu';
 import { Button } from '@/components/ui/button';
 import { ScrollArea } from "@/components/ui/scroll-area"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent,  CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import Image from "next/image";
 import Link from 'next/link';
+import { HeaderBar } from '@/components/header-bar';
+import { LogoLoader } from '@/components/logo-loader';
 
 const ArmyList = () => {
-
     const { data, isLoading } = useGetArmyData();
 
-    if (!data) {
+    if (isLoading) {
         return (
-            <div className="w-full flex justify-center items-center h-screen animate-bounce">
-                <Image
-                    alt="barbaro photo"
-                    width={400}
-                    height={400}
-                    src={'/barbaro.jpg'}
-                    className="rounded-full"
-                    priority
-                />
+            <div className='w-full mb-5 '>
+                <div className='mt-[0.4rem] ml-[0.6rem]'>
+                    <HeaderBar />
+                </div>
+                <div className='flex justify-center items-center mt-44'>
+                    <LogoLoader />
+                </div>
             </div>
         )
-    };
+    }
+
+    if (!data) return;
 
     return (
         <div className='w-full'>
-            <div><Menu clanName='' /></div>
+            <div>
+                <HeaderBar />
+            </div>
             <div className='w-full mt-10 items-center justify-center mx-auto'>
                 <div className="flex flex-row flex-wrap justify-center items-center gap-5">
                     {data.map((army, index) => (
