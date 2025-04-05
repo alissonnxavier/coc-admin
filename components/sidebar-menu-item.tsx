@@ -21,24 +21,11 @@ import { LogoLoader } from "./logo-loader";
 
 export const SidebarNavigationMenuItem = () => {
 
-    const { data: memberRole, isLoading: isLoadingMemberRole } = useGetMemberRole();
+    const { data: memberRole } = useGetMemberRole();
 
     const {
         toggleSidebar,
     } = useSidebar();
-
-    if (isLoadingMemberRole) {
-        return (
-            <div className='w-full '>
-                <div className='mt-[0.4rem] ml-[0.6rem]'>
-                    <HeaderBar />
-                </div>
-                <div className='flex justify-center items-center mt-44'>
-                    <LogoLoader />
-                </div>
-            </div>
-        )
-    }
 
     return (
         <Accordion type="single" collapsible className="w-full">
