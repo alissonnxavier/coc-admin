@@ -23,9 +23,7 @@ interface NavigationMenuMainProps {
 }
 
 const NavigationMenuMain = ({ clanName }: NavigationMenuMainProps) => {
-
-    const { data: currentUser, isLoading: isLoadingCurrentUser } = useCurrentUser();
-    const { data: memberRole, isLoading: isLoadingMemberRole } = useGetMemberRole({ email: currentUser?.email as any });
+    const { data: memberRole, isLoading: isLoadingMemberRole } = useGetMemberRole();
 
     return (
         <NavigationMenu>
