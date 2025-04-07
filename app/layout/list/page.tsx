@@ -7,10 +7,10 @@
 import LayoutLevel from '@/components/layout-level';
 import LayoutType from '@/components/layout-type';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardFooter } from '@/components/ui/card';
+import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
 import { useModalExpandImage } from '@/hooks/use-expand-image-modal';
-import { LoaderIcon } from 'lucide-react';
+import { LoaderIcon, Star } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { useState } from 'react';
@@ -92,26 +92,26 @@ const LayoutList = () => {
                                                 height: '180px',
                                             }}
                                         />
-                                    </div> *
+                                    </div>
                                 </CardContent>
-                                <CardFooter className='p-0 pb-5'>
-                                    <div className='flex w-full justify-between mt-2 pb-2'>
-                                        <div className='flex justify-center items-center flex-col m-auto mt-2'>
+                                <CardFooter className='p-0 pb-1'>
+                                    <div className='flex w-full justify-around mt-2 '>
+                                        <div className='flex justify-center items-center m-auto'>
                                             <div className='flex flex-row items-center text-muted-foreground text-xs m-auto'>
                                                 <LayoutLevel
                                                     cv={layout.layoutCv}
                                                 />
                                             </div>
-                                            <div className='flex flex-row items-center text-muted-foreground text-xs m-auto'>
+                                            <div className='flex flex-row items-center text-muted-foreground ml-2'>
                                                 <LayoutType
                                                     type={layout.layoutType}
                                                 />
                                             </div>
                                         </div>
                                         <div>
-                                            <Button className='game-button mr-2' variant='quality' size='sm'>
+                                            <Button className=' mr-2 shine-border-green font-bold text-black' variant='ghost' size='sm'>
                                                 <Link href={layout.layoutLink}>
-                                                    Copiar | Usar
+                                                    Usar
                                                 </Link>
                                             </Button>
                                         </div>

@@ -8,7 +8,7 @@ const LayoutLevel = ({ cv }: LayoutLevelProps) => {
 
     if (cv === "17") {
         return (
-            <div className='border bg-slate-900 p-0.5 rounded-lg text-slate-300 border-slate-300'>
+            <div className='border p-1 rounded text-slate-300 border-slate-300 gradient-background-th-17 font-bold' >
                 CV {cv}
             </div>
         )
@@ -16,7 +16,7 @@ const LayoutLevel = ({ cv }: LayoutLevelProps) => {
 
     if (cv === "16") {
         return (
-            <div className='border bg-orange-900 p-0.5 rounded-lg text-orange-300 border-orange-300'>
+            <div className='border p-1 rounded text-orange-300 border-orange-300 gradient-background-th-16 font-bold'>
                 CV {cv}
             </div>
         )
@@ -24,7 +24,7 @@ const LayoutLevel = ({ cv }: LayoutLevelProps) => {
 
     if (cv === "15") {
         return (
-            <div className='border bg-purple-900 p-0.5 rounded-lg text-purple-300 border-purple-300'>
+            <div className='border p-1 rounded text-purple-300 border-purple-300 gradient-background-th-15 font-bold'>
                 CV {cv}
             </div>
         )
@@ -32,7 +32,7 @@ const LayoutLevel = ({ cv }: LayoutLevelProps) => {
 
     if (cv === "14") {
         return (
-            <div className='border bg-green-900 p-0.5 rounded-lg text-green-300 border-green-300'>
+            <div className='border p-1 rounded text-green-300 border-green-300 gradient-background-th-14 font-bold'>
                 CV {cv}
             </div>
         )
@@ -40,7 +40,7 @@ const LayoutLevel = ({ cv }: LayoutLevelProps) => {
 
     if (cv === "13") {
         return (
-            <div className='border bg-blue-900 p-0.5 rounded-lg text-blue-300 border-blue-300'>
+            <div className='border p-1 rounded text-blue-300 border-blue-300 gradient-background-th-13 font-bold'>
                 CV {cv}
             </div>
         )
@@ -48,14 +48,14 @@ const LayoutLevel = ({ cv }: LayoutLevelProps) => {
 
     if (cv === "12") {
         return (
-            <div className='border bg-sky-700 p-0.5 rounded-lg text-sky-300 border-sky-300'>
+            <div className='border p-1 rounded text-sky-300 border-sky-300 gradient-background-th-12 font-bold'>
                 CV {cv}
             </div>
         )
     };
     if (cv === "11") {
         return (
-            <div className='border bg-slate-300 p-0.5 rounded-lg text-black border-white'>
+            <div className='border p-1 rounded border-white gradient-background-th-11 font-bold'>
                 CV {cv}
             </div>
         )

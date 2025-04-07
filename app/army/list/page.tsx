@@ -5,7 +5,7 @@
 import { useGetArmyData } from '@/app/features/army/api/use-get-army-data';
 import { Button } from '@/components/ui/button';
 import { ScrollArea } from "@/components/ui/scroll-area"
-import { Card, CardContent,  CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import Image from "next/image";
 import Link from 'next/link';
 import { HeaderBar } from '@/components/header-bar';
@@ -94,8 +94,8 @@ const ArmyList = () => {
                                 </CardContent>
                                 <CardFooter className='w-full justify-end'>
                                     <Link href={army.data.army.link}>
-                                        <Button className='game-button mr-2' variant='quality' size='sm'>
-                                            Copiar | Usar
+                                        <Button className='gradient-background-use-button font-bold' variant='ghost'>
+                                            Usar
                                         </Button>
                                     </Link>
                                 </CardFooter>

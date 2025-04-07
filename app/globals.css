@@ -101,9 +101,51 @@ body {
   }
 }
 
+.gradient-background-use-button {
+  background: linear-gradient(300deg,deepskyblue,darkviolet,blue);
+  background-size: 180% 180%;
+  animation: gradient-animation 18s ease infinite;
+}
+
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
 .shine-border {
   animation: gradient 3s linear infinite;
   background: linear-gradient(3333330deg, #090b8f, #0e2dd8, #2f3a6b, #a166ab, #5073b8, #462e9b, #2d2953);
+  background-size: 50%;
+  left: 0;
+  top: 0;
+}
+
+;
+
+@keyframes gradient {
+  0% {
+    background-position: 100%;
+  }
+
+  /* 50% {
+      background-position: 100% 50%;
+  }
+
+  100% {
+      background-position: 0% 50%;
+  } */
+}
+
+.card-header {
+  animation: gradient 3s linear infinite;
+  background: linear-gradient(3333330deg, #b6cf23, #ddcf04, #ebc805);
   background-size: 50%;
   left: 0;
   top: 0;
@@ -175,7 +217,7 @@ body {
   top: 0;
 }
 
-.shine-border-green {
+/* .shine-border-green {
   animation: gradient 3s linear infinite;
   background: linear-gradient(3333330deg, #89cc89, #67c96c, #59d36a, #58ca62, #1ba53e, #462e9b, #2d2953);
   background-size: 50%;
@@ -188,13 +230,167 @@ body {
     background-position: 100%;
   }
 
-  /* 50% {
+  50% {
       background-position: 100% 50%;
   }
 
   100% {
       background-position: 0% 50%;
-  } */
+  } 
+}  */
+
+.gradient-background-th-17 {
+  background: linear-gradient(300deg, #5ddbdb, #132121, #465050, #e9f5f5);
+  background-size: 240% 240%;
+  animation: gradient-animation 24s ease infinite;
+}
+
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.gradient-background-th-16 {
+  background: linear-gradient(300deg, #ebd866, #7e4314, #b7200c, #f53117);
+  background-size: 300% 300%;
+  animation: gradient-animation 30s ease infinite;
+}
+
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.gradient-background-th-15 {
+  background: linear-gradient(300deg, #7b62d8, #6142d2, #a642d2, #d242a3);
+  background-size: 240% 240%;
+  animation: gradient-animation 24s ease infinite;
+}
+
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.gradient-background-th-14 {
+  background: linear-gradient(300deg, #57e141, #1c6511, #19ba8c, #0bbfdb);
+  background-size: 300% 300%;
+  animation: gradient-animation 30s ease infinite;
+}
+
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.gradient-background-th-13 {
+  background: linear-gradient(300deg,#19ba8c,#0bbfdb,#0b63db,#09346d);
+  background-size: 240% 240%;
+  animation: gradient-animation 24s ease infinite;
+}
+
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.gradient-background-th-12 {
+  background: linear-gradient(300deg,#19ba8c,#0bbfdb,#0b63db,#09346d);
+  background-size: 240% 240%;
+  animation: gradient-animation 24s ease infinite;
+}
+
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.gradient-background-th-11 {
+  background: linear-gradient(300deg,#a3bfe5,#667a97,#4b5d76,#383f48);
+  background-size: 240% 240%;
+  animation: gradient-animation 24s ease infinite;
+}
+
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.shine-border-green {
+  background: linear-gradient(300deg, #0cede1, #eef720, #870eeb, #0edfeb);
+  background-size: 240% 240%;
+  animation: gradient-animation 24s ease infinite;
+}
+
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 .game-button {
@@ -225,7 +421,7 @@ body {
   -moz-box-shadow: 0px 11px 2px #301C09;
   box-shadow: 0px 11px 2px #301C09;
   cursor: pointer;
- 
+
 
 
 }
