@@ -17,6 +17,7 @@ import { useGetMemberRole } from "@/app/features/memberRole/api/use-get-member-r
 import { useSidebar } from "./ui/sidebar";
 import { HeaderBar } from "./header-bar";
 import { LogoLoader } from "./logo-loader";
+import { MenuItem } from "./menu-item";
 
 
 export const SidebarNavigationMenuItem = () => {
@@ -45,67 +46,28 @@ export const SidebarNavigationMenuItem = () => {
                         href='/layout/list'
                         onClick={() => { toggleSidebar() }}
                     >
-                        <Alert className="mb-2">
-                            <Terminal className="h-4 w-4" />
-                            <AlertTitle>Layouts</AlertTitle>
-                            <AlertDescription className="flex justify-between">
-                                <span className=" flex justify-between w-32">
-                                    Escolha entre layouts de guerra, farm ou push
-                                </span>
-                                <div className="flex h-full items-center justify-center">
-                                    <Image
-                                        className=""
-                                        alt="logo"
-                                        src='/layout.png'
-                                        width={55}
-                                        height={55}
-                                    />
-                                </div>
-                            </AlertDescription>
-                        </Alert>
+                        <MenuItem
+                            title="Layouts"
+                            description="Escolha entre layouts de farm, guerra ou push"
+                            image="/layout.png"
+                        />
                     </Link>
                     <Link
                         href='/army/list'
                         onClick={() => { toggleSidebar() }}
                     >
-                        <Alert className="mb-2">
-                            <Terminal className="h-4 w-4" />
-                            <AlertTitle>Variaçoẽs</AlertTitle>
-                            <AlertDescription className="flex justify-between">
-                                <span className=" flex justify-between w-32">
-                                    Decks das melhores variaçoẽs de ataque
-                                </span>
-                                <div className="flex h-full items-center justify-center">
-                                    <Image
-                                        className=""
-                                        alt="logo"
-                                        src='/cards.png'
-                                        width={55}
-                                        height={55}
-                                    />
-                                </div>
-                            </AlertDescription>
-                        </Alert>
+                        <MenuItem
+                            title="Variaçoẽs"
+                            description="Decks das melhores variaçoẽs de ataque"
+                            image="/cards.png"
+                        />
                     </Link>
                     <Link href='https://store.supercell.com/clashofclans'>
-                        <Alert>
-                            <Terminal className="h-4 w-4" />
-                            <AlertTitle>Loja clash of clans</AlertTitle>
-                            <AlertDescription className="flex justify-between">
-                                <span className=" flex justify-center items-center w-32">
-                                    Compre itens e resgate recompensas
-                                </span>
-                                <div className="flex h-full items-center justify-center">
-                                    <Image
-                                        className=""
-                                        alt="logo"
-                                        src='/shop.png'
-                                        width={55}
-                                        height={55}
-                                    />
-                                </div>
-                            </AlertDescription>
-                        </Alert>
+                        <MenuItem
+                            title="Loja clash of clan"
+                            description="compre itens e resgate recompensas"
+                            image="/shop.png"
+                        />
                     </Link>
                 </AccordionContent>
             </AccordionItem>
@@ -128,125 +90,60 @@ export const SidebarNavigationMenuItem = () => {
                                 href='/shadowwar'
                                 onClick={() => { toggleSidebar() }}
                             >
-                                <Alert className="hover:bg-muted-foreground/10 mb-2">
-                                    <Terminal className="h-4 w-4" />
-                                    <AlertTitle>ShAdOw&apos;$ WAR</AlertTitle>
-                                    <AlertDescription className="flex justify-between">
-                                        <span className=" flex justify-center items-center w-32">
-                                            Escale ou remova membros
-                                        </span>
-                                        <div className="flex h-full items-center justify-center">
-                                            <Image
-                                                className=""
-                                                alt="logo"
-                                                src='/human-rights.png'
-                                                width={55}
-                                                height={55}
-                                            />
-                                        </div>
-                                    </AlertDescription>
-                                </Alert>
+                                <MenuItem
+                                    title={`ShAdOw'$ WAR`}
+                                    description="Escale ou remova membros"
+                                    image="/human-rights.png"
+                                />
                             </Link>
                             <Link
                                 href='/7knights'
                                 onClick={() => { toggleSidebar() }}
                             >
-                                <Alert className="hover:bg-muted-foreground/10 mb-2">
-                                    <Terminal className="h-4 w-4" />
-                                    <AlertTitle>7KniGht$ WAR</AlertTitle>
-                                    <AlertDescription className="flex justify-between">
-                                        <span className=" flex justify-center items-center w-32">
-                                            Escale ou remova membros
-                                        </span>
-                                        <div className="flex h-full items-center justify-center">
-                                            <Image
-                                                className=""
-                                                alt="logo"
-                                                src='/human-rights.png'
-                                                width={55}
-                                                height={55}
-                                            />
-                                        </div>
-                                    </AlertDescription>
-                                </Alert>
+                                <MenuItem
+                                    title={`7KniGht$ WAR`}
+                                    description="Escale ou remova membros"
+                                    image="/human-rights.png"
+                                />
                             </Link>
                             <Link
                                 href='/layout/create'
                                 onClick={() => { toggleSidebar() }}
                             >
-                                <Alert className="hover:bg-muted-foreground/10 mb-2">
-                                    <Terminal className="h-4 w-4" />
-                                    <AlertTitle>Criar layout</AlertTitle>
-                                    <AlertDescription className="flex justify-between">
-                                        <span className=" flex justify-center items-center w-32">
-                                            Adicione novos layout
-                                        </span>
-                                        <div className="flex h-full items-center justify-center">
-                                            <Image
-                                                className=""
-                                                alt="logo"
-                                                src='/create-layout.png'
-                                                width={55}
-                                                height={55}
-                                            />
-                                        </div>
-                                    </AlertDescription>
-                                </Alert>
+                                <MenuItem
+                                    title={`Criar layout`}
+                                    description="Adicione novos layout"
+                                    image="/create-layout.png"
+                                />
                             </Link>
                             {
                                 //@ts-ignore
-                                memberRole._id === "k57awxemhpkd2446k8hz579px573mtvg" && memberRole?.role === "admin" && (
+                                memberRole._id === "k973teb2g9zj9qv8vvd02r3zk175w247" && memberRole?.role === "admin" && (
                                     <Link
                                         href='/clandata'
                                         onClick={() => { toggleSidebar() }}
                                     >
-                                        <Alert className="hover:bg-muted-foreground/10 mb-2">
-                                            <Terminal className="h-4 w-4" />
-                                            <AlertTitle>Dados</AlertTitle>
-                                            <AlertDescription className="flex justify-between">
-                                                <span className=" flex justify-center items-center w-32">
-                                                    Adicione ou altere os dados dos clans
-                                                </span>
-                                                <div className="flex h-full items-center justify-center">
-                                                    <Image
-                                                        className=""
-                                                        alt="logo"
-                                                        src='/data.png'
-                                                        width={55}
-                                                        height={55}
-                                                    />
-                                                </div>
-                                            </AlertDescription>
-                                        </Alert>
+                                        <MenuItem
+                                            title="Dados"
+                                            description="Adicione ou altere os dados dos clans"
+                                            image="/data.png"
+                                        />
                                     </Link>
                                 )}
                             {
                                 //dev k973teb2g9zj9qv8vvd02r3zk175w247
                                 //prod k57awxemhpkd2446k8hz579px573mtvg
                                 //@ts-ignore
-                                memberRole._id === "k57awxemhpkd2446k8hz579px573mtvg" && memberRole?.role === "admin" && (
+                                memberRole._id === "k973teb2g9zj9qv8vvd02r3zk175w247" && memberRole?.role === "admin" && (
                                     <Link
                                         href='/army/create'
                                         onClick={() => { toggleSidebar() }}
                                     >
-                                        <Alert className="hover:bg-muted-foreground/10 mb-2">
-                                            <Terminal className="h-4 w-4" />
-                                            <AlertTitle>Variaçoes</AlertTitle>
-                                            <AlertDescription className="flex justify-between">
-                                                <span className=" flex justify-center items-center w-32">
-                                                    Adicione decks de ataque
-                                                </span>
-                                                <div className="flex h-full items-center justify-center">
-                                                    <Image
-                                                        className=""
-                                                        alt="logo"
-                                                        src='/army.png'
-                                                        width={55}
-                                                        height={55}
-                                                    />
-                                                </div>
-                                            </AlertDescription>
-                                        </Alert>
+                                        <MenuItem
+                                            title="Variaçoes"
+                                            description="Adicione decks de ataque"
+                                            image="/army.png"
+                                        />
                                     </Link>
                                 )}
                         </AccordionContent>
