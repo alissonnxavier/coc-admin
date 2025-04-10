@@ -10,19 +10,18 @@ import {
     AccordionTrigger,
 } from "@/components/ui/accordion"
 import Image from "next/image"
-import { Alert, AlertDescription, AlertTitle } from "./ui/alert"
-import { Terminal } from "lucide-react"
 import Link from "next/link";
 import { useGetMemberRole } from "@/app/features/memberRole/api/use-get-member-role";
 import { useSidebar } from "./ui/sidebar";
-import { HeaderBar } from "./header-bar";
-import { LogoLoader } from "./logo-loader";
 import { MenuItem } from "./menu-item";
+import { useCurrentUser } from "@/app/features/auth/api/use-current-user";
+
 
 
 export const SidebarNavigationMenuItem = () => {
 
     const { data: memberRole } = useGetMemberRole();
+    const { data } = useCurrentUser();
 
     const {
         toggleSidebar,
@@ -62,6 +61,19 @@ export const SidebarNavigationMenuItem = () => {
                             image="/cards.png"
                         />
                     </Link>
+                    {data &&
+                        <Link
+                            href='/layout/favorites'
+                            onClick={() => { toggleSidebar() }}
+                        >
+                            <MenuItem
+                                title="Layouts favoritos"
+                                description="Meus layouts favoritos"
+                                image="/favorite-icon.png"
+                            />
+                        </Link>
+                    }
+
                     <Link href='https://store.supercell.com/clashofclans'>
                         <MenuItem
                             title="Loja clash of clan"

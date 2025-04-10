@@ -27,7 +27,6 @@ import Image from "next/image";
 import { useGenerateUploadUrl } from "@/app/features/upload/api/use-generate-upload-url";
 import { useCreateLayout } from "@/app/features/layout/api/use-create-layout";
 import { toast } from "sonner";
-import { Menu } from "@/components/menu";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { HeaderBar } from "@/components/header-bar";
 import { LogoLoader } from "@/components/logo-loader";
@@ -41,7 +40,6 @@ const CreateLayout = () => {
     const [layoutLink, setLayoutLink] = useState<string>("");
     const { mutate: generateUploadUrl, isPending: isUploading } = useGenerateUploadUrl();
     const { mutate: createLayout, isPending: isPendingCreatingLayout } = useCreateLayout();
-
     const { data: memberRole, isLoading: isLoadingMemberRole } = useGetMemberRole();
 
     const handleDrop = useCallback(async (files: any) => {

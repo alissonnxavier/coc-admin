@@ -25,6 +25,14 @@ const schema = defineSchema({
         layoutType: v.optional(v.string()),
         image: v.id("_storage"),
     }),
+    favoriteLayouts: defineTable({
+        userId: v.id("users"),
+        layoutId: v.string(),
+        layoutLink: v.string(),
+        layoutCv: v.string(),
+        layoutType: v.optional(v.string()),
+        image: v.id("_storage"),
+    }),
     army: defineTable({
         userId: v.id("users"),
         data: v.record(v.string(), v.any())

@@ -20,26 +20,23 @@ import { usePaginatedQuery } from "convex/react"
 import { cn } from '@/lib/utils';
 import { HeaderBar } from '@/components/header-bar';
 import { LogoLoader } from '@/components/logo-loader';
-import { useCreateFavoriteLayouts } from '@/app/features/favoriteLayouts/api/use-create-favorite-layouts';
 import { Id } from '@/convex/_generated/dataModel';
 import { toast } from 'sonner';
 import { useGeAllFavoritetLayouts } from '@/app/features/favoriteLayouts/api/use-get-favorite-layouts';
 import { useRemoveFavoriteLayout } from '@/app/features/favoriteLayouts/api/use-remove-favorite-layout';
-import { useCurrentUser } from '@/app/features/auth/api/use-current-user';
 
-const LayoutList = () => {
+const FavoriteLayoutList = () => {
     const BATCH_SIZE = 10;
 
     const handleModalExpandImage = useModalExpandImage();
     const [layoutLevel, setLayoutLevel] = useState<string>("17");
     const [layoutType, setLayoutType] = useState<string>("farm");
-    const { mutate: createFavoriteLayout, isPending, isSuccess, isError, error } = useCreateFavoriteLayouts();
     const dataIds = useGeAllFavoritetLayouts();
     const { mutate: removeFavoriteLayout } = useRemoveFavoriteLayout();
-    const { data } = useCurrentUser();
+    
 
     const { results, status, loadMore } = usePaginatedQuery(
-        api.layout.get as any,
+        api.favoriteLayouts.get as any,
         { layoutCv: layoutLevel, layoutType: layoutType },
         { initialNumItems: BATCH_SIZE }
     );
@@ -68,7 +65,7 @@ const LayoutList = () => {
         }
     };
 
-    const favoriteLayout = (layoutId: Id<"layout">, layoutLink: string, layoutCv: string, layoutType: string, image: Id<"_storage">) => {
+    const favoriteLayout = (layoutId: Id<"layout">) => {
         if (starColor(layoutId)) {
             removeFavoriteLayout({
                 id: layoutId
@@ -81,24 +78,7 @@ const LayoutList = () => {
                         toast.error("Erro ao remover layout dos favoritos");
                     },
                 })
-        } else {
-            createFavoriteLayout({
-                layoutId,
-                layoutLink,
-                layoutCv,
-                layoutType,
-                image,
-            },
-                {
-                    onSuccess: () => {
-                        toast.success("Layout adicionado aos favoritos");
-                    },
-                    onError: (error) => {
-                        toast.error("Erro ao adicionar layout aos favoritos");
-                    },
-                }
-            );
-        }
+        } 
     };
 
     return (
@@ -130,34 +110,28 @@ const LayoutList = () => {
                         <div className='shine-border-green p-0.5 rounded-lg'>
                             <Card className='w-44 p-0  '>
                                 <CardContent className='p-0'>
-                                    {data &&
-                                        <div className='flex justify-center items-center relative'>
-                                            <div
-                                                className={cn('border border-slate-300 absolute top-2 right-2 rounded-full p-1 gradient-background-yellow-star',
-                                                    starColor(layout._id) && 'shine-border-green '
+                                    <div className='flex justify-center items-center relative'>
+                                        <div
+                                            className={cn('border border-slate-300 absolute top-2 right-2 rounded-full p-1 gradient-background-yellow-star',
+                                                starColor(layout.layoutId) && 'shine-border-green '
+                                            )}
+                                            onClick={() => {
+                                                favoriteLayout(
+                                                    layout.layoutId,
+                                                                                                    );
+                                            }}
+                                        >
+                                            <Image
+                                                src={starColor(layout.layoutId) ? "/star.png" : "/black-star.png"}
+                                                alt={'star'}
+                                                width={25}
+                                                height={25}
+                                                className={cn(' text-white top-2 left-2 ',
+                                                    starColor(layout.layoutId) && 'animate-bounce'
                                                 )}
-                                                onClick={() => {
-                                                    favoriteLayout(
-                                                        layout._id,
-                                                        layout.layoutLink,
-                                                        layout.layoutCv,
-                                                        layout.layoutType,
-                                                        layout.imageId
-                                                    );
-                                                }}
-                                            >
-                                                <Image
-                                                    src={starColor(layout._id) ? "/star.png" : "/black-star.png"}
-                                                    alt={'star'}
-                                                    width={25}
-                                                    height={25}
-                                                    className={cn(' text-white top-2 left-2 ',
-                                                        starColor(layout._id) && 'animate-bounce'
-                                                    )}
-                                                />
-                                            </div>
+                                            />
                                         </div>
-                                    }
+                                    </div>
                                     <div
                                         onClick={() => { handleModalExpandImage.onOpen(layout.image) }}
                                         className=''>
@@ -231,4 +205,4 @@ const LayoutList = () => {
     )
 }
 
-export default LayoutList;
+export default FavoriteLayoutList;

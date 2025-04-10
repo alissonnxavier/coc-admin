@@ -77,7 +77,8 @@ export const get = query({
                             image,
                             layoutCv: layout.layoutCv,
                             layoutLink: layout.layoutLink,
-                            layoutType: layout.layoutType
+                            layoutType: layout.layoutType,
+                            imageId: layout.image,
                         }
                     })
                 )

@@ -16,6 +16,7 @@ import type {
 import type * as army from "../army.js";
 import type * as auth from "../auth.js";
 import type * as clandata from "../clandata.js";
+import type * as favoriteLayouts from "../favoriteLayouts.js";
 import type * as http from "../http.js";
 import type * as layout from "../layout.js";
 import type * as memberRole from "../memberRole.js";
@@ -36,6 +37,7 @@ declare const fullApi: ApiFromModules<{
   army: typeof army;
   auth: typeof auth;
   clandata: typeof clandata;
+  favoriteLayouts: typeof favoriteLayouts;
   http: typeof http;
   layout: typeof layout;
   memberRole: typeof memberRole;

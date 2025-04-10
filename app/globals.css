@@ -209,6 +209,42 @@ body {
   } */
 }
 
+.gradient-background-yellow-star {
+  background: linear-gradient(300deg,#ffffff,#bdbe49,#92920e,#464607,#575702);
+  background-size: 360% 360%;
+  animation: gradient-animation 36s ease infinite;
+}
+
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.gradient-background-black-star {
+  background: linear-gradient(300deg,#ffffff,#464607,#21211a,#272717,#27270d,#d4d479,#adad2a);
+  background-size: 420% 420%;
+  animation: gradient-animation 42s ease infinite;
+}
+
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
 .shine-border-gold:hover {
   animation: gradient 2s linear infinite;
   background: linear-gradient(3333330deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82, #6fba82);
