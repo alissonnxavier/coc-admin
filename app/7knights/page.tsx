@@ -7,17 +7,19 @@ import React, { useState } from 'react';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { DragDropContext, Draggable, Droppable } from '@hello-pangea/dnd';
 import { useGetMemberRole } from '../features/memberRole/api/use-get-member-role';
-import { toast } from 'sonner';
 import { useGetSecondaryClanData } from '../features/secondaryClanData/api/use-get-secondary-clan-data';
 import { useUpadateSecondaryClanData } from '../features/secondaryClanData/api/use-update-secondary-clan-data';
 import { HeaderBar } from '@/components/header-bar';
 import { LogoLoader } from '@/components/logo-loader';
+import { ToastAction } from '@/components/ui/toast';
+import { useToast } from '@/hooks/use-toast';
 
 
 const Page = () => {
     const { data: clanData, isLoading: isLoadingClanData } = useGetSecondaryClanData();
     const { mutate: updateClanData } = useUpadateSecondaryClanData();
     const [count, setCount] = useState<number>(0);
+    const {toast} = useToast();
 
     
     const { data: memberRole, isLoading: isLoadingMemberRole } = useGetMemberRole();
@@ -41,8 +43,22 @@ const Page = () => {
             },
                 {
                     onSuccess: () => {
-                        toast.success("Membro alterado!");
-
+                        toast({
+                            variant: "success",
+                            title: "Certo!.",
+                            description: "Membro alterado.",
+                            action: <ToastAction
+                                altText="Fechar"
+                                className='bg-green-500 border-green-500'>Fechar</ToastAction>,
+                        })
+                    },
+                    onError: () => {
+                        toast({
+                            variant: "destructive",
+                            title: "Oops!.",
+                            description: "Tivemos um problema.",
+                            action: <ToastAction altText="Fechar">Fechar</ToastAction>,
+                        })
                     },
                 }
             );

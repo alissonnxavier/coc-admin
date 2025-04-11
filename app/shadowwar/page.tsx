@@ -9,16 +9,18 @@ import { DragDropContext, Draggable, Droppable } from '@hello-pangea/dnd';
 import { useGetClanData } from '../features/clanData/api/use-get-clan-data';
 import { useUpadateClanData } from '../features/clanData/api/use-update-clan-data';
 import { useGetMemberRole } from "@/app/features/memberRole/api/use-get-member-role";
-import { toast } from 'sonner';
 import { HeaderBar } from '@/components/header-bar';
 import { LogoLoader } from '@/components/logo-loader';
+import { ToastAction } from '@/components/ui/toast';
+import { useToast } from '@/hooks/use-toast';
 
 
 const Page = () => {
 
     const { data: clanData, isLoading: isLoadingClanData } = useGetClanData();
-    const { mutate: updateClanData  } = useUpadateClanData();
+    const { mutate: updateClanData } = useUpadateClanData();
     const [count, setCount] = useState<number>(0);
+    const { toast } = useToast();
 
     const { data: memberRole, isLoading: isLoadingMemberRole } = useGetMemberRole();
     let lenght = 0;
@@ -38,8 +40,23 @@ const Page = () => {
         },
             {
                 onSuccess: () => {
-                    toast.success("Membro alterado!")
-                }
+                    toast({
+                        variant: "success",
+                        title: "Certo!.",
+                        description: "Membro alterado.",
+                        action: <ToastAction
+                            altText="Fechar"
+                            className='bg-green-500 border-green-500'>Fechar</ToastAction>,
+                    })
+                },
+                onError: () => {
+                    toast({
+                        variant: "destructive",
+                        title: "Oops!.",
+                        description: "Tivemos um problema.",
+                        action: <ToastAction altText="Fechar">Fechar</ToastAction>,
+                    })
+                },
             }
         );
     };

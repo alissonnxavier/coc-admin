@@ -21,9 +21,10 @@ import { cn } from '@/lib/utils';
 import { HeaderBar } from '@/components/header-bar';
 import { LogoLoader } from '@/components/logo-loader';
 import { Id } from '@/convex/_generated/dataModel';
-import { toast } from 'sonner';
 import { useGeAllFavoritetLayouts } from '@/app/features/favoriteLayouts/api/use-get-favorite-layouts';
 import { useRemoveFavoriteLayout } from '@/app/features/favoriteLayouts/api/use-remove-favorite-layout';
+import { ToastAction } from '@/components/ui/toast';
+import { useToast } from '@/hooks/use-toast';
 
 const FavoriteLayoutList = () => {
     const BATCH_SIZE = 10;
@@ -33,7 +34,7 @@ const FavoriteLayoutList = () => {
     const [layoutType, setLayoutType] = useState<string>("farm");
     const dataIds = useGeAllFavoritetLayouts();
     const { mutate: removeFavoriteLayout } = useRemoveFavoriteLayout();
-    
+    const { toast }= useToast();
 
     const { results, status, loadMore } = usePaginatedQuery(
         api.favoriteLayouts.get as any,
@@ -72,13 +73,25 @@ const FavoriteLayoutList = () => {
             },
                 {
                     onSuccess: () => {
-                        toast.success("Layout removido dos favoritos");
+                        toast({
+                            variant: "success",
+                            title: "Certo!.",
+                            description: "Layout removido dos favoritos.",
+                            action: <ToastAction
+                                altText="Fechar"
+                                className='bg-green-500 border-green-500'>Fechar</ToastAction>,
+                        })
                     },
                     onError: (error) => {
-                        toast.error("Erro ao remover layout dos favoritos");
+                        toast({
+                            variant: "destructive",
+                            title: "Oops!.",
+                            description: "Tivemos um problema.",
+                            action: <ToastAction altText="Fechar">Fechar</ToastAction>,
+                        })
                     },
                 })
-        } 
+        }
     };
 
     return (
@@ -118,7 +131,7 @@ const FavoriteLayoutList = () => {
                                             onClick={() => {
                                                 favoriteLayout(
                                                     layout.layoutId,
-                                                                                                    );
+                                                );
                                             }}
                                         >
                                             <Image

@@ -6,10 +6,10 @@ import { ConvexAuthNextjsServerProvider } from "@convex-dev/auth/nextjs/server";
 import { ConvexClientProvider } from "@/components/ui/convex-client-provider";
 import { siteConfig } from "@/config/site";
 import { ThemeProvider } from "@/components/theme-provider";
-import { Toaster } from "@/components/ui/sonner";
 import ModalExpandImage from "@/components/modal/modal-expand-image";
 import { SidebarProvider } from "@/components/ui/sidebar"
 import { AppSidebar } from "@/components/app-sidebar";
+import { Toaster } from "@/components/ui/toaster"
 
 
 const geistSans = localFont({

@@ -11,7 +11,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
 import { useModalExpandImage } from '@/hooks/use-expand-image-modal';
-import { LoaderIcon } from 'lucide-react';
+import { LoaderIcon, Plus } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { useState } from 'react';
@@ -22,10 +22,12 @@ import { HeaderBar } from '@/components/header-bar';
 import { LogoLoader } from '@/components/logo-loader';
 import { useCreateFavoriteLayouts } from '@/app/features/favoriteLayouts/api/use-create-favorite-layouts';
 import { Id } from '@/convex/_generated/dataModel';
-import { toast } from 'sonner';
 import { useGeAllFavoritetLayouts } from '@/app/features/favoriteLayouts/api/use-get-favorite-layouts';
 import { useRemoveFavoriteLayout } from '@/app/features/favoriteLayouts/api/use-remove-favorite-layout';
 import { useCurrentUser } from '@/app/features/auth/api/use-current-user';
+import { useToast } from '@/hooks/use-toast';
+import { ToastAction } from '@/components/ui/toast';
+
 
 const LayoutList = () => {
     const BATCH_SIZE = 10;
@@ -37,6 +39,8 @@ const LayoutList = () => {
     const dataIds = useGeAllFavoritetLayouts();
     const { mutate: removeFavoriteLayout } = useRemoveFavoriteLayout();
     const { data } = useCurrentUser();
+    const { toast } = useToast();
+
 
     const { results, status, loadMore } = usePaginatedQuery(
         api.layout.get as any,
@@ -75,10 +79,22 @@ const LayoutList = () => {
             },
                 {
                     onSuccess: () => {
-                        toast.success("Layout removido dos favoritos");
+                        toast({
+                            variant: "success",
+                            title: "Certo!.",
+                            description: "Layout removido dos favoritos.",
+                            action: <ToastAction
+                                altText="Fechar"
+                                className='bg-green-500 border-green-500'>Fechar</ToastAction>,
+                        })
                     },
                     onError: (error) => {
-                        toast.error("Erro ao remover layout dos favoritos");
+                        toast({
+                            variant: "destructive",
+                            title: "Oops!.",
+                            description: "Tivemos um problema.",
+                            action: <ToastAction altText="Fechar">Fechar</ToastAction>,
+                        })
                     },
                 })
         } else {
@@ -91,10 +107,22 @@ const LayoutList = () => {
             },
                 {
                     onSuccess: () => {
-                        toast.success("Layout adicionado aos favoritos");
+                        toast({
+                            variant: "success",
+                            title: `Certo!`,
+                            description: "Layout adicionado dos favoritos.",
+                            action: <ToastAction
+                                altText="Fechar"
+                                className='bg-green-500 border-green-500'>Fechar</ToastAction>,
+                        })
                     },
                     onError: (error) => {
-                        toast.error("Erro ao adicionar layout aos favoritos");
+                        toast({
+                            variant: "destructive",
+                            title: "Oops!.",
+                            description: "Tivemos um problema.",
+                            action: <ToastAction altText="Fechar">Fechar</ToastAction>,
+                        })
                     },
                 }
             );

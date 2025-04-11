@@ -17,7 +17,6 @@ import { MenuItem } from "./menu-item";
 import { useCurrentUser } from "@/app/features/auth/api/use-current-user";
 
 
-
 export const SidebarNavigationMenuItem = () => {
 
     const { data: memberRole } = useGetMemberRole();
@@ -51,16 +50,6 @@ export const SidebarNavigationMenuItem = () => {
                             image="/layout.png"
                         />
                     </Link>
-                    <Link
-                        href='/army/list'
-                        onClick={() => { toggleSidebar() }}
-                    >
-                        <MenuItem
-                            title="Variaçoẽs"
-                            description="Decks das melhores variaçoẽs de ataque"
-                            image="/cards.png"
-                        />
-                    </Link>
                     {data &&
                         <Link
                             href='/layout/favorites'
@@ -73,7 +62,16 @@ export const SidebarNavigationMenuItem = () => {
                             />
                         </Link>
                     }
-
+                    <Link
+                        href='/army/list'
+                        onClick={() => { toggleSidebar() }}
+                    >
+                        <MenuItem
+                            title="Variaçoẽs"
+                            description="Decks das melhores variaçoẽs de ataque"
+                            image="/cards.png"
+                        />
+                    </Link>
                     <Link href='https://store.supercell.com/clashofclans'>
                         <MenuItem
                             title="Loja clash of clan"
