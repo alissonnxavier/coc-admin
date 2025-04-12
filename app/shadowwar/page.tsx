@@ -106,9 +106,12 @@ const Page = () => {
                                                             {...provided.draggableProps}
                                                             {...provided.dragHandleProps}
                                                             key={index}
-                                                            className='w-28'>
-                                                            <Alert variant="destructive" className="bg-green-700 border-lime-200">
-                                                                <AlertTitle className="flex justify-between">
+                                                            className='w-28 flex '>
+                                                            <Alert
+                                                                variant="default"
+                                                                className="bg-green-700 border-lime-200 p-1"
+                                                            >
+                                                                <AlertTitle className="h-6">
                                                                     <div className="text-white font-bold">
                                                                         {member.name}
                                                                     </div>
@@ -117,9 +120,6 @@ const Page = () => {
                                                                     <div className="flex items-center justify-between">
                                                                         <div className="text-muted-foreground text-xs text-white">
                                                                             cv: {member.townHallLevel}
-                                                                        </div>
-                                                                        <div>
-
                                                                         </div>
                                                                     </div>
                                                                 </AlertDescription>
@@ -162,7 +162,7 @@ const Page = () => {
                                                             key={index}
                                                             className='w-28'>
                                                             <Alert variant="destructive" className="bg-black">
-                                                                <AlertTitle className="flex justify-between">
+                                                                <AlertTitle className="flex justify-between h-6">
                                                                     <div className="text-white font-bold">
                                                                         {member.name}
                                                                     </div>
