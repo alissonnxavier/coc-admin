@@ -9,8 +9,11 @@ import { ThemeProvider } from "@/components/theme-provider";
 import ModalExpandImage from "@/components/modal/modal-expand-image";
 import { SidebarProvider } from "@/components/ui/sidebar"
 import { AppSidebar } from "@/components/app-sidebar";
-import { Toaster } from "@/components/ui/toaster"
+import { Toaster } from "@/components/ui/toaster";
+import {Play} from "next/font/google";
 
+
+const play = Play({subsets: ['latin'], weight: ['400', '700']});
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -47,7 +50,7 @@ export default function RootLayout({
     <ConvexAuthNextjsServerProvider>
       <html lang="en">
         <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+          className={`${play.className} ${geistSans.variable} ${geistMono.variable} bg-background font-sans antialiased text-foreground transition-colors dark:bg-background-dark dark:text-foreground-dark`}
         >
           <ConvexClientProvider>
             <ThemeProvider
