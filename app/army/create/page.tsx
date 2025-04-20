@@ -11,6 +11,7 @@ import { LogoLoader } from "@/components/logo-loader";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Separator } from "@/components/ui/separator";
 import { army } from "@/utils/army-data";
 import { Trash2 } from "lucide-react";
 import Image from "next/image";
@@ -68,7 +69,7 @@ const CreateArmy = () => {
                 {army.army.troops.map((trop, index) => (
                     <div key={index}>
                         <Image
-                            className={`h-16 w-16 rounded-lg shadow-xl shadow-${trop.color}-400`}
+                            className={`h-16 w-16 rounded-lg`}
                             width={60}
                             height={60}
                             alt={trop.name}
@@ -77,7 +78,6 @@ const CreateArmy = () => {
                         <Input
                             onChange={(e) => {
                                 newArmy.army.troops[index].amount = parseInt(e.target.value)
-                                console.log(newArmy)
                             }}
                             className="w-16"
                             type="number"
@@ -87,7 +87,7 @@ const CreateArmy = () => {
                 {army.army.spells.map((spel, index) => (
                     <div key={index}>
                         <Image
-                            className={`h-16 w-16 rounded-lg shadow-xl shadow-${spel.color}-400`}
+                            className={`h-16 w-16 rounded-lg`}
                             width={60}
                             height={60}
                             alt={spel.name}
@@ -96,15 +96,156 @@ const CreateArmy = () => {
                         <Input
                             onChange={(e) => {
                                 newArmy.army.spells[index].amount = parseInt(e.target.value)
-                                console.log(newArmy)
                             }}
                             className="w-16"
                             type="number"
                         />
                     </div>
                 ))}
+                {army.army.machines.map((machine, index) => (
+                    <div key={index}>
+                        <Image
+                            className={`h-16 w-16 rounded-lg`}
+                            width={60}
+                            height={60}
+                            alt={machine.name}
+                            src={`/machines/${machine.name}.png`}
+                        />
+                        <Input
+                            onChange={(e) => {
+                                newArmy.army.machines[index].amount = parseInt(e.target.value)
+                            }}
+                            className="w-16"
+                            type="number"
+                        />
+                    </div>
+                ))}
+                <Separator />
+                <div className="flex flex-row flex-wrap items-center justify-center">
+                    {army.army.hero.map((hero, index) => (
+                        <div key={index}>
+                            <div className="flex justify-center items-center h-72 mt-2">
+                                <Image
+                                    className={`rounded-lg`}
+                                    width={200}
+                                    height={100}
+                                    alt={hero.name}
+                                    src={`/hero/${hero.name}.png`}
+                                />
+                                <div className="flex items-center justify-center">
+                                    <Input
+                                        onChange={(e) => {
+                                            newArmy.army.hero[index].amount = parseInt(e.target.value)
+                                        }}
+                                        className="w-16"
+                                        type="number"
+                                    />
+                                </div>
+                            </div>
+                            <Separator />
+                            <div className="flex h-80">
+                                <div>
+                                    {hero.equipaments.map((equipament, equipamentIndex) => (
+                                        <div key={index} className="flex items-center justify-center">
+                                            <Image
+                                                className={`rounded-lg`}
+                                                width={50}
+                                                height={50}
+                                                alt={typeof equipament === "string" ? equipament : equipament.name}
+                                                src={`/equipaments/${typeof equipament === "string" ? equipament : equipament.name}.png`}
+                                            />
+                                            <Input
+                                                onChange={(e) => {
+                                                    newArmy.army.hero[index].equipaments[equipamentIndex].amount = parseInt(e.target.value)
+                                                }}
+                                                className="w-16"
+                                                type="number"
+                                            />
+                                        </div>
+                                    ))}
+                                </div>
+                                <div>
+                                    {hero.pets.map((pet, equipamentIndex) => (
+                                        <div key={index} className="flex items-center justify-center">
+                                            <Image
+                                                className={`rounded-lg`}
+                                                width={50}
+                                                height={50}
+                                                alt={typeof pet === "string" ? pet : pet.name}
+                                                src={`/pets/${typeof pet === "string" ? pet : pet.name}.png`}
+                                            />
+                                            <Input
+                                                onChange={(e) => {
+                                                    newArmy.army.hero[index].pets[equipamentIndex].amount = parseInt(e.target.value)
+                                                }}
+                                                className="w-16"
+                                                type="number"
+                                            />
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+                <Separator className="mt-72" />
+                {army.army.castleTroops.map((trop, index) => (
+                    <div key={index}>
+                        <Image
+                            className={`h-16 w-16 rounded-lg`}
+                            width={60}
+                            height={60}
+                            alt={trop.name}
+                            src={`/army/${trop.name}.png`}
+                        />
+                        <Input
+                            onChange={(e) => {
+                                newArmy.army.castleTroops[index].amount = parseInt(e.target.value)
+                            }}
+                            className="w-16"
+                            type="number"
+                        />
+                    </div>
+                ))}
+                {army.army.castleSpells.map((spel, index) => (
+                    <div key={index}>
+                        <Image
+                            className={`h-16 w-16 rounded-lg`}
+                            width={60}
+                            height={60}
+                            alt={spel.name}
+                            src={`/army/${spel.name}.png`}
+                        />
+                        <Input
+                            onChange={(e) => {
+                                newArmy.army.castleSpells[index].amount = parseInt(e.target.value)
+                            }}
+                            className="w-16"
+                            type="number"
+                        />
+                    </div>
+                ))}
+                {army.army.castleMachines.map((machine, index) => (
+                    <div key={index}>
+                        <Image
+                            className={`h-16 w-16 rounded-lg`}
+                            width={60}
+                            height={60}
+                            alt={machine.name}
+                            src={`/machines/${machine.name}.png`}
+                        />
+                        <Input
+                            onChange={(e) => {
+                                newArmy.army.castleMachines[index].amount = parseInt(e.target.value)
+                            }}
+                            className="w-16"
+                            type="number"
+                        />
+                    </div>
+                ))}
+                <Separator />
             </div>
-            <div className="flex items-center justify-center flex-col mt-10">
+            <div className="flex flex-col items-center justify-center mt-10">
                 <Label>
                     Name
                 </Label>
