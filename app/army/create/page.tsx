@@ -121,17 +121,19 @@ const CreateArmy = () => {
                     </div>
                 ))}
                 <Separator />
-                <div className="flex flex-row flex-wrap items-center justify-center">
+                <div className="flex flex-row flex-wrap items-center justify-center ">
                     {army.army.hero.map((hero, index) => (
-                        <div key={index}>
-                            <div className="flex justify-center items-center h-72 mt-2">
-                                <Image
-                                    className={`rounded-lg`}
-                                    width={200}
-                                    height={100}
-                                    alt={hero.name}
-                                    src={`/hero/${hero.name}.png`}
-                                />
+                        <div key={index} className="border mt-2">
+                            <div className="flex justify-center items-center h-40">
+                                <div className="flex justify-center items-center h-14 w-14">
+                                    <Image
+                                        className={`rounded-lg`}
+                                        width={200}
+                                        height={200}
+                                        alt={hero.name}
+                                        src={`/hero/${hero.name}.png`}
+                                    />
+                                </div>
                                 <div className="flex items-center justify-center">
                                     <Input
                                         onChange={(e) => {
@@ -143,7 +145,7 @@ const CreateArmy = () => {
                                 </div>
                             </div>
                             <Separator />
-                            <div className="flex h-80">
+                            <div className="flex w-72 m-auto justify-center gap-2">
                                 <div>
                                     {hero.equipaments.map((equipament, equipamentIndex) => (
                                         <div key={index} className="flex items-center justify-center">
@@ -188,7 +190,7 @@ const CreateArmy = () => {
                         </div>
                     ))}
                 </div>
-                <Separator className="mt-72" />
+                <Separator className="" />
                 {army.army.castleTroops.map((trop, index) => (
                     <div key={index}>
                         <Image

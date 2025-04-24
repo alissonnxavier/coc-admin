@@ -128,7 +128,7 @@ export const SidebarNavigationMenuItem = () => {
                             </Link>
                             {
                                 //@ts-ignore
-                                memberRole._id === "k57awxemhpkd2446k8hz579px573mtvg" && memberRole?.role === "admin" && (
+                                memberRole._id === "k973teb2g9zj9qv8vvd02r3zk175w247" && memberRole?.role === "admin" && (
                                     <Link
                                         href='/clandata'
                                         onClick={() => { toggleSidebar() }}
@@ -144,7 +144,7 @@ export const SidebarNavigationMenuItem = () => {
                                 //dev k973teb2g9zj9qv8vvd02r3zk175w247
                                 //prod k57awxemhpkd2446k8hz579px573mtvg
                                 //@ts-ignore
-                                memberRole._id === "k57awxemhpkd2446k8hz579px573mtvg" && memberRole?.role === "admin" && (
+                                memberRole._id === "k973teb2g9zj9qv8vvd02r3zk175w247" && memberRole?.role === "admin" && (
                                     <Link
                                         href='/army/create'
                                         onClick={() => { toggleSidebar() }}

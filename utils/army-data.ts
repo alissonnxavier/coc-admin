@@ -368,6 +368,7 @@ export const army = {
                     { "name": "Icon_HV_Hero_Pets_Sneezy", "amount": 0 },
                     { "name": "Icon_HV_Hero_Pets_Spirit_Fox", "amount": 0 },
                     { "name": "Icon_HV_Hero_Pets_Unicorn", "amount": 0 },
+                    { "name": "Hero_Pet_HV_Angry_Jelly_02", "amount": 0 },
                 ],
             },
             {
@@ -392,6 +393,7 @@ export const army = {
                     { "name": "Icon_HV_Hero_Pets_Sneezy", "amount": 0 },
                     { "name": "Icon_HV_Hero_Pets_Spirit_Fox", "amount": 0 },
                     { "name": "Icon_HV_Hero_Pets_Unicorn", "amount": 0 },
+                    { "name": "Hero_Pet_HV_Angry_Jelly_02", "amount": 0 },
                 ],
             },
             {
@@ -417,6 +419,7 @@ export const army = {
                     { "name": "Icon_HV_Hero_Pets_Sneezy", "amount": 0 },
                     { "name": "Icon_HV_Hero_Pets_Spirit_Fox", "amount": 0 },
                     { "name": "Icon_HV_Hero_Pets_Unicorn", "amount": 0 },
+                    { "name": "Hero_Pet_HV_Angry_Jelly_02", "amount": 0 },
                 ],
             },
             {
@@ -443,6 +446,7 @@ export const army = {
                     { "name": "Icon_HV_Hero_Pets_Sneezy", "amount": 0 },
                     { "name": "Icon_HV_Hero_Pets_Spirit_Fox", "amount": 0 },
                     { "name": "Icon_HV_Hero_Pets_Unicorn", "amount": 0 },
+                    { "name": "Hero_Pet_HV_Angry_Jelly_02", "amount": 0 },
                 ],
             },
             {
@@ -466,6 +470,7 @@ export const army = {
                     { "name": "Icon_HV_Hero_Pets_Sneezy", "amount": 0 },
                     { "name": "Icon_HV_Hero_Pets_Spirit_Fox", "amount": 0 },
                     { "name": "Icon_HV_Hero_Pets_Unicorn", "amount": 0 },
+                    { "name": "Hero_Pet_HV_Angry_Jelly_02", "amount": 0 },
                 ],
             },
         ],
