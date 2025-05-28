@@ -121,28 +121,22 @@ body {
   }
 }
 
-.shine-border {
-  animation: gradient 3s linear infinite;
-  background: linear-gradient(3333330deg, #090b8f, #0e2dd8, #2f3a6b, #a166ab, #5073b8, #462e9b, #2d2953);
-  background-size: 50%;
-  left: 0;
-  top: 0;
+.shine-border{
+  background: linear-gradient(300deg,deepskyblue,darkviolet,blue,#71c5ec,#315bce,#ce315a);
+  background-size: 360% 360%;
+  animation: gradient-animation 36s ease infinite;
 }
 
-;
-
-@keyframes gradient {
+@keyframes gradient-animation {
   0% {
-    background-position: 100%;
+    background-position: 0% 50%;
   }
-
-  /* 50% {
-      background-position: 100% 50%;
+  50% {
+    background-position: 100% 50%;
   }
-
   100% {
-      background-position: 0% 50%;
-  } */
+    background-position: 0% 50%;
+  }
 }
 
 .card-header {
