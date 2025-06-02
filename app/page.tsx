@@ -29,8 +29,8 @@ export default function Home() {
       <div className="">
         <HeaderBar />
       </div>
-      <div className="flex justify-around items-center flex-wrap md:flex-nowrap xl:flex-nowrap xl:w-4/6 xl:m-auto w-80 m-auto">
-        <div className="flex xl:w-full md:w-1/5 sm:w-4/5 justify-around ">
+      <div className="flex justify-around items-center flex-wrap md:flex-nowrap xl:flex-nowrap xl:w-4/6 md:w-4/6 xl:m-auto w-80 m-auto">
+        <div className="flex xl:w-full md:w-full sm:w-4/5 justify-around ">
           <div
             onClick={() => { setStreamClan("shadow") }}
             className="">
