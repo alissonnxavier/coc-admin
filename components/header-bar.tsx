@@ -26,7 +26,7 @@ export const HeaderBar = () => {
                             {!open ? <PanelLeftOpen /> : <PanelRightOpen />}
                         </Button>
                     </div>
-                    <div className='w-full'>
+                    <div className='flex justify-center w-full'>
                         {path != "/auth" ?
                             <div className=''>
                                 <UserButton />
