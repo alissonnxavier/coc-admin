@@ -16,7 +16,7 @@ export const HeaderBar = () => {
         <>
             <div className=' p-4 h-[7rem]'>
                 <div className="flex items-center justify-around my-auto w-full">
-                    <div className='w-full flex xl:justify-center ml-5 md:justify-end md:mr-36'>
+                    <div className='w-full flex justify-center xl:mr-5 xl:justify-center md:justify-end md:mr-36'>
                          <Button
                             variant='ghost'
                             size='icon'
