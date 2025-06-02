@@ -121,8 +121,8 @@ body {
   }
 }
 
-.shine-border{
-  background: linear-gradient(300deg,deepskyblue,darkviolet,blue,#71c5ec,#315bce,#ce315a);
+.shine-border {
+  background: linear-gradient(300deg, deepskyblue, darkviolet, blue, #71c5ec, #315bce, #ce315a);
   background-size: 360% 360%;
   animation: gradient-animation 36s ease infinite;
 }
@@ -131,9 +131,11 @@ body {
   0% {
     background-position: 0% 50%;
   }
+
   50% {
     background-position: 100% 50%;
   }
+
   100% {
     background-position: 0% 50%;
   }
@@ -184,25 +186,23 @@ body {
 }
 
 .shine-border-gold {
-  animation: gradient 3s linear infinite;
-  background: linear-gradient(3333330deg, #ecd030, #d4be3d, #a59e42, #d89709, #b8a050, #b8730c, #d86405);
-  background-size: 50%;
-  left: 0;
-  top: 0;
+  background: linear-gradient(300deg, #4c4a08, #5f5c04, #94900d, #b3af1e, #d8d548, #dfdc72, #ebe990);
+  background-size: 420% 420%;
+  animation: gradient-animation 42s ease infinite;
 }
 
-@keyframes gradient {
+@keyframes gradient-animation {
   0% {
-    background-position: 100%;
+    background-position: 0% 50%;
   }
 
-  /* 50% {
-      background-position: 100% 50%;
+  50% {
+    background-position: 100% 50%;
   }
 
   100% {
-      background-position: 0% 50%;
-  } */
+    background-position: 0% 50%;
+  }
 }
 
 .gradient-background-trop-card {
