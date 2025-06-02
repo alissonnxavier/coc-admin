@@ -22,7 +22,7 @@ export default function Home() {
     return (
       <LogoLoader />
     )
-  }
+  };
 
   return (
     <div>

@@ -15,31 +15,35 @@ export const HeaderBar = () => {
     return (
         <>
             <div className=' p-4 h-[7rem]'>
-                <div className="flex items-center justify-around my-auto">
-                    <Button
-                        variant='ghost'
-                        size='icon'
-                        onClick={() => { toggleSidebar() }}
-                        className='transition-all'
-                    >
-                        {!open ? <PanelLeftOpen /> : <PanelRightOpen />}
-                    </Button>
-                    {path != "/auth" ?
-                        <div className=''>
-                            <UserButton />
-                        </div>
-                        :
-                        <div className='pr-10 w-[70px]'>
-                            <Link href='/'>
-                                <Button
-                                    size='icon'
-                                    variant='ghost'
-                                >
-                                    <SkipBack />
-                                </Button>
-                            </Link>
-                        </div>
-                    }
+                <div className="flex items-center justify-around my-auto w-full">
+                    <div className='w-full flex xl:justify-center ml-5 md:justify-end md:mr-36'>
+                         <Button
+                            variant='ghost'
+                            size='icon'
+                            onClick={() => { toggleSidebar() }}
+                            className='transition-all'
+                        >
+                            {!open ? <PanelLeftOpen /> : <PanelRightOpen />}
+                        </Button>
+                    </div>
+                    <div className='w-full'>
+                        {path != "/auth" ?
+                            <div className=''>
+                                <UserButton />
+                            </div>
+                            :
+                            <div className='pr-10 w-[70px]'>
+                                <Link href='/'>
+                                    <Button
+                                        size='icon'
+                                        variant='ghost'
+                                    >
+                                        <SkipBack />
+                                    </Button>
+                                </Link>
+                            </div>
+                        }
+                    </div>
                 </div>
             </div>
         </>
