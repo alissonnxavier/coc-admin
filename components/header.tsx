@@ -1,5 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
+import { ExternalLink } from 'lucide-react';
+import Link from 'next/link';
 import React from 'react';
 
 interface HeaderProps {
@@ -12,9 +14,11 @@ export const Header = ({ clanData }: HeaderProps) => {
             <div className="text-3xl font-bold">
                 {clanData.data.clanData.name}
             </div>
-            <div className="text-muted-foreground text-xs">
-                {clanData.data.clanData.tag}
-            </div>
+            <Link href={`https://link.clashofclans.com/pt?action=OpenClanProfile&tag=${clanData.data.clanData.tag}`}>
+                <div className="flex justify-start items-center text-muted-foreground text-xs gap-x-2 text-sky-400">
+                    {clanData.data.clanData.tag} <ExternalLink size={12} />
+                </div>
+            </Link>
             <div className="text-muted-foreground text-xs">
                 {clanData.data.clanData.type}
             </div>
