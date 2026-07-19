@@ -31,7 +31,6 @@ const LayoutList = () => {
     const BATCH_SIZE = 10;
 
     const handleModalExpandImage = useModalExpandImage();
-    // Definido padrão inicial para o nível mais recente (18)
     const [layoutLevel, setLayoutLevel] = useState<string>("18");
     const [layoutType, setLayoutType] = useState<string>("farm");
     const { mutate: createFavoriteLayout } = useCreateFavoriteLayouts();
@@ -150,12 +149,13 @@ const LayoutList = () => {
 
             <Separator className='mb-5 w-5/6 mx-auto' />
 
-            {/* Grid dos layouts ajustado para ser mais fluido e responsivo */}
-            <div className='flex justify-center items-center flex-wrap gap-3 px-4'>
+            {/* Mudança aqui: de flex-wrap para um Grid de 2 colunas no mobile e comportamento original em telas maiores (sm:) */}
+            <div className='grid grid-cols-2 sm:flex sm:flex-wrap sm:justify-center gap-3 px-4 max-w-4xl mx-auto'>
                 {results?.map((layout: any, index: any) => (
-                    <div key={layout._id || index} className='flex-shrink-0'>
-                        <div className='shine-border-green p-0.5 rounded-lg'>
-                            <Card className='w-44 p-0 overflow-hidden flex flex-col bg-black border-zinc-800'>
+                    <div key={layout._id || index} className='w-full sm:w-44 sm:flex-shrink-0'>
+                        <div className='shine-border-green p-0.5 rounded-lg h-full'>
+                            {/* Removido o 'w-44' fixo do Card para ele herdar a largura da coluna no grid */}
+                            <Card className='w-full p-0 overflow-hidden flex flex-col bg-black border-zinc-800 h-full justify-between'>
                                 <CardContent className='p-0 relative'>
                                     {data && (
                                         <div className='absolute top-2 right-2 z-10'>
@@ -186,27 +186,26 @@ const LayoutList = () => {
                                     )}
                                     <div
                                         onClick={() => { handleModalExpandImage.onOpen(layout.image) }}
-                                        className='cursor-pointer overflow-hidden relative w-full h-[140px]'
+                                        className='cursor-pointer overflow-hidden relative w-full h-[120px] sm:h-[140px]'
                                     >
                                         <Image
                                             alt='layout'
                                             src={layout.image}
                                             fill
-                                            sizes="176px"
+                                            sizes="(max-width: 640px) 50vw, 176px"
                                             className='object-cover hover:scale-105 transition-transform duration-200 rounded-t-md'
                                             priority={index < 4}
                                         />
                                     </div>
                                 </CardContent>
-                                <CardFooter className='p-2 bg-zinc-950 flex flex-col gap-2'>
-                                    <div className='flex w-full items-center justify-between'>
-                                        <div className='flex items-center gap-1.5'>
+                                <CardFooter className='p-2 bg-zinc-950 flex flex-col gap-2 mt-auto'>
+                                    <div className='flex w-full items-center justify-between gap-1'>
+                                        <div className='flex items-center gap-1 flex-wrap min-w-0'>
                                             <LayoutLevel cv={layout.layoutCv} />
                                             <LayoutType type={layout.layoutType} />
                                         </div>
-                                        {/* Correção estrutural do Shadcn: usando asChild para evitar botões aninhados */}
                                         <Button
-                                            className='shine-border-green font-bold text-black px-2.5 h-7 text-xs'
+                                            className='shine-border-green font-bold text-black px-2 h-7 text-[11px] sm:text-xs flex-shrink-0'
                                             variant='ghost'
                                             size='sm'
                                             asChild
