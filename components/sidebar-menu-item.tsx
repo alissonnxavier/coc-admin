@@ -33,7 +33,7 @@ export const SidebarNavigationMenuItem = () => {
                     <Image
                         className="rounded-lg"
                         alt="logo"
-                        src='/barbaro.jpg'
+                        src='/barbaro.png'
                         width={30}
                         height={30}
                     />

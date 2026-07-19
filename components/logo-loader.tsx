@@ -10,7 +10,7 @@ export const LogoLoader = () => {
                         alt="barbaro photo"
                         width={300}
                         height={300}
-                        src={'/barbaro.jpg'}
+                        src={'/barbaro.png'}
                         className="rounded-full"
                         priority
                     />

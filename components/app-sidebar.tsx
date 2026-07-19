@@ -41,7 +41,7 @@ export function AppSidebar() {
                                         alt='log'
                                         width={100}
                                         height={100}
-                                        src='/barbaro.jpg'
+                                        src='/barbaro.png'
                                     />
                                 </div>
                             </Link>

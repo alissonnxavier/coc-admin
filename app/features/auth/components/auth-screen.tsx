@@ -36,7 +36,7 @@ const AuthScreen = () => {
                     width={200}
                     height={200}
                     alt="team-logo"
-                    src="/barbaro.jpg"
+                    src="/barbaro.png"
                     priority
                   />
                 </div>
