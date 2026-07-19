@@ -10,10 +10,12 @@ import ModalExpandImage from "@/components/modal/modal-expand-image";
 import { SidebarProvider } from "@/components/ui/sidebar"
 import { AppSidebar } from "@/components/app-sidebar";
 import { Toaster } from "@/components/ui/toaster";
-import {Play} from "next/font/google";
 
-
-const play = Play({subsets: ['latin'], weight: ['400', '700']});
+// 1. Configurando a fonte do Clash of Clans localmente
+const clashFont = localFont({
+  src: "./fonts/SupercellMagic.ttf", // Ajuste a extensão (.ttf, .woff2) conforme o seu arquivo
+  variable: "--font-clash",
+});
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -49,8 +51,9 @@ export default function RootLayout({
   return (
     <ConvexAuthNextjsServerProvider>
       <html lang="en">
+        {/* 2. Aplicando a classe da fonte diretamente no body */}
         <body
-          className={`${play.className} ${geistSans.variable} ${geistMono.variable} bg-background font-sans antialiased text-foreground transition-colors dark:bg-background-dark dark:text-foreground-dark`}
+          className={`${clashFont.className} ${geistSans.variable} ${geistMono.variable} bg-background antialiased text-foreground transition-colors dark:bg-background-dark dark:text-foreground-dark`}
         >
           <ConvexClientProvider>
             <ThemeProvider
