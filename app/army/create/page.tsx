@@ -31,6 +31,7 @@ export default function CreateArmy() {
   const [armyLink, setArmyLink] = useState("");
 
   // Proteção de rota / Loading administrada de forma limpa
+  //@ts-ignore
   if (isLoadingMemberRole || memberRole?.role !== "admin" || isLoadingCurrentUser) {
     return (
       <div className="w-full mb-5">
