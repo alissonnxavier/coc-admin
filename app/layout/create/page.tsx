@@ -154,6 +154,7 @@ const CreateLayout = () => {
                                             </SelectTrigger>
                                             <SelectContent >
                                                 <SelectGroup>
+                                                    <SelectItem value="18">18</SelectItem>
                                                     <SelectItem value="17">17</SelectItem>
                                                     <SelectItem value="16">16</SelectItem>
                                                     <SelectItem value="15">15</SelectItem>
