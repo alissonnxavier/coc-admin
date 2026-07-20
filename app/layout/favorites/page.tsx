@@ -30,11 +30,11 @@ const FavoriteLayoutList = () => {
     const BATCH_SIZE = 10;
 
     const handleModalExpandImage = useModalExpandImage();
-    const [layoutLevel, setLayoutLevel] = useState<string>("17");
+    const [layoutLevel, setLayoutLevel] = useState<string>("18");
     const [layoutType, setLayoutType] = useState<string>("farm");
     const dataIds = useGeAllFavoritetLayouts();
     const { mutate: removeFavoriteLayout } = useRemoveFavoriteLayout();
-    const { toast }= useToast();
+    const { toast } = useToast();
 
     const { results, status, loadMore } = usePaginatedQuery(
         api.favoriteLayouts.get as any,
@@ -66,7 +66,7 @@ const FavoriteLayoutList = () => {
         }
     };
 
-    const favoriteLayout = (layoutId: Id<"layout">) => {
+    const favoriteLayout = (layoutId: Id<"layout">, layoutLink: any, layoutCv: any, layoutType: any, imageId: any) => {
         if (starColor(layoutId)) {
             removeFavoriteLayout({
                 id: layoutId
@@ -101,6 +101,7 @@ const FavoriteLayoutList = () => {
             </div>
             <div>
                 <div className=' flex items-center justify-center mb-3 gap-2'>
+                    <Button onClick={() => { setLayoutLevel("18") }} size='sm' className={cn('border bg-red-950 rounded-lg text-red-200 border-red-400/50 opacity-25 hover:opacity-70 font-semibold', layoutLevel === "18" && 'opacity-100 border-red-400 bg-red-900/80')}>18</Button>
                     <Button onClick={() => { setLayoutLevel("17") }} size='sm' className={cn('border bg-slate-900 rounded-lg text-slate-300 border-slate-300 opacity-25 hover:opacity-70', layoutLevel === "17" && 'opacity-100')}>17</Button>
                     <Button onClick={() => { setLayoutLevel("16") }} size='sm' className={cn('border bg-orange-900 rounded-lg text-orange-300 border-orange-300 opacity-25 hover:opacity-70', layoutLevel === "16" && 'opacity-100')}>16</Button>
                     <Button onClick={() => { setLayoutLevel("15") }} size='sm' className={cn('border bg-purple-900 rounded-lg text-purple-300 border-purple-300 opacity-25 hover:opacity-70', layoutLevel === "15" && 'opacity-100')}>15</Button>
@@ -117,71 +118,43 @@ const FavoriteLayoutList = () => {
                 </div>
             </div>
             <Separator className='mb-5 w-5/6 mx-auto' />
-            <div className='flex justify-center items-center flex-wrap gap-2'>
-                {results && Array.from(results).map((layout: any, index: any) => (
-                    <div key={index}>
-                        <div className='shine-border-green p-0.5 rounded-lg'>
-                            <Card className='w-44 p-0  '>
-                                <CardContent className='p-0'>
-                                    <div className='flex justify-center items-center relative'>
-                                        <div
-                                            className={cn('border border-slate-300 absolute top-2 right-2 rounded-full p-1 gradient-background-yellow-star',
-                                                starColor(layout.layoutId) && 'shine-border-green '
-                                            )}
-                                            onClick={() => {
-                                                favoriteLayout(
-                                                    layout.layoutId,
-                                                );
-                                            }}
-                                        >
-                                            <Image
-                                                src={starColor(layout.layoutId) ? "/star.png" : "/black-star.png"}
-                                                alt={'star'}
-                                                width={25}
-                                                height={25}
-                                                className={cn(' text-white top-2 left-2 ',
-                                                    starColor(layout.layoutId) && 'animate-bounce'
-                                                )}
-                                            />
-                                        </div>
-                                    </div>
+            <div className='grid grid-cols-2 sm:flex sm:flex-wrap sm:justify-center gap-3 px-4 max-w-4xl mx-auto'>
+                {results?.map((layout: any, index: any) => (
+                    <div key={layout._id || index} className='w-full sm:w-44 sm:flex-shrink-0'>
+                        <div className='shine-border-green p-0.5 rounded-lg h-full'>
+                            {/* Removido o 'w-44' fixo do Card para ele herdar a largura da coluna no grid */}
+                            <Card className='w-full p-0 overflow-hidden flex flex-col bg-black border-zinc-800 h-full justify-between'>
+                                <CardContent className='p-0 relative'>
                                     <div
                                         onClick={() => { handleModalExpandImage.onOpen(layout.image) }}
-                                        className=''>
+                                        className='cursor-pointer overflow-hidden relative w-full h-[120px] sm:h-[140px]'
+                                    >
                                         <Image
                                             alt='layout'
                                             src={layout.image}
-                                            width={300}
-                                            height={200}
-                                            className='rounded-md'
-                                            priority
-                                            style={{
-                                                height: '180px',
-                                            }}
+                                            fill
+                                            sizes="(max-width: 640px) 50vw, 176px"
+                                            className='object-cover hover:scale-105 transition-transform duration-200 rounded-t-md'
+                                            priority={index < 4}
                                         />
                                     </div>
                                 </CardContent>
-                                <CardFooter className='p-0 pb-1'>
-                                    <div className='flex w-full justify-around mt-2 '>
-                                        <div className='flex justify-center items-center m-auto'>
-                                            <div className='flex flex-row items-center text-muted-foreground text-xs m-auto'>
-                                                <LayoutLevel
-                                                    cv={layout.layoutCv}
-                                                />
-                                            </div>
-                                            <div className='flex flex-row items-center text-muted-foreground ml-2'>
-                                                <LayoutType
-                                                    type={layout.layoutType}
-                                                />
-                                            </div>
+                                <CardFooter className='p-2 bg-zinc-950 flex flex-col gap-2 mt-auto'>
+                                    <div className='flex w-full items-center justify-between gap-1'>
+                                        <div className='flex items-center gap-1 flex-wrap min-w-0'>
+                                            <LayoutLevel cv={layout.layoutCv} />
+                                            <LayoutType type={layout.layoutType} />
                                         </div>
-                                        <div>
-                                            <Button className=' mr-2 shine-border-green font-bold text-black' variant='ghost' size='sm'>
-                                                <Link href={layout.layoutLink}>
-                                                    Usar
-                                                </Link>
-                                            </Button>
-                                        </div>
+                                        <Button
+                                            className='shine-border-green font-bold text-black px-2 h-7 text-[11px] sm:text-xs flex-shrink-0'
+                                            variant='ghost'
+                                            size='sm'
+                                            asChild
+                                        >
+                                            <Link href={layout.layoutLink} target="_blank" rel="noopener noreferrer">
+                                                Usar
+                                            </Link>
+                                        </Button>
                                     </div>
                                 </CardFooter>
                             </Card>
