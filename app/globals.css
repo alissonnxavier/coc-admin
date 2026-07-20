@@ -355,6 +355,25 @@ body {
   } 
 }  */
 
+.gradient-background-th-18 {
+  /* Paleta TH 18: Vermelho Carmesim, Ouro Imperial, Cinza Vulcânico e Brilho de Fogo */
+  background: linear-gradient(300deg, #044b6e, #1a0505, #37c2d4, #5bbbeb, #023752);
+  background-size: 300% 300%; /* Aumentado para 300% para uma transição mais suave entre as 5 cores */
+  animation: gradient-animation 18s ease infinite; /* 18s em alusão ao TH 18 e para deixar o movimento sutilmente mais dinâmico */
+}
+
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
 .gradient-background-th-17 {
   background: linear-gradient(300deg, #5ddbdb, #132121, #465050, #e9f5f5);
   background-size: 240% 240%;

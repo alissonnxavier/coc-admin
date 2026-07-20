@@ -8,7 +8,7 @@ const LayoutLevel = ({ cv }: LayoutLevelProps) => {
 
     if (cv === "18") {
         return (
-            <div className='border p-1 rounded text-slate-300 border-blue-500 gradient-background-th-17 font-bold' >
+            <div className='border p-1 rounded text-slate-300 border-blue-500 gradient-background-th-18 font-bold' >
                 CV {cv}
             </div>
         )
