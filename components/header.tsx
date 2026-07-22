@@ -34,7 +34,6 @@ export const Header = ({ clanData }: HeaderProps) => {
             <div className="text-muted-foreground text-xs">
                 Liga {clanData.data.clanData.warLeague.name}
             </div>
-
         </div>
     )
 }
