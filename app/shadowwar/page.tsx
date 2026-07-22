@@ -3,7 +3,7 @@
 'use client';
 
 import React from 'react';
-import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
+import { Alert, AlertTitle } from '@/components/ui/alert';
 import { DragDropContext, Draggable, Droppable } from '@hello-pangea/dnd';
 import { useGetClanData } from '../features/clanData/api/use-get-clan-data';
 import { useUpadateClanData } from '../features/clanData/api/use-update-clan-data';
@@ -103,8 +103,8 @@ const Page = () => {
                                     ref={provided.innerRef}
                                     {...provided.droppableProps}
                                     className={`flex flex-col gap-2.5 w-72 sm:w-80 min-h-[350px] p-3 rounded-2xl border-4 transition-all duration-200 ${snapshot.isDraggingOver
-                                            ? 'bg-emerald-950/70 border-emerald-500/80 shadow-[inset_0_0_20px_rgba(16,185,129,0.3)]'
-                                            : 'bg-stone-900/90 border-amber-800/40 shadow-inner'
+                                        ? 'bg-emerald-950/70 border-emerald-500/80 shadow-[inset_0_0_20px_rgba(16,185,129,0.3)]'
+                                        : 'bg-stone-900/90 border-amber-800/40 shadow-inner'
                                         }`}
                                 >
                                     {memberList.map((member: any, index: number) => {
@@ -162,8 +162,8 @@ const Page = () => {
                                     ref={provided.innerRef}
                                     {...provided.droppableProps}
                                     className={`flex flex-col gap-2.5 w-72 sm:w-80 min-h-[350px] p-3 rounded-2xl border-4 transition-all duration-200 ${snapshot.isDraggingOver
-                                            ? 'bg-rose-950/70 border-rose-600/80 shadow-[inset_0_0_20px_rgba(225,29,72,0.3)]'
-                                            : 'bg-stone-900/90 border-stone-800/40 shadow-inner'
+                                        ? 'bg-rose-950/70 border-rose-600/80 shadow-[inset_0_0_20px_rgba(225,29,72,0.3)]'
+                                        : 'bg-stone-900/90 border-stone-800/40 shadow-inner'
                                         }`}
                                 >
                                     {memberList.map((member: any, index: number) => {
