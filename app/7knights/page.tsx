@@ -69,7 +69,7 @@ const Page = () => {
 
         if (isLoadingMemberRole) return;
 
-        //@ts-ignore
+        //@ts-expect-error
         if (memberRole?.role === 'admin') {
             const updatedData = {
                 ...primaryClan.data,
@@ -110,7 +110,7 @@ const Page = () => {
         }
     };
 
-    //@ts-ignore
+    //@ts-expect-error
     if (!clanData || memberRole?.role !== 'admin' || isLoadingClanData || isLoadingMemberRole) {
         return (
             <div className="w-full">
