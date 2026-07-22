@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
 
 import React, { useMemo } from 'react';
@@ -10,13 +12,6 @@ import { useToast } from '@/hooks/use-toast';
 import { useGetMemberRole } from '../features/memberRole/api/use-get-member-role';
 import { useGetSecondaryClanData } from '../features/secondaryClanData/api/use-get-secondary-clan-data';
 import { useUpadateSecondaryClanData } from '../features/secondaryClanData/api/use-update-secondary-clan-data';
-
-interface ClanMember {
-    tag: string;
-    name: string;
-    townHallLevel: number;
-    previousClanRank: number;
-}
 
 const Page = () => {
     const { data: clanData, isLoading: isLoadingClanData } = useGetSecondaryClanData();
