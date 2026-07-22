@@ -2,8 +2,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
 
-
-import React, { useState } from 'react';
+import React from 'react';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { DragDropContext, Draggable, Droppable } from '@hello-pangea/dnd';
 import { useGetClanData } from '../features/clanData/api/use-get-clan-data';
@@ -14,48 +13,48 @@ import { LogoLoader } from '@/components/logo-loader';
 import { ToastAction } from '@/components/ui/toast';
 import { useToast } from '@/hooks/use-toast';
 
-
 const Page = () => {
-
     const { data: clanData, isLoading: isLoadingClanData } = useGetClanData();
     const { mutate: updateClanData } = useUpadateClanData();
-    const [count, setCount] = useState<number>(0);
     const { toast } = useToast();
-
     const { data: memberRole, isLoading: isLoadingMemberRole } = useGetMemberRole();
-    let lenght = 0;
 
     const onDragEnd = (event: any) => {
+        if (!event.destination) return;
+
         if (event.destination.droppableId === "holder" && event.source.droppableId === "reserve") {
-            clanData![0].data.clanData.memberList[event.source.index].previousClanRank = 100
-        };
+            clanData![0].data.clanData.memberList[event.source.index].previousClanRank = 100;
+        }
 
         if (event.destination.droppableId === "reserve" && event.source.droppableId === "holder") {
-            clanData![0].data.clanData.memberList[event.source.index].previousClanRank = 200
-        };
+            clanData![0].data.clanData.memberList[event.source.index].previousClanRank = 200;
+        }
 
-        updateClanData({
-            id: clanData![0]._id,
-            data: clanData![0].data
-        },
+        updateClanData(
+            {
+                id: clanData![0]._id,
+                data: clanData![0].data
+            },
             {
                 onSuccess: () => {
                     toast({
                         variant: "success",
-                        title: "Certo!.",
-                        description: "Membro alterado.",
-                        action: <ToastAction
-                            altText="Fechar"
-                            className='bg-green-500 border-green-500'>Fechar</ToastAction>,
-                    })
+                        title: "Certo!",
+                        description: "Membro alterado com sucesso.",
+                        action: (
+                            <ToastAction altText="Fechar" className='bg-green-600 hover:bg-green-700 border-stone-800 text-white font-bold'>
+                                Fechar
+                            </ToastAction>
+                        ),
+                    });
                 },
                 onError: () => {
                     toast({
                         variant: "destructive",
-                        title: "Oops!.",
-                        description: "Tivemos um problema.",
+                        title: "Oops!",
+                        description: "Tivemos um problema ao salvar.",
                         action: <ToastAction altText="Fechar">Fechar</ToastAction>,
-                    })
+                    });
                 },
             }
         );
@@ -64,135 +63,154 @@ const Page = () => {
     //@ts-ignore
     if (!clanData || memberRole?.role !== "admin" || isLoadingClanData || isLoadingMemberRole) {
         return (
-            <div className='w-full '>
-                <div className='mt-[0.4rem] ml-[0.6rem]'>
+            <div className='w-full min-h-screen bg-stone-900'>
+                <div className='pt-2 pl-2'>
                     <HeaderBar />
                 </div>
                 <div className='flex justify-center items-center mt-44'>
                     <LogoLoader />
                 </div>
             </div>
-        )
-    };
+        );
+    }
+
+    const memberList = clanData[0]?.data?.clanData?.memberList || [];
+    const countEscalados = memberList.filter((m: any) => m.previousClanRank === 100).length;
 
     return (
-        <div className='w-full'>
-            <div className=''>
+        <div className='w-full min-h-screen bg-stone-950 text-amber-50 select-none pb-10'>
+            <div>
                 <HeaderBar />
             </div>
+
             <DragDropContext onDragEnd={onDragEnd}>
-                <div className='flex justify-center'>
-                    <div>
-                        <div className='flex justify-center m-5 font-bold'>
-                            Escalado {count}
+                <div className='flex flex-wrap justify-center gap-8 p-4 mt-4'>
+
+                    {/* COLUNA: ESCALADOS */}
+                    <div className='flex flex-col items-center'>
+                        <div className='mb-3 px-6 py-1.5 bg-gradient-to-b from-amber-400 to-amber-600 border-2 border-amber-950 rounded-xl shadow-[0_4px_0_0_#451a03] flex items-center gap-2'>
+                            <span className='text-amber-950 font-black tracking-wider uppercase text-sm drop-shadow-[0_1px_0_rgba(255,255,255,0.4)]'>
+                                Escalados:
+                            </span>
+                            <span className='bg-amber-950 text-amber-300 px-2.5 py-0.5 rounded-lg text-xs font-black shadow-inner'>
+                                {countEscalados}
+                            </span>
                         </div>
+
                         <Droppable droppableId='holder'>
                             {(provided, snapshot) => (
                                 <div
-                                    className='flex justify-center items-center flex-wrap xl:w-96 md:w-96 sm:w-52 m-5 border border-lime-400 rounded-md p-3'
-                                    style={{ backgroundColor: snapshot.isDraggingOver ? 'green' : 'white' }}
                                     ref={provided.innerRef}
                                     {...provided.droppableProps}
+                                    className={`flex flex-col gap-2.5 w-72 sm:w-80 min-h-[350px] p-3 rounded-2xl border-4 transition-all duration-200 ${snapshot.isDraggingOver
+                                            ? 'bg-emerald-950/70 border-emerald-500/80 shadow-[inset_0_0_20px_rgba(16,185,129,0.3)]'
+                                            : 'bg-stone-900/90 border-amber-800/40 shadow-inner'
+                                        }`}
                                 >
-                                    {clanData![0].data.clanData.memberList.map((member: any, index: any) => {
+                                    {memberList.map((member: any, index: number) => {
                                         if (member.previousClanRank === 100) {
-                                            setCount(lenght += 1);
-
                                             return (
-                                                <Draggable key={index} draggableId={`draggable-0-${index}`} index={index}>
-                                                    {(provided) => (
+                                                <Draggable key={`escalado-${index}`} draggableId={`draggable-0-${index}`} index={index}>
+                                                    {(provided, dragSnapshot) => (
                                                         <div
                                                             ref={provided.innerRef}
                                                             {...provided.draggableProps}
                                                             {...provided.dragHandleProps}
-                                                            key={index}
-                                                            className='w-28 flex '>
-                                                            <Alert
-                                                                variant="default"
-                                                                className="bg-green-700 border-lime-200 p-1"
-                                                            >
-                                                                <AlertTitle className="h-6">
-                                                                    <div className="text-white font-bold">
-                                                                        {member.name}
+                                                            className={`transition-transform ${dragSnapshot.isDragging ? 'scale-105 rotate-1 z-50' : ''}`}
+                                                        >
+                                                            <Alert className="relative bg-gradient-to-b from-emerald-600 to-teal-800 border-2 border-emerald-950 rounded-xl p-2.5 shadow-[0_4px_0_0_#064e3b] hover:brightness-110 active:translate-y-1 active:shadow-none cursor-grab active:cursor-grabbing">
+                                                                <div className="flex items-center justify-between">
+                                                                    <AlertTitle className="m-0 p-0">
+                                                                        <span className="text-white font-extrabold tracking-wide drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)] text-sm">
+                                                                            {member.name}
+                                                                        </span>
+                                                                    </AlertTitle>
+
+                                                                    {/* BADGE CV ESTILO COC */}
+                                                                    <div className="flex items-center justify-center bg-gradient-to-b from-amber-400 to-amber-600 border border-amber-950 rounded-md px-1.5 py-0.5 shadow-[0_2px_0_0_#451a03]">
+                                                                        <span className="text-[10px] font-black text-amber-950 uppercase tracking-tighter mr-0.5">CV</span>
+                                                                        <span className="text-xs font-black text-amber-950 drop-shadow-[0_1px_0_rgba(255,255,255,0.4)]">
+                                                                            {member.townHallLevel}
+                                                                        </span>
                                                                     </div>
-                                                                </AlertTitle>
-                                                                <AlertDescription>
-                                                                    <div className="flex items-center justify-between">
-                                                                        <div className="text-muted-foreground text-xs text-white">
-                                                                            cv: {member.townHallLevel}
-                                                                        </div>
-                                                                    </div>
-                                                                </AlertDescription>
+                                                                </div>
                                                             </Alert>
                                                         </div>
                                                     )}
                                                 </Draggable>
-                                            )
+                                            );
                                         }
+                                        return null;
                                     })}
                                     {provided.placeholder}
                                 </div>
                             )}
                         </Droppable>
                     </div>
-                    <div>
-                        <div className='flex justify-center m-5 font-bold'>
-                            Reserva
+
+                    {/* COLUNA: RESERVA */}
+                    <div className='flex flex-col items-center'>
+                        <div className='mb-3 px-6 py-1.5 bg-gradient-to-b from-stone-600 to-stone-800 border-2 border-stone-950 rounded-xl shadow-[0_4px_0_0_#0c0a09] flex items-center gap-2'>
+                            <span className='text-stone-200 font-black tracking-wider uppercase text-sm drop-shadow-[0_1px_0_rgba(0,0,0,0.8)]'>
+                                Reserva
+                            </span>
                         </div>
+
                         <Droppable droppableId='reserve'>
                             {(provided, snapshot) => (
                                 <div
-                                    className='flex justify-center items-center flex-wrap xl:w-96 md:w-96 sm:w-52 m-5 border border-rose-400 rounded-md p-3'
-                                    style={{ backgroundColor: snapshot.isDraggingOver ? 'black' : 'white' }}
                                     ref={provided.innerRef}
                                     {...provided.droppableProps}
+                                    className={`flex flex-col gap-2.5 w-72 sm:w-80 min-h-[350px] p-3 rounded-2xl border-4 transition-all duration-200 ${snapshot.isDraggingOver
+                                            ? 'bg-rose-950/70 border-rose-600/80 shadow-[inset_0_0_20px_rgba(225,29,72,0.3)]'
+                                            : 'bg-stone-900/90 border-stone-800/40 shadow-inner'
+                                        }`}
                                 >
-                                    {clanData![0].data.clanData.memberList.map((member: any, index: any) => {
+                                    {memberList.map((member: any, index: number) => {
                                         if (member.previousClanRank !== 100) {
-
-
                                             return (
-                                                <Draggable key={index} draggableId={`draggable-1-${index}`} index={index}>
-                                                    {(provided) => (
+                                                <Draggable key={`reserva-${index}`} draggableId={`draggable-1-${index}`} index={index}>
+                                                    {(provided, dragSnapshot) => (
                                                         <div
                                                             ref={provided.innerRef}
                                                             {...provided.draggableProps}
                                                             {...provided.dragHandleProps}
+                                                            className={`transition-transform ${dragSnapshot.isDragging ? 'scale-105 -rotate-1 z-50' : ''}`}
+                                                        >
+                                                            <Alert className="relative bg-gradient-to-b from-stone-800 to-stone-900 border-2 border-stone-950 rounded-xl p-2.5 shadow-[0_4px_0_0_#0c0a09] hover:brightness-125 active:translate-y-1 active:shadow-none cursor-grab active:cursor-grabbing">
+                                                                <div className="flex items-center justify-between">
+                                                                    <AlertTitle className="m-0 p-0">
+                                                                        <span className="text-stone-300 font-extrabold tracking-wide drop-shadow-[0_2px_2px_rgba(0,0,0,0.9)] text-sm">
+                                                                            {member.name}
+                                                                        </span>
+                                                                    </AlertTitle>
 
-                                                            key={index}
-                                                            className='w-28'>
-                                                            <Alert variant="destructive" className="bg-black">
-                                                                <AlertTitle className="flex justify-between h-6">
-                                                                    <div className="text-white font-bold">
-                                                                        {member.name}
+                                                                    {/* BADGE CV RESERVA */}
+                                                                    <div className="flex items-center justify-center bg-stone-700 border border-stone-950 rounded-md px-1.5 py-0.5 shadow-[0_2px_0_0_#0c0a09]">
+                                                                        <span className="text-[10px] font-black text-stone-400 uppercase tracking-tighter mr-0.5">CV</span>
+                                                                        <span className="text-xs font-black text-stone-200">
+                                                                            {member.townHallLevel}
+                                                                        </span>
                                                                     </div>
-                                                                </AlertTitle>
-                                                                <AlertDescription>
-                                                                    <div className="flex items-center justify-between">
-                                                                        <div className="text-muted-foreground text-xs text-white">
-                                                                            cv: {member.townHallLevel}
-                                                                        </div>
-                                                                        <div>
-
-                                                                        </div>
-                                                                    </div>
-                                                                </AlertDescription>
+                                                                </div>
                                                             </Alert>
                                                         </div>
                                                     )}
                                                 </Draggable>
-                                            )
+                                            );
                                         }
+                                        return null;
                                     })}
                                     {provided.placeholder}
                                 </div>
                             )}
                         </Droppable>
                     </div>
+
                 </div>
             </DragDropContext>
         </div>
-    )
+    );
 };
 
 export default Page;
