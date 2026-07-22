@@ -17,7 +17,7 @@ export const Menu = () => {
       <div className="flex justify-between p-5 h-20 w-4/6 m-auto">
         <div className='pl-10'>
           <Button
-            variant='ghost'
+            variant='link'
             size='icon'
             onClick={() => { toggleSidebar() }}
             className='transition-all'

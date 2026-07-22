@@ -2,8 +2,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
 
-import React, { useMemo } from 'react';
-import { DropResult, DragDropContext, Draggable, Droppable } from '@hello-pangea/dnd';
+import React from 'react';
+import { DragDropContext, Draggable, Droppable } from '@hello-pangea/dnd';
 import { HeaderBar } from '@/components/header-bar';
 import { LogoLoader } from '@/components/logo-loader';
 import { Alert, AlertTitle } from '@/components/ui/alert';
