@@ -32,15 +32,7 @@ export const MainMemberPrimaryClan = ({ data }: MainMemberPrimaryClanProps) => {
                                         <div className="text-xs text-white font-medium">
                                             CV: {member.townHallLevel}
                                         </div>
-                                        <div className="flex-shrink-0 relative h-6 w-6">
-                                            <Image
-                                                alt="ligue"
-                                                src={member.league.iconUrls.tiny}
-                                                fill
-                                                sizes="24px"
-                                                className="object-contain"
-                                            />
-                                        </div>
+                                     
                                     </div>
                                 </AlertDescription>
                             </Alert>

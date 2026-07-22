@@ -18,8 +18,8 @@ export const MainMemberSecondaryClan = ({ data }: MainMemberPrimaryClanProps) =>
                             <Alert variant="gold" className="bg-yellow-900 p-3 block w-full overflow-hidden">
                                 {/* Título ajustado com flex-col para o cargo ir para baixo se faltar espaço, ou inline controlado */}
                                 <AlertTitle className="flex flex-col gap-0.5 mb-2">
-                                    <div 
-                                        className="text-white font-bold text-sm truncate w-full" 
+                                    <div
+                                        className="text-white font-bold text-sm truncate w-full"
                                         title={member.name}
                                     >
                                         {member.name}
@@ -32,15 +32,6 @@ export const MainMemberSecondaryClan = ({ data }: MainMemberPrimaryClanProps) =>
                                     <div className="flex items-center justify-between mt-1">
                                         <div className="text-xs text-white font-medium">
                                             CV: {member.townHallLevel}
-                                        </div>
-                                        <div className="flex-shrink-0 relative h-6 w-6">
-                                            <Image
-                                                alt="ligue"
-                                                src={member.league.iconUrls.tiny}
-                                                fill
-                                                sizes="24px"
-                                                className="object-contain"
-                                            />
                                         </div>
                                     </div>
                                 </AlertDescription>
