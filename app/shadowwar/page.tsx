@@ -76,6 +76,7 @@ const Page = () => {
 
     const memberList = clanData[0]?.data?.clanData?.memberList || [];
     const countEscalados = memberList.filter((m: any) => m.previousClanRank === 100).length;
+    const countReserva = memberList.filter((m: any) => m.previousClanRank !== 100).length;
 
     return (
         <div className='w-full min-h-screen bg-stone-950 text-amber-50 select-none pb-10'>
@@ -153,6 +154,9 @@ const Page = () => {
                         <div className='mb-3 px-6 py-1.5 bg-gradient-to-b from-stone-600 to-stone-800 border-2 border-stone-950 rounded-xl shadow-[0_4px_0_0_#0c0a09] flex items-center gap-2'>
                             <span className='text-stone-200 font-black tracking-wider uppercase text-sm drop-shadow-[0_1px_0_rgba(0,0,0,0.8)]'>
                                 Reserva
+                            </span>
+                            <span className='bg-stone-700 text-stone-300 px-2.5 py-0.5 rounded-lg text-xs font-black shadow-inner'>
+                                {countReserva}
                             </span>
                         </div>
 
