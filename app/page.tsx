@@ -30,7 +30,7 @@ export default function Home() {
 
       {/* Container Principal dos Emblemas + Header */}
       <main className="max-w-6xl mx-auto px-4 py-6 flex flex-col lg:flex-row items-center justify-between gap-6">
-        
+
         {/* Container dos Emblemas (Badges) */}
         <div className="flex w-full lg:w-1/2 justify-center gap-8 sm:gap-12 md:gap-16">
           {/* Badge Clan Shadow */}
