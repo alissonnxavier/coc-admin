@@ -13,6 +13,10 @@ const schema = defineSchema({
         userId: v.id("users"),
         data: v.record(v.string(), v.any())
     }),
+    thirdClanData: defineTable({
+        userId: v.id("users"),
+        data: v.record(v.string(), v.any())
+    }),
     memberRole: defineTable({
         userId: v.id("users"),
         email: v.optional(v.string()),

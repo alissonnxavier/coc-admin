@@ -205,6 +205,26 @@ body {
   }
 }
 
+.shine-border-pink {
+  background: linear-gradient(300deg, #570337, #b40a5a, #940909, #39077a, #d848a8, #c74b04, #380131);
+  background-size: 420% 420%;
+  animation: gradient-animation 42s ease infinite;
+}
+
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
 .gradient-background-trop-card {
   background: linear-gradient(300deg, deepskyblue, #6e9fbe, #5ea7d4, #359ddd, #1887cc, #0c7abe);
   background-size: 360% 360%;
@@ -358,17 +378,21 @@ body {
 .gradient-background-th-18 {
   /* Paleta TH 18: Vermelho Carmesim, Ouro Imperial, Cinza Vulcânico e Brilho de Fogo */
   background: linear-gradient(300deg, #044b6e, #1a0505, #37c2d4, #5bbbeb, #023752);
-  background-size: 300% 300%; /* Aumentado para 300% para uma transição mais suave entre as 5 cores */
-  animation: gradient-animation 18s ease infinite; /* 18s em alusão ao TH 18 e para deixar o movimento sutilmente mais dinâmico */
+  background-size: 300% 300%;
+  /* Aumentado para 300% para uma transição mais suave entre as 5 cores */
+  animation: gradient-animation 18s ease infinite;
+  /* 18s em alusão ao TH 18 e para deixar o movimento sutilmente mais dinâmico */
 }
 
 @keyframes gradient-animation {
   0% {
     background-position: 0% 50%;
   }
+
   50% {
     background-position: 100% 50%;
   }
+
   100% {
     background-position: 0% 50%;
   }

@@ -117,6 +117,21 @@ const NavigationMenuMain = ({ clanName }: NavigationMenuMainProps) => {
                                                 </div>
                                             </div>
                                         </ListItem>
+                                              <ListItem href="/warpartners" title="WAR PARTNeR$">
+                                            <div className="flex justify-between">
+                                                <div className="flex justify-center items-center m-x-2 w-28 text-xs">
+                                                    Escale ou remova membros
+                                                </div>
+                                                <div className="flex justify-center items-center">
+                                                    <Image
+                                                        alt="human-rigths"
+                                                        src='/human-rights.png'
+                                                        width={50}
+                                                        height={50}
+                                                    />
+                                                </div>
+                                            </div>
+                                        </ListItem>
                                     </>
                                 )}
                         </ul>

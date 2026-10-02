@@ -22,6 +22,7 @@ import type * as layout from "../layout.js";
 import type * as memberRole from "../memberRole.js";
 import type * as reserve from "../reserve.js";
 import type * as secondaryClanData from "../secondaryClanData.js";
+import type * as thirdClanData from "../thirdClanData.js";
 import type * as upload from "../upload.js";
 import type * as users from "../users.js";
 
@@ -43,6 +44,7 @@ declare const fullApi: ApiFromModules<{
   memberRole: typeof memberRole;
   reserve: typeof reserve;
   secondaryClanData: typeof secondaryClanData;
+  thirdClanData: typeof thirdClanData;
   upload: typeof upload;
   users: typeof users;
 }>;
