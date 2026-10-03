@@ -42,7 +42,7 @@ const ClanData = () => {
     const handleUpdateClan = async (
         rawInput: string,
         targetId: string | undefined,
-        updateFn: Function,
+        updateFn: (...args: any[]) => any,
         resetState: () => void
     ) => {
         if (!targetId) {
