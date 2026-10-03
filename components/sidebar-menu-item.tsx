@@ -117,6 +117,16 @@ export const SidebarNavigationMenuItem = () => {
                                 />
                             </Link>
                             <Link
+                                href='/warpartners'
+                                onClick={() => { toggleSidebar() }}
+                            >
+                                <MenuItem
+                                    title={`WAR PARTNeR$`}
+                                    description="Escale ou remova membros"
+                                    image="/human-rights.png"
+                                />
+                            </Link>
+                            <Link
                                 href='/layout/create'
                                 onClick={() => { toggleSidebar() }}
                             >
